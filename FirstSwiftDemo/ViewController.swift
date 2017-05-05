@@ -416,13 +416,13 @@ class ViewController: UIViewController {
         print(mergeArray)
         //count属性 isEmpty属性
         
-        
-        
         */
         
         
         
         
+        
+        /*
         
         //函数
         self.thirdFunc()
@@ -557,6 +557,13 @@ class ViewController: UIViewController {
         //上边的函数都在viewDidLoad函数内部定义，都称之为嵌套函数
         
         
+        */
+        
+        
+        
+        //闭包   block -oc
+        //闭包是自包含的代码块
+        //闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（blocks）以及其他一些编程语言中的匿名函数比较相似。闭包可以捕获和存储其所在上下文中任意常量和变量的引用。被称为包裹常量和变量。 Swift 会为你管理在捕获过程中涉及到的所有内存操作
         
         
         
@@ -622,6 +629,9 @@ class ViewController: UIViewController {
     }
 
 
+    
+    
+    
 
 
 }
