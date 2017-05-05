@@ -565,14 +565,70 @@ class ViewController: UIViewController {
         //闭包是自包含的代码块
         //闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（blocks）以及其他一些编程语言中的匿名函数比较相似。闭包可以捕获和存储其所在上下文中任意常量和变量的引用。被称为包裹常量和变量。 Swift 会为你管理在捕获过程中涉及到的所有内存操作
         
+        //闭包表达式语法
+//        { (<#parameters#>) -> <#return type#> in
+//            <#statements#>
+//        }
+        
+        let names = ["asjk","nkk","opop","vvvn"]
+        func cccloseure(_ s1 : String,_ s2 : String) -> Bool {
+            return s1 > s2
+        }
+        var result = names.sorted(by: cccloseure)
+        print(result)
+        
+        result = names.sorted(by:  { (s1 : String,s2 : String) -> Bool in
+            return s1 > s2
+        })
+        //返回值箭头 -> 和围绕在参数的括号也可以被省略
+        //如下
+        result = names.sorted(by: {s1,s2  in return s1 > s2})
+        
+        //单表达式闭包    单行表达式闭包可以通过省略 return 关键字来隐式返回单行表达式的结果
+        //如下
+        result = names.sorted(by: {s1,s2 in s1 > s2})
+        
+        //参数名称缩写
+        //Swift 自动为内联闭包提供了参数名称缩写功能，你可以直接通过 $0，$1，$2 来顺序调用闭包的参数，以此类推。
+        //如下  在这个例子中，$0和$1表示闭包中第一个和第二个 String 类型的参数。
+        result = names.sorted(by: {$0 > $1})
+        
+        //运算符方法
+        // 实际上还有一种更简短的方式来编写上面例子中的闭包表达式。Swift 的 String 类型定义了关于大于号（>）的字符串实现，其作为一个函数接受两个 String 类型的参数并返回 Bool 类型的值。而这正好与 sorted(by:) 方法的参数需要的函数类型相符合。因此，你可以简单地传递一个大于号，Swift 可以自动推断出你想使用大于号的字符串函数实现：
+        result = names.sorted(by: >)
         
         
+        //尾随闭包
+        func someFunctionThatTakesAClosure (closure : () -> Void) {
+            // 函数体部分
+        }
+        
+        // 以下是不使用尾随闭包进行函数调用
+        someFunctionThatTakesAClosure(closure: {
+            // 闭包主体部分
+        })
+        
+        // 以下是使用尾随闭包进行函数调用
+        someFunctionThatTakesAClosure() {
+            // 闭包主体部分
+        }
+
+//        在闭包表达式语法一节中作为 sorted(by:) 方法参数的字符串排序闭包可以改写为：
+        result = names.sorted() { $0 > $1 }
+//        如果闭包表达式是函数或方法的唯一参数，则当你使用尾随闭包时，你甚至可以把 () 省略掉：
+        result = names.sorted { $0 > $1 }
         
         
-        
-        
-        
-        
+        //参数为两个int类型 返回值也为int类型的闭包
+        let add = { (a : Int,b : Int) -> Int in
+            a + b
+        }
+        print(add(2,3))
+        //没有参数没有返回值的闭包
+        let sentence = { print("没有参数没有返回值的闭包")
+            
+        }
+        print(sentence)
         
         
         
