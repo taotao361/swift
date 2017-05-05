@@ -1,0 +1,580 @@
+//
+//  ViewController.swift
+//  FirstSwiftDemo
+//
+//  Created by yangxutao on 2017/5/4.
+//  Copyright © 2017年 yangxutao. All rights reserved.
+//
+
+import UIKit
+
+
+//typealias NNNNN = String //别名
+
+protocol ViewControllerDelegate {
+    
+}
+
+
+extension ViewController : ViewControllerDelegate {
+
+}
+
+
+
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+//        var myString = "hello world"
+//        myString = "hahha"
+//        print(myString)
+//        
+//        let yourString = "hello your world";
+//        print(yourString);
+        
+        
+        let name = "xiaoming";print(name)//在一行内书写多条语句时，要加上 分号,只=只有一条语句加不加都可以，swift没有要求
+        
+//        let a= 2 + 3 运算符不能直接挨着变量名，要使用空格间隔开，不然会报错；
+        
+        
+//        let distance : NNNNN = "200"
+//        print(distance)
+        
+//        var xiao : Float //声明变量
+//        xiao = 3.88
+//        print(xiao)
+//        
+//        var name1 : String //声明字符串变量
+//        name1 = "llllllllllll";
+//        print(name1)
+//        
+//        
+//        let 好 = "kkk"
+//        print(好)
+       
+        
+        
+        /*
+        
+        // \(变量名) 可用此方式插入字符串
+        var name2 = "她"
+        var email = "eeeeeeee@qq.com"
+        print("\(name2) 的email为 \(email)")
+        
+        var varibleOptional : String?
+        var optionalType: Optional<String>
+        
+        varibleOptional = "bnoashioilahusias"
+        print(varibleOptional)
+        
+        //如果一个可选类型的实例只包含一个值，那么就可以使用 后缀操作符 ！ 来访问这个值；
+        optionalType = "jshklahjskjlha"
+        print(optionalType!)
+        
+        
+//        var myString : String? = nil
+//        myString = "hsjkghjbaskjhjks"
+//        
+//        if myString != nil {
+//            print(myString)
+//        } else {
+//            print("myString = nil")
+//        }
+        
+        
+        //强制解析
+        var string : String?
+        string = "hsklhkjlhkljlk"
+        if string != nil {
+            print(string!)//强制解析可选值，使用感叹号 ❗️ 打印为 Optional("hsklhkjlhkljlk!")
+        } else {//使用 ！来获取一个不存在的值会导致报错，在强制解析之前要确定可选包含一个非 nil 的值；
+            print("string = nil")
+        }
+        
+        
+        //自动解析
+        //在声明可选变量时可用 ！ 替换 ？，这样在使用可选变量时就不用使用 ！来获取它的值，会自动解析；
+        
+        var secString : String!
+        secString = "opopopopopo"
+        if secString != nil {
+            print(secString)
+        } else {
+            print("secString = nil")
+        }
+        
+        
+        //可选绑定
+        //使用可选绑定来来判断可选类型是否包含值，如果包含，就把这个值赋值给一个临时常量或者变量，可选绑定可以用到if 和 while语句中，来对可选值进行判断包含不包含值，
+        var bindString : String?
+        bindString = "binding string"
+        if let aString = bindString {
+            print(bindString)
+        } else {
+            print("没有可选值")
+        }
+        
+        
+        //常量 一旦设置为常量，在应用程序中就无法更改 这和OC一致；
+        //常量可以是任意数据类型，整形 字符串 浮点型 枚举类型常量
+        //常量类似于变量，区别在于常量的值一旦设定就不能改变，而变量的值可以随意更改。
+        //常量是用 let 修饰；变量使用var修饰
+        
+        
+        //类型标注
+        //当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称         var constantName:<data type> = <optional initial value>
+        
+        var myInt : Int = 33;
+        myInt = 44
+        var myStr : String = "jlijlijklk"
+        myStr = "808909890"
+        let myStrings : String = "gklghkj"
+        print(myInt)
+        print(myStr,myStrings)
+        
+        //常量命名
+        //  常量命名可以由 字母 下划线 数字组成；常量需要以字母或者下划线开头 swift区分大小写
+        
+        
+        //swift 字面量 ：能够直截了指出变量的类型并为变量赋值的值；
+        let aNumber = 3         //整型字面量
+        let aString = "Hello"   //字符串字面量
+        let aBool = true        //布尔值字面量
+
+        //整形字面量
+        //整型字面量可以是一个十进制，二进制，八进制或十六进制常量。 二进制前缀为 0b，八进制前缀为 0o，十六进制前缀为 0x，十进制没有前缀：
+        let decimalInteger = 17           // 17 - 十进制表示
+        let binaryInteger = 0b10001       // 17 - 二进制表示
+        let octalInteger = 0o21           // 17 - 八进制表示
+        let hexadecimalInteger = 0x11     // 17 - 十六进制表示
+        print(hexadecimalInteger,decimalInteger,binaryInteger,octalInteger)
+    
+        let octalValue = 0o22
+        print(octalValue) //18
+        
+        //十进制浮点型字面量由十进制数字串后跟小数部分或指数部分（或两者皆有）组成。十进制小数部分由小数点 . 后跟十进制数字串组成。指数部分由大写或小写字母 e 为前缀后跟十进制数字串组成，这串数字表示 e 之前的数量乘以 10 的几次方。例如：1.25e2 表示 1.25 ⨉ 10^2，也就是 125.0；同样，1.25e－2 表示 1.25 ⨉ 10^－2，也就是 0.0125。
+
+        //十六进制浮点型字面量由前缀 0x 后跟可选的十六进制小数部分以及十六进制指数部分组成。十六进制小数部分由小数点后跟十六进制数字串组成。指数部分由大写或小写字母 p 为前缀后跟十进制数字串组成，这串数字表示 p 之前的数量乘以 2 的几次方。例如：0xFp2 表示 15 ⨉ 2^2，也就是 60；同样，0xFp-2 表示 15 ⨉ 2^-2，也就是 3.75。
+        
+        //负的浮点型字面量由一元运算符减号 - 和浮点型字面量组成，例如 -42.5。
+
+        //浮点型字面量允许使用下划线 _ 来增强数字的可读性，下划线会被系统忽略，因此不会影响字面量的值。同样地，也可以在数字前加 0，并不会影响字面量的值。
+        
+        let decimalDouble = 12.1875       //十进制浮点型字面量
+        let exponentDouble = 1.21875e1    //十进制浮点型字面量
+        let hexadecimalDouble = 0xC.3p0   //十六进制浮点型字面量
+        
+        
+        
+        //字符串字面量 "" 双引号包含
+        //字符串型字面量中不能包含未转义的双引号 （"）、未转义的反斜线（\）、回车符或换行符。
+        
+        let yourString : String
+        yourString = "hklhkjhkljhklj\nuhiouhuhkj\rssasasasa\"ewewewew\t\""
+        print(yourString)
+        
+        /*
+         \0	空字符
+         \\	反斜线 \
+         \b	退格(BS) ，将当前位置移到前一列
+         \f	换页(FF)，将当前位置移到下页开头
+         \n	换行符
+         \r	回车符
+         \t	水平制表符
+         \v	垂直制表符
+         \'	单引号
+         \"	双引号
+         \000	1到3位八进制数所代表的任意字符
+         \xhh...	1到2位十六进制所代表的任意字符
+         */
+        
+        
+        /*
+         布尔型字面量
+         布尔型字面量的默认类型是 Bool。
+         布尔值字面量有三个值，它们是 Swift 的保留关键字：
+         true 表示真。
+         false 表示假。
+         nil 表示没有值。
+         */
+        var isEmpty : Bool = false;
+        isEmpty = true
+        print(isEmpty)
+        
+        
+        
+        //运算符  运算符是一个符号，用来告诉编译器来执行一个数学运算或逻辑运算
+        //swift 有一下几种运算符
+        //算术运算符 + - * / % ++ --
+        //逻辑运算符 && || ! 与或非
+        //赋值运算符 =
+        //比较运算符 == > < != >= <=
+        //位运算符 位运算符用来对二进制位进行操作，~,&,|,^，分别为取反，按位与与，按位与或，按位与异或运算
+        //区间运算符
+        //其他运算符
+        
+        let A : Int = 10
+        let B : Int = 30
+        print("A + B = \(A + B)")
+        print("A != B   === \(A != B)")
+        
+        
+        //repeat...while 循环 首先会执行一次表达式，如果表达式为true，则继续执行，知道表达式为false；
+        var LL : Int = 30
+        repeat {
+            LL = LL + 1
+            print(LL)
+        } while LL < 35
+        
+        //fallthrough 语句 
+        //在大多数语言中，switch 语句块中，case 要紧跟 break，否则 case 之后的语句会顺序运行，而在 Swift 语言中，默认是不会执行下去的，switch 也会终止。如果你想在 Swift 中让 case 之后的语句会按顺序继续运行，则需要使用 fallthrough 语句。
+        //默认不继续往下进行，直到遇到fallthrough语句才会往下执行；
+        var index = 20
+        switch index {
+        case 10:
+            print(index)
+        case 20:
+            print("hahahahahaha")
+            fallthrough
+        case 30:
+            print("30")
+            fallthrough
+        case 40:
+            print("40")
+        case 50:
+            print("30")
+        case 60:
+            print("30")
+        default:
+            print("default")
+        }
+        
+        
+        //for in循环
+        var someString : [String] = ["www","errrr","ytrtrtrt"]
+        someString .append("yyyyy")
+        someString.insert("ooooooo", at: 2)
+        for aString in someString {
+            print(aString)
+        }
+        
+        //字符串
+        let bString = String("pppppp")
+//        bString?.insert("M", at: bString?.3)
+        var cString = String.init()
+        cString = "mmmmmm"
+        print(cString)
+        
+        //空字符串
+        var dString = ""
+        dString = dString + "yiuyiouyio"
+        dString += "YYYYY"
+        print(dString)
+        let fString = String()
+        if fString.isEmpty {
+            print("是空串")
+        } else {
+            print("不是空串")
+        }
+        
+        
+        //字符串插入值
+        //字符串插值是一种构建新字符串的方式，可以在其中包含常量、变量、字面量和表达式。 您插入的字符串字面量的每一项都在以反斜线为前缀的圆括号中：
+        var varA   = 20
+        let constA = 100
+        var varC:Float = 20.0
+        var stringA = "\(varA) 乘于 \(constA) 等于 \(varC * 100)"
+        print( stringA )
+        
+        
+        //字符串连接
+        //字符串可以用➕来连接
+        var varD = "D";
+        var varF = "F"
+        varD = varD + "D"
+        print("====== \(varD + varF)")
+        
+        
+        //字符串长度
+        print("字符串长度为 = \(varD.lengthOfBytes(using: String.Encoding.utf8))")
+        print("字符串长度 = \(varD.characters.count)")
+        
+        
+        //字符串比较  使用 == 比较字符串
+        print("两个字符串是否相等   \(varD == varF)")
+        
+        
+        // Unicode 字符串
+        
+        
+        
+        //字符 character     Swift 的字符是一个单一的字符字符串字面量，数据类型为 Character。
+        //swift不能创建空字符变量
+        let char1 : Character = "W";
+        let char2 : Character = "E";
+        print(char1,char2)
+        //遍历字符串中的字符
+        for char in varD.characters {
+            print(char)
+        }
+
+        //字符串追加字符 字符串
+        varD.append("p")
+        varF.append(varD)
+        
+        
+        
+        
+        //字典
+        /* Swift 字典用来存储无序的相同类型数据的集合，Swift 字典会强制检测元素的类型，如果类型不同则会报错。
+        Swift 字典每个值（value）都关联唯一的键（key），键作为字典中的这个值数据的标识符。
+        和数组中的数据项不同，字典中的数据项并没有具体顺序。我们在需要通过标识符（键）访问数据的时候使用字典，这种方法很大程度上和我们在现实世界中使用字典查字义的方法一样。
+        Swift 字典的key没有类型限制可以是整型或字符串，但必须是唯一的。
+        如果创建一个字典，并赋值给一个变量，则创建的字典就是可以修改的。这意味着在创建字典后，可以通过添加、删除、修改的方式改变字典里的项目。如果将一个字典赋值给常量，字典就不可修改，并且字典的大小和内容都不可以修改。
+        */
+        
+        //创建字典
+        //var someDict =  [KeyType: ValueType]()
+        //var someDict = [Int: String]()
+        //var dic1 = [String:String]()
+        var dic : [Int:String] = [2:"eeee",3:"rrrr",4:"tttt"];
+        var dic1 : [String:String] = ["222":"aaa"]
+        let var2 = dic[2]
+        let var4 = dic[4]
+        let var3 = dic[3]
+        print(var2,var3,var4)
+        
+        //修改字典的值 两种方法
+        dic.updateValue("TTTT", forKey: 4)
+        dic[3] = "RRRR";
+        print(dic)
+        
+        //移除键值对
+        dic.removeValue(forKey: 2)
+        print(dic)
+        //也可以通过指定键的值为 nil 来移除 key-value（键-值）对
+        dic[3] = nil
+        dic[5] = "YYY"
+        
+        print(dic)
+        
+        //遍历字典
+        for (key,value) in dic {
+            print("key = \(key),value = \(value)")
+        }
+        //我们也可以使用enumerate()方法来进行字典遍历，返回的是字典的索引及 (key, value) 对
+        for (key,value) in dic.enumerated(){
+            print("字典 key \(key) -  字典 (key, value) 对 \(value)")
+        }
+        
+        //字典转换为数组
+        let keys = [Int](dic.keys)
+        let values = [String] (dic.values)
+        print(keys,values,"键值对数目 = \(dic.count)")
+        //count属性 isEmpty属性
+
+        
+        
+        
+        
+        
+        /*数组 可以有相同的值，但是必须是在不同的位置上，数组中值的类型必须是一致的；
+         Swift 数组使用有序列表存储同一类型的多个值。相同的值可以多次出现在一个数组的不同位置中。
+         Swift 数组会强制检测元素的类型，如果类型不同则会报错，Swift 数组应该遵循像Array<Element>这样的形式，其中Element是这个数组中唯一允许存在的数据类型。
+         如果创建一个数组，并赋值给一个变量，则创建的集合就是可以修改的。这意味着在创建数组后，可以通过添加、删除、修改的方式改变数组里的项目。如果将一个数组赋值给常量，数组就不可更改，并且数组的大小和内容都不可以修改。
+        */
+        
+        var someArray : [String] = ["wwww","rrrr","uuuuu"]
+        //根据下表来获取数组内的值
+        let firstValue = someArray[2]
+        //修改数组
+        someArray.append("00000")
+        someArray.insert("KKK", at: 2)
+        someArray[2] = "jjjj"
+        print(someArray)
+        
+        //遍历数组
+        var nameString = [String]()
+        nameString.append("haha")
+        nameString.append("heihei")
+        nameString.insert("nihao", at: 1)
+        for name in nameString {
+            print(name)
+        }
+        
+        for (index,name) in nameString.enumerated() {
+            print(index,name)
+        }
+        
+        //合并数组   使用➕
+        let mergeArray = someArray + nameString
+        print(mergeArray)
+        //count属性 isEmpty属性
+        
+        
+        
+        */
+        
+        
+        
+        
+        
+        //函数
+        self.thirdFunc()
+        let aR =  self.firstfunc()
+        let aResult = self.secFunc(paras: "ni", paras1: 4, paras2: "hao")
+        print(aResult,aR)
+        
+        let arrayInt : [Int] = [2,3,5,-200,3000,900]
+        let result = self.minMax(array: arrayInt)
+        print(result.minmum,result.max)
+        //需要注意的是，元组的成员不需要在元组从函数中返回时命名，因为它们的名字已经在函数返回类型中指定了
+        
+        let rrr = self.minMaxFunc(array: []) //传进去的是空数组
+        print(rrr ?? "为空")//默认值 ？？
+        
+        
+        //函数 参数标签 和 参数名称 默认情况下函数的参数名作为函数的参数标签；
+        func someFunction(firstParameterName: Int, secondParameterName: Int) {
+            // 在函数体内，firstParameterName 和 secondParameterName 代表参数中的第一个和第二个参数值
+        }
+        someFunction(firstParameterName: 1, secondParameterName: 2)
+        
+        //指定参数标签 funcLabel参数标签  你可以在函数名称前指定它的参数标签，中间以空格分隔
+        func func2(funcLabel argument : [Int]) ->() {
+            print(argument)
+        }
+        func2(funcLabel: [1,2,3])
+        //函数没有返回值可以不写 ->() 
+        func func3(argument : String) {
+            print(argument)
+        }
+        func3(argument: "hahha")
+        
+        //忽略参数标签  如果不想为某函数添加一个标签，可以使用 _ (下划线)来替代参数标签
+        func noLabel(_ argument1 : String,_ argument2 : Int) {
+            print(argument1,argument2.description)
+        }
+        noLabel("kkkkkk", 3)
+        
+        //默认参数值 你可以在函数体中通过给参数赋值来为任意一个参数定义默认值（Deafult Value）。当默认值被定义后，调用这个函数时可以忽略这个参数。
+        //可以看出使用默认值参数  可以忽略也可以不忽略，调用方法的 时候会出现两种提示；一种是忽略一种是不忽略的方法；
+        func defaultArgument(withoutDefault : Int,defaultArgument : Int = 4) {
+            print(withoutDefault,defaultArgument)
+        }
+        defaultArgument(withoutDefault: 3, defaultArgument: 5)
+        func defaultStringArgument(withoutDefault : String,defaultArgument : Int = 20) {
+            print(withoutDefault,defaultArgument)
+        }
+        defaultStringArgument(withoutDefault: "kkkk", defaultArgument: 3)
+        defaultStringArgument(withoutDefault: "llll")
+        
+        //可变参数 参数后边加上 ... 表示参数是可变的,numbers表示 float类型的一个数组
+        //注意：一个函数只能拥有一个可变参数
+        func mutableArgumentFunc(numbers : Float...) -> Float {
+            var number : Float = 0.0
+            for value in numbers {
+                number += value
+            }
+            return Float(number)
+        }
+        print(mutableArgumentFunc(numbers: 3.9,4.9,4.7))
+        
+        //输入输出参数 inout关键字
+        //函数参数默认是常量。试图在函数体中更改参数值将会导致编译错误(compile-time error)。这意味着你不能错误地更改参数值。如果你想要一个函数可以修改参数的值，并且想要在这些修改在函数调用结束后仍然存在，那么就应该把这个参数定义为输入输出参数（In-Out Parameters）。
+        //定义一个输入输出参数时，在参数定义前加 inout 关键字。一个输入输出参数有传入函数的值，这个值被函数修改，然后被传出函数，替换原来的值。想获取更多的关于输入输出参数的细节和相关的编译器优化，请查看输入输出参数一节。你只能传递变量给输入输出参数。你不能传入常量或者字面量，因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加 & 符，表示这个值可以被函数修改。
+        
+        func inoutArgument(_ a : inout Int,b : inout Int)  {
+            let temp = a;
+            a = b;
+            b = temp;
+            print(a,b)
+        }
+        var a = 4
+        var b = 90
+        inoutArgument(&a, b: &b)
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    
+    //无参有返回值函数
+    func firstfunc() -> String {
+        return "nihao"
+    }
+    
+    //有参有返回值函数
+    func secFunc(paras : String,paras1 : Int,paras2 : String) ->String {
+        let pp = paras + paras2 + paras1.description
+        return pp
+    }
+    
+    //无参无返回值函数
+    func thirdFunc() ->(){
+        print("无参无返回值")
+    }
+
+
+    //多重返回值函数  返回元组tuple
+    func minMax(array : [Int]) -> (minmum : Int,max : Int) {
+        var currentMin = array[0]
+        var currentMax = array[0]
+        for value in array {
+            if value < currentMin {
+                currentMin = value
+            } else if value > currentMax {
+                currentMax = value
+            }
+        }
+        return (currentMin,currentMax)
+    }
+
+
+    //可选元组返回类型 返回值后边加一个❓
+    //上边的例子为例
+    func minMaxFunc(array : [Int]) -> (minmum : Int,max : Int)? {
+        if array.isEmpty { return nil } //加入传入的数组为空，就返回nil，这就是返回可选元组
+        var currentMin = array[0]
+        var currentMax = array[0]
+        for value in array {
+            if value < currentMin {
+                currentMin = value
+            } else if value > currentMax {
+                currentMax = value
+            }
+        }
+        return (currentMin,currentMax)
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
