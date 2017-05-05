@@ -488,6 +488,7 @@ class ViewController: UIViewController {
         //输入输出参数 inout关键字
         //函数参数默认是常量。试图在函数体中更改参数值将会导致编译错误(compile-time error)。这意味着你不能错误地更改参数值。如果你想要一个函数可以修改参数的值，并且想要在这些修改在函数调用结束后仍然存在，那么就应该把这个参数定义为输入输出参数（In-Out Parameters）。
         //定义一个输入输出参数时，在参数定义前加 inout 关键字。一个输入输出参数有传入函数的值，这个值被函数修改，然后被传出函数，替换原来的值。想获取更多的关于输入输出参数的细节和相关的编译器优化，请查看输入输出参数一节。你只能传递变量给输入输出参数。你不能传入常量或者字面量，因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加 & 符，表示这个值可以被函数修改。
+        //输入输出函数是对函数体外产生呢过影响的一种方式；
         
         func inoutArgument(_ a : inout Int,b : inout Int)  {
             let temp = a;
@@ -499,8 +500,61 @@ class ViewController: UIViewController {
         var b = 90
         inoutArgument(&a, b: &b)
         
+        //函数类型
+        //每个函数都有特定的类型，类型是由参数类型和返回值类型组成；
+        func addFunc( a : Int,b : Int) -> Int {
+            return a+b
+        }
+        func multiplyFunc(_ a : Int,_ b : Int) ->Int {
+            return a*b
+        }
+        //上边两个函数可以说是（Int,Int）-> Int类型，可以解读为有两个Int类型的参数，返回一个Int类型的值；
+        //下边函数 ()->void 可以解读为没有参数 返回类型为void类型的函数
+        func fun5(){
+            
+        }
+    
+        //使用函数类型
+        //在swift中，函数也是一种类型，你可以使用函数像其他类型一样，你可以定义一个类型为函数的变量或常量，并适当的赋值给它
+        //例
+        var funcTypeVarible : (Int,Int)->Int = addFunc(a:b:)
+        //这句代码可以解读为: 变量funcTypeVarible是 一个参数由两个Int类型 返回值类型为 Int的函数 类型变量
+        print(funcTypeVarible(2,4))
+        //有相同匹配类型的不同函数可以被赋值给同一个变量，就像非函数类型的变量一样
+        funcTypeVarible = multiplyFunc(_:_:)
+        print(funcTypeVarible(2,4))
         
+        //函数类型作为参数类型
+        //例
+        func func6(argument1 : (Int,Int)->Int,argument2 : Int,argument3 : Int) {
+            print(argument1(argument2,argument3))
+        }
+        func6(argument1: funcTypeVarible, argument2: 4, argument3: 5)
+        // 不想看到参数标签，函数参数名前 加 _，并使用空格分开即可
+        func func7(_ argument1 : (Int,Int)->Int,_ argument2 : Int,_ argument3 : Int) {
+            print(argument1(argument2,argument3))
+        }
+        func7(funcTypeVarible, 3, 4)
         
+        //函数类型作为返回值类型
+        //你可以用函数类型作为另一个函数的返回类型。你需要做的是在返回箭头（->）后写一个完整的函数类型。
+        //例 两个函数类型都为 (Int)->Int
+        func forword(_ a : Int) -> Int {
+            return a+1
+        }
+        func backword(_ b : Int) -> Int {
+            return b - 1
+        }
+        
+        func funcReturnFunc(isBool : Bool) -> (Int)->Int {
+            return isBool ? backword : forword
+        }
+        
+        //嵌套函数 在函数内部定义函数称为嵌套函数，函数外部定义函数称之为全局函数，全局函数的作用域是整个类，函数内部的函数作用域在函数内部；
+        //nested functions 嵌套函数
+        //global functions 全局函数
+        //enclosing function 外围函数
+        //上边的函数都在viewDidLoad函数内部定义，都称之为嵌套函数
         
         
         
