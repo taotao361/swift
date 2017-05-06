@@ -79,10 +79,49 @@ class ViewController: UIViewController {
         //通过元素名字来获取元素的值
         print(internetSuccess.stateCode,internetSuccess.description)
         //作为函数返回值时，元组非常有用。一个用来获取网页的函数可能会返回一个 (Int, String) 元组来描述是否获取成功。和只能返回一个类型的值比较起来，一个包含两个不同类型值的元组可以让函数的返回信息更有用
+        //注意：
+        //元组在临时组织值的时候很有用，但是并不适合创建复杂的数据结构。如果你的数据结构并不是临时使用，请使用类或者结构体而不是元组
         
         
         
+        //可选类型 optional 用来处理值可能缺失的时候 可选类型表示 （1、有值，或值等于x  2、没有值）、
+        //注意：
+        //C 和 OC 并没有可选类型概念，最接近的就是OC的一个特性，要么返回一个对象或者值，要么返回nil，nil表示缺少一个合法的对象或者值；然而 Swift 的可选类型可以让你暗示任意类型的值缺失，并不需要一个特殊值。
+        //举例
+        let optionalInt = "123"
+        let convertString = Int(optionalInt)
+        // convertedNumber 被推测为类型 "Int?"， 或者类型 "optional Int"
+        print(convertString) //打印为  Optional(123)
+        //所以它返回一个可选类型（optional）Int，而不是一个 Int。一个可选的 Int 被写作 Int? 而不是 Int。问号暗示包含的值是可选类型，也就是说可能包含 Int 值也可能不包含值。（不能包含其他任何值比如 Bool 值或者 String 值。只能是 Int 或者什么都没有。）
         
+
+        //可以为可选值 赋值为nil，表示没有值
+        //haveValue 表示一个可选的 Int 值，404
+        var haveValue : Int? = 404
+        haveValue = nil
+        print(haveValue)
+        //注意：
+        //nil不能用于非可选的常量和变量。如果你的代码中有常量或者变量需要处理值缺失的情况，请把它们声明成对应的可选类型
+        
+        //如果你声明了一个可选的变量或者常量，编译器会自动赋值nil
+        var surveyAnswer: String?
+        surveyAnswer = "uuuuu"
+        // surveyAnswer 被自动设置为 nil
+        //声明可选变量没有赋值，会自动赋值nil
+        let hahaha : Double?
+        hahaha = 33.14
+        print(surveyAnswer,hahaha)
+        //注意：
+        //Swift 的 nil 和 Objective-C 中的 nil 并不一样。在 Objective-C 中，nil 是一个指向不存在对象的指针。在 Swift 中，nil 不是指针——它是一个确定的值，用来表示值缺失。任何类型的可选状态都可以被设置为 nil，不只是对象类型。
+        
+        
+        //强制解析 ！
+        //当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号（!）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的强制解析（forced unwrapping）：
+        //注意：
+        //使用 ! 来获取一个不存在的可选值会导致运行时错误。使用 ! 来强制解析值之前，一定要确定可选包含一个非 nil 的值
+
+        
+        //可选绑定
         
         
         
