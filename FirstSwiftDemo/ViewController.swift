@@ -123,6 +123,14 @@ class ViewController: UIViewController {
         
         //可选绑定
         
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     
