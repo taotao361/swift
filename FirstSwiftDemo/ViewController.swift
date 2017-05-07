@@ -29,6 +29,109 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        //闭包
+        //一般形式
+//            { (<#parameters#>) -> <#return type#> in
+//                <#statements#>
+//        }
+        //例
+        let plus : (Int,Int) ->Int = {
+            (a : Int,b : Int) -> Int in
+            return a + b
+        }
+        print(plus(2,3))
+        
+        //swift可以根据上下文判断变量类型，可以省略Int类型
+        let plus1 : (Int,Int) -> Int = {
+            (a,b) -> Int in //变量的括号也可省略
+            return a + b
+        }
+        print(plus1(2,3))
+        
+        let plus2 : (Int,Int) -> Int = {
+            a,b in
+            return a + b
+        }
+        print(plus2(2,3))
+        
+        //单表达式可以隐式返回，可以省略return
+        let plus3 : (Int,Int) -> Int = {
+            a,b in a + b
+        }
+        print(plus3(2,3))
+        
+        //如果闭包没有参数，则可以省略in
+        let plus4 : () -> Int = {
+            return 100 + 200
+        }
+        print(plus4())
+        
+        //既没有参数也没有返回值 return in 都省略
+        let plus5 : () -> Void = {
+            print("啥都没有")
+        }
+        print(plus5())
+        //总结：闭包类型是由参数类型和返回值类型决定的，跟函数一样，第一个闭包类型是(Int,Int)->Int,plus4的类型为()->Int,plus5的类型为()->Void;这里的plus类型就是闭包类型，意思是声明一个plusX变量，变量右边是具体实现，左边是变量值；右边给左边赋值；
+        
+        //给闭包起别名
+        typealias aliasClosure = (String,String)->String
+        let addString : aliasClosure = {
+            (aString,bString) in
+            return aString + bString
+        }
+        print(addString("hello","world"))
+        
+        
+        //尾随闭包
+        //若函数参数的最后一个是闭包类型，则可以省略参数标签，然后可以将闭包表达式写在函数调用括号后边；
+        func funcClosure(voidClosure : () -> Void) {
+            voidClosure()
+        }
+        //正常写法
+        funcClosure(voidClosure:{
+            print("haha")
+        })
+        //尾随闭包写法
+        funcClosure() {
+            print("haha")
+        }
+        
+        //也可以把括号省略
+        funcClosure { 
+            print("haha")
+        }
+        
+        //值捕获
+        //闭包可以在其被定义的上下文捕获变量或者常量；
+        //akeIncrementer(forIncrement:) 有一个 Int 类型的参数，其外部参数名为 forIncrement，内部参数名为 amount，该参数表示每次 incrementer 被调用时 runningTotal 将要增加的量。makeIncrementer 函数还定义了一个嵌套函数 incrementer，用来执行实际的增加操作。该函数简单地使 runningTotal 增加 amount，并将其返回。
+        func makeIncrementer(forIncrement count:Int) ->()->Int {
+            var total = 0
+            func incream()->Int {
+                total += count
+                return total
+            }
+            return incream
+        }
+        let addCount = makeIncrementer(forIncrement: 10)
+        print(addCount)
+        
+        
+        //逃逸闭包
+        
+        
+        //自动闭包
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    func test1() {
         //变量
         let π = 3.14159
         let 你好 = "你好世界"
@@ -56,8 +159,8 @@ class ViewController: UIViewController {
         //布尔值
         //Bool 布尔值只有true false
         //不需要将变量或者常量声明为某个特定的类型，因为swift会根据上下文类型判断来得知
-        var hasSuccess = false
-        hasSuccess = true
+        //        var hasSuccess = false
+        //        hasSuccess = true
         
         //元组 tuple
         //元组把多个值组合成一个值，元组内可以是任意类型
@@ -88,18 +191,18 @@ class ViewController: UIViewController {
         //注意：
         //C 和 OC 并没有可选类型概念，最接近的就是OC的一个特性，要么返回一个对象或者值，要么返回nil，nil表示缺少一个合法的对象或者值；然而 Swift 的可选类型可以让你暗示任意类型的值缺失，并不需要一个特殊值。
         //举例
-        let optionalInt = "123"
-        let convertString = Int(optionalInt)
+        //        let optionalInt = "123"
+        //let convertString = Int(optionalInt)
         // convertedNumber 被推测为类型 "Int?"， 或者类型 "optional Int"
-        print(convertString) //打印为  Optional(123)
+        //print(convertString) //打印为  Optional(123)
         //所以它返回一个可选类型（optional）Int，而不是一个 Int。一个可选的 Int 被写作 Int? 而不是 Int。问号暗示包含的值是可选类型，也就是说可能包含 Int 值也可能不包含值。（不能包含其他任何值比如 Bool 值或者 String 值。只能是 Int 或者什么都没有。）
         
-
+        
         //可以为可选值 赋值为nil，表示没有值
         //haveValue 表示一个可选的 Int 值，404
-        var haveValue : Int? = 404
-        haveValue = nil
-        print(haveValue)
+        //        var haveValue : Int? = 404
+        //        haveValue = nil
+        //print(haveValue)
         //注意：
         //nil不能用于非可选的常量和变量。如果你的代码中有常量或者变量需要处理值缺失的情况，请把它们声明成对应的可选类型
         
@@ -108,9 +211,9 @@ class ViewController: UIViewController {
         surveyAnswer = "uuuuu"
         // surveyAnswer 被自动设置为 nil
         //声明可选变量没有赋值，会自动赋值nil
-        let hahaha : Double?
-        hahaha = 33.14
-        print(surveyAnswer,hahaha)
+        //        let hahaha : Double?
+        //        hahaha = 33.14
+        //print(surveyAnswer,hahaha)
         //注意：
         //Swift 的 nil 和 Objective-C 中的 nil 并不一样。在 Objective-C 中，nil 是一个指向不存在对象的指针。在 Swift 中，nil 不是指针——它是一个确定的值，用来表示值缺失。任何类型的可选状态都可以被设置为 nil，不只是对象类型。
         
@@ -119,20 +222,95 @@ class ViewController: UIViewController {
         //当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号（!）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的强制解析（forced unwrapping）：
         //注意：
         //使用 ! 来获取一个不存在的可选值会导致运行时错误。使用 ! 来强制解析值之前，一定要确定可选包含一个非 nil 的值
-
+        
         
         //可选绑定
+        //使用可选绑定来判断可选类型是否有值，如果有值就赋值给一个变量或者常量，可选绑定可以用在if 语句 和 while语句中，这条语句不仅可以判断可选类型是否有值，还可以将可选类型中的值赋值给变量或者常量；
+        let someOptional : String? = "haha"
+        if let a = someOptional {
+            print(a)
+        }
+        //这段代码解释为：如果someOptional返回的可选String有值，创建一个 名叫a的常量并把值付给他；
+        //你可以包含多个可选绑定或多个布尔条件在一个 if 语句中，只要使用逗号分开就行。只要有任意一个可选绑定的值为nil，或者任意一个布尔条件为false，则整个if条件判断为false，这时你就需要使用嵌套 if 条件语句来处理，如下所示：
+        if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+        // 输出 "4 < 42 < 100"
+        
+        if let firstNumber = Int("4") {
+            if let secondNumber = Int("42") {
+                if firstNumber < secondNumber && secondNumber < 100 {
+                    print("\(firstNumber) < \(secondNumber) < 100")
+                }
+            }
+        }
+        // 输出 "4 < 42 < 100"
         
         
         
         
         
+        //隐式解析可选类型
+        //有时候可选类型在第一次赋值时就知道它一定有值，这种情况每次都判断可选类型有没有值是非常低效的，这种类型的可选状态称为隐士解析可选类型，把想要用作可选类型的后边问好？改成！即可，(String?----->String!)来声明一个可选类型；
+        //
+        let aString : String? = "astring"
+        let bString = aString!//需要叹号来获取值
+        print(bString)
+        let cString : String! = "cString"
+        let dString : String = cString//不需要叹号
+        print(dString)
         
         
         
         
-    }
+        //错误处理
+        
+        
+        //断言
+        //断言函数
+        let age = 4
+        assert(age > 0, "age can not less than zero")
+        //需要使用断言的环境
+        //整数类型的下标索引被传入一个自定义下标实现，但是下标索引值可能太小或者太大。
+        //需要给函数传入一个值，但是非法的值可能导致函数不能正常执行。
+        //一个可选值现在是 nil，但是后面的代码运行需要一个非 nil 值。
+        
+        
+        
+        //术语
+        //运算符
+        //赋值运算符 =
+        //组合赋值运算符 += -+
+        //比较运算符 > < >= <=
+        //逻辑运算符 && || !
+        //算术运算符 + - * / %
+        //三目运算符 ? :
+        //区间运算符  闭区间运算符：a...b 比如for循环 半开区间运算符 a...<b
+        //空合运算符 a ?? b 将a进行空判断，如果a包含一个值就进行解封，没有值就默认为b，a类型必须是可选类型，默认值b必须和a的值类型相同；
+        //空合运算符是对一下代码精简的表述
+        //        a != nil ? a! : b   上述代码使用了三目运算符。当可选类型 a 的值不为空时，进行强制解封（a!），访问 a 中的值；反之返回默认值 b。无疑空合运算符（??）提供了一种更为优雅的方式去封装条件判断和解封两种行为，显得简洁以及更具可读性。
+        
+        let defaultColorName = "red"
+        var userDefinedColorName: String?   //默认值为 nil
+        var colorNameToUse = userDefinedColorName ?? defaultColorName
+        // userDefinedColorName 的值为空，所以 colorNameToUse 的值为 "red"
+        
+        
+        //字符串 和 字符
+        let hello : String = "hello world"
+        print(hello)
+        print(hello.endIndex)
+        print(hello[hello.startIndex])
+        print(hello[hello.index(after: hello.startIndex)])
+        print(hello[hello.index(before: hello.endIndex)])
+        let index = hello.index(hello.startIndex, offsetBy: 4)
+        print(hello[index])
+        
+        
+        //比较字符串相等 ==  ！= 
 
+    }
+    
     
     func test() -> Void {
         //        var myString = "hello world"
@@ -746,7 +924,6 @@ class ViewController: UIViewController {
          */
         
     }
-    
     
     
     override func didReceiveMemoryWarning() {
