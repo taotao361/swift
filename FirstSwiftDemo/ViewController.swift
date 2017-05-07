@@ -120,6 +120,11 @@ class ViewController: UIViewController {
         //逃逸闭包
         
         
+        //自动闭包
+        
+        
+        
+        
         
         
         
