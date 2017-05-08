@@ -94,8 +94,12 @@ class ViewController: UIViewController {
         let initialCenter = square.center
         square.center = Point(x:15.0,y:15.0)
         print(square.origin.x,square.origin.y)
-        
-        
+        //简化set声明 如果计算属性的 setter 没有定义表示新值的参数名，则可以使用默认名称 newValue。下面是使用了简化 setter 声明的
+//        set {
+//            origin.x = newValue.x - (size.width/2)
+//            origin.y = newValue.y - (size.height/2)
+//        }
+
         
         
         
