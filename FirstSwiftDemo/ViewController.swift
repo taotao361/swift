@@ -32,15 +32,93 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
+
+        //属性
+        
+        //存储属性
+        struct FixedLengthRange {
+            var firstValue : Int
+            let length : Int
+        }
+        var rangeOfThreeItem = FixedLengthRange(firstValue : 6,length : 4)
+        rangeOfThreeItem.firstValue = 10;
+        print(rangeOfThreeItem.firstValue,rangeOfThreeItem.length)
+        //解释：FixedLengthRange 的实例包含一个名为 firstValue 的变量存储属性和一个名为 length 的常量存储属性。在上面的例子中，length 在创建实例的时候被初始化，因为它是一个常量存储属性，所以之后无法修改它的值。
+        
+        //常量结构体的存储属性
+        //如果创建了一个结构体的实例并将其赋值给一个常量，则无法修改该实例的任何属性，即使有属性被声明为变量也不行：
+//        let constRange = FixedLengthRange(firstValue : 10,length : 5)
+//        constRange.firstValue = 20
+//        print(constRange.firstValue)
+        //因为 rangeOfFourItems 被声明成了常量（用 let 关键字），即使 firstValue 是一个变量属性，也无法再修改它了。
+        //这种行为是由于结构体（struct）属于值类型。当值类型的实例被声明为常量的时候，它的所有属性也就成了常量。但是引用类型 class就不一样，把一个引用类型的实例赋值给一个常量后，还是可以改变该常量的变量属性
+        
+        
+        //延迟存储属性
+        //延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用 lazy 来标示一个延迟存储属性。
+        //注意
+        //必须将延迟存储属性声明成变量（使用 var 关键字），因为属性的初始值可能在实例构造完成之后才会得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。
+
+        //注意
+        //如果一个被标记为 lazy 的属性在没有初始化时就同时被多个线程访问，则无法保证该属性只会被初始化一次。
+        
+        
+        //存储属性 实例变量
+        //如果您有过 Objective-C 经验，应该知道 Objective-C 为类实例存储值和引用提供两种方法。除了属性之外，还可以使用实例变量作为属性值的后端存储。
+        //Swift 编程语言中把这些理论统一用属性来实现。Swift 中的属性没有对应的实例变量，属性的后端存储也无法直接访问。这就避免了不同场景下访问方式的困扰，同时也将属性的定义简化成一个语句。属性的全部信息——包括命名、类型和内存管理特征——都在唯一一个地方（类型定义中）定义。
+        
+        
+        //计算属性
+        struct Point {
+            var x = 0.0,y = 0.0
+        }
+        struct Size {
+            var width = 0.0,height = 0.0
+        }
+        struct Rect {
+            var origin = Point()
+            var size = Size()
+            var center : Point {
+                get {
+                    let centerX = origin.x - (size.width/2)
+                    let centerY = origin.y - (size.height/2)
+                    return Point(x: centerX,y : centerY)
+                }
+                set(newPoint) {
+                    origin.x = newPoint.x - (size.width/2)
+                    origin.y = newPoint.y - (size.height/2)
+                }
+            }
+        }
+        var square = Rect(origin : Point(x:0.0,y:0.0),size : Size(width : 10.0,height : 10.0))
+        let initialCenter = square.center
+        square.center = Point(x:15.0,y:15.0)
+        print(square.origin.x,square.origin.y)
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+    }
+    
+    //类 结构体
+    func test3() {
         //类和结构体
         /* 共同点
-            定义属性用于存储值
-            定义方法用于提供功能
-            定义下表操作使得可以通过下表语法来访问实例所包含的值
-            定义构造器用于生成初始化值
-            通过扩展以增加默认实现的功能
-            实现协议已提供某种标准功能
-
+         定义属性用于存储值
+         定义方法用于提供功能
+         定义下表操作使得可以通过下表语法来访问实例所包含的值
+         定义构造器用于生成初始化值
+         通过扩展以增加默认实现的功能
+         实现协议已提供某种标准功能
+         
          类还有如下附加功能
          1、继承 允许一个类继承另一个类的特征
          2、类型转换允许在运行时检查和解释一个类实例的类型
@@ -49,7 +127,7 @@ class ViewController: UIViewController {
          
          注意
          结构体总是通过被复制的方式在代码中传递，不使用引用计数
-        */
+         */
         
         //定义 class struct 注意
         //在你每次定义一个新类或者结构体的时候，实际上你是定义了一个新的 Swift 类型。因此请使用UpperCamelCase这种方式来命名（如SomeClass和SomeStructure等），以便符合标准 Swift 类型的大写命名风格（如String，Int和Bool）。相反的，请使用lowerCamelCase这种方式为属性和方法命名（如framerate和incrementCount），以便和类型名区分。
@@ -86,11 +164,38 @@ class ViewController: UIViewController {
         //在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制。
         
         
+        //类是引用类型   结构体 枚举是值类型
+        //与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。
+        
+        //恒等运算符
+        //因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。（对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。）
+        //等价于（===）
+        //不等价于（!==）
+        
+        //请注意，“等价于”（用三个等号表示，===）与“等于”（用两个等号表示，==）的不同：
+        //“等价于”表示两个类类型（class type）的常量或者变量引用同一个类实例。
+        // “等于”表示两个实例的值“相等”或“相同”，判定时要遵照设计者定义的评判标准，因此相对于“相等”来说，这是一种更加合适的叫法。
         
         
-        
-        
+        //类和结构体的选择
+        /*
+         按照通用的准则，当符合一条或多条以下条件时，请考虑构建结构体：
+         
+         该数据结构的主要目的是用来封装少量相关简单数据值。
+         有理由预计该数据结构的实例在被赋值或传递时，封装的数据将会被拷贝而不是被引用。
+         该数据结构中储存的值类型属性，也应该被拷贝，而不是被引用。
+         该数据结构不需要去继承另一个既有类型的属性或者行为。
+         
+         举例来说，以下情境中适合使用结构体：
+         
+         几何形状的大小，封装一个width属性和height属性，两者均为Double类型。
+         一定范围内的路径，封装一个start属性和length属性，两者均为Int类型。
+         三维坐标系内一点，封装x，y和z属性，三者均为Double类型。
+         在所有其它案例中，定义一个类，生成一个它的实例，并通过引用来管理和传递。实际中，这意味着绝大部分的自定义数据构造都应该是类，而非结构体。
+         
+         */
     }
+    
     
     //闭包 枚举
     func test2() {
