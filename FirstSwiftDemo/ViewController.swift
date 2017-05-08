@@ -32,11 +32,73 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
+        //类和结构体
+        /* 共同点
+            定义属性用于存储值
+            定义方法用于提供功能
+            定义下表操作使得可以通过下表语法来访问实例所包含的值
+            定义构造器用于生成初始化值
+            通过扩展以增加默认实现的功能
+            实现协议已提供某种标准功能
+
+         类还有如下附加功能
+         1、继承 允许一个类继承另一个类的特征
+         2、类型转换允许在运行时检查和解释一个类实例的类型
+         3、析构器允许一个类实例释放任何其所被分配的资源
+         4、引用计数允许对一个类的多次引用
+         
+         注意
+         结构体总是通过被复制的方式在代码中传递，不使用引用计数
+        */
+        
+        //定义 class struct 注意
+        //在你每次定义一个新类或者结构体的时候，实际上你是定义了一个新的 Swift 类型。因此请使用UpperCamelCase这种方式来命名（如SomeClass和SomeStructure等），以便符合标准 Swift 类型的大写命名风格（如String，Int和Bool）。相反的，请使用lowerCamelCase这种方式为属性和方法命名（如framerate和incrementCount），以便和类型名区分。
+        
+        struct SomeStruct {
+            var width = 0
+            var height = 0
+        }
+        
+        class SomeClass {
+            var someStruct = SomeStruct()
+            var a = false
+            var name : String?
+        }
+        
+        //类的实例 结构体实例
+        //结构体和类都使用构造器语法来生成新的实例。构造器语法的最简单形式是在结构体或者类的类型名称后跟随 <#一对空括号#>，通过这种方式所创建的类或者结构体实例，其属性均会被初始化为默认值。构造过程章节会对类和结构体的初始化进行更详细的讨论。
+        let someC = SomeClass()
+        var someS = SomeStruct()
+        someC.name = "haha"
+        someS.width = 33
+        someC.someStruct.height = 30
+        print(someC.someStruct.height)
+        
+        
+        //结构体类型的成员逐一构造器
+        //所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：
+        let bStruct = SomeStruct(width : 30,height : 90)
+        //与结构体不同，类实例没有默认的成员逐一构造器
+        
+        //结构体和枚举是值类型
+        //值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝。
+        //在之前的章节中，我们已经大量使用了值类型。实际上，在 Swift 中，所有的基本类型：整数（Integer）、浮点数（floating-point）、布尔值（Boolean）、字符串（string)、数组（array）和字典（dictionary），都是值类型，并且在底层都是以结构体的形式所实现。
+        //在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制。
+        
+        
+        
+        
+        
+        
+    }
+    
+    //闭包 枚举
+    func test2() {
         //闭包
         //一般形式
-//            { (<#parameters#>) -> <#return type#> in
-//                <#statements#>
-//        }
+        //            { (<#parameters#>) -> <#return type#> in
+        //                <#statements#>
+        //        }
         //例
         let plus : (Int,Int) ->Int = {
             (a : Int,b : Int) -> Int in
@@ -100,7 +162,7 @@ class ViewController: UIViewController {
         }
         
         //也可以把括号省略
-        funcClosure { 
+        funcClosure {
             print("haha")
         }
         
@@ -125,16 +187,59 @@ class ViewController: UIViewController {
         //自动闭包
         
         
+        //枚举
         
         
+        //关联值
+        enum Barcode {
+            case upc(Int,Int,Int,Int)
+            case qrCode(String)
+        }
+        //以上代码可以这么理解：定义一个名为Barcode的枚举类型，它的成员值具有(Int,Int,Int,Int) 类型的关联值ups，另一个成员是具有string类型关联值得qrCode，这个定义不提供任何Int或String类型的关联值，它只是定义了，当Barcode常量和变量等于Barcode.upc或Barcode.qrCode时，可以存储的关联值的类型。
+        var product = Barcode.upc(23, 34, 4443, 544)
+        // 上面的例子创建了一个名为productBarcode的变量，并将Barcode.upc赋值给它，关联的元组值为(23, 34, 4443, 544)。
+        product = .qrCode("wwwwwwwwwww")
+        //这时，原始的Barcode.upc和其整数关联值被新的Barcode.qrCode和其字符串关联值所替代。Barcode类型的常量和变量可以存储一个.upc或者一个.qrCode（连同它们的关联值），但是在同一时间只能存储这两个值中的一个。
+        
+        switch product {
+        case .upc(let numer, let manu, let pro, let check):
+            print("\(pro)  \(numer)")
+        default:
+            print("")
+        }
         
         
+        //原始值
+        enum controlCharactor : Character {
+            case tab = "\t"
+            case linefeed = "\n"
+            case cReturn = "\r"
+        }
         
         
+        //原始值的隐士赋值
+        enum Planet: Int {
+            case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+        }
+        //在上面的例子中，Plant.mercury的显式原始值为1，Planet.venus的隐式原始值为2，依次类推。
+        //        当使用字符串作为枚举类型的原始值时，每个枚举成员的隐式原始值为该枚举成员的名称。
+        enum PlanetDirect : String {
+            case north,south,east,west
+        }
+        //上面的例子中  PlanetDirect.north 的原始值为 north，以此类推
+        
+        //使用枚举成员的rawValle属性可以访问该枚举成员的原始值
+        let earth = Planet.earth.rawValue //原始值为3
+        let sunsetDirect = PlanetDirect.west.rawValue //原始值为west
         
         
+        //使用原始值初始化枚举实例
+        let possiblPlanet = Planet(rawValue : 7)
+        // possiblePlanet 类型为 Planet? 值为 Planet.uranus
+        print(earth,sunsetDirect,possiblPlanet)
         
-        
+        //递归枚举
+
     }
     
     func test1() {
