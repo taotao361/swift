@@ -135,6 +135,78 @@ class ViewController: UIViewController {
         //你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。
         //注意
         //对于类的实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。
+        //你可以修改上面的SurveyQuestion示例，用常量属性替代变量属性text，表示问题内容text在SurveyQuestion的实例被创建之后不会再被修改。尽管text属性现在是常量，我们仍然可以在类的构造器中设置它的值
+        
+        //默认构造器
+        class ShoppingListItem {
+            var name : String?
+            var price : Double?
+            var quantity = 1
+        }
+        let shoppingListItem = ShoppingListItem()//默认构造器
+        //由于ShoppingListItem类中的所有属性都有默认值，且它是没有父类的基类，它将自动获得一个可以为所有属性设置默认值的默认构造器（尽管代码中没有显式为name属性设置默认值，但由于name是可选字符串类型，它将默认设置为nil）。上面例子中使用默认构造器创造了一个ShoppingListItem类的实例（使用ShoppingListItem()形式的构造器语法），并将其赋值给变量item
+        print(shoppingListItem.name ?? "no name",shoppingListItem.price ?? "250",shoppingListItem.quantity)
+        
+        
+        
+        //结构体的逐一成员构造器
+        //除了上面提到的默认构造器，如果结构体没有提供自定义的构造器，它们将自动获得一个逐一成员构造器，即使结构体的存储型属性没有默认值。
+        struct Size {
+            var width : Double = 0.0
+            var height : Double = 0.0
+        }
+        let size = Size(width : 90,height : 90)
+        print(size.width,size.height)
+        var size1 = Size()
+        size1.width = 80.0
+        size1.height = 80.0
+        print(size1)
+        
+        
+        //值类型的构造器代理
+        //对于值类型，你可以使用self.init在自定义的构造器中引用相同类型中的其它构造器。并且你只能在构造器内部调用self.init。
+        //如果你为某个值类型定义了一个自定义的构造器，你将无法访问到默认构造器（如果是结构体，还将无法访问逐一成员构造器）。这种限制可以防止你为值类型增加了一个额外的且十分复杂的构造器之后,仍然有人错误的使用自动生成的构造器
+        //注意
+        //假如你希望默认构造器、逐一成员构造器以及你自己的自定义构造器都能用来创建实例，可以将自定义的构造器写到扩展（extension）中，而不是写在值类型的原始定义中。想查看更多内容，请查看扩展章节。
+        struct Size2 {
+            var width = 0.0
+            var height = 0.0
+        }
+        struct Point {
+            var x = 0.0
+            var y = 0.0
+        }
+        struct Rect {
+            var origin = Point()
+            var size = Size2()
+            init() {}
+            init(origin : Point,size : Size2) {
+                self.origin = origin
+                self.size = size
+            }
+            init(center : Point,size : Size2) {
+                let originX = center.x - (size.width/2)
+                let originY = center.y -    size.height/2
+                self.init(origin: Point(x : originX,y : originY), size: size)
+            }
+        }
+        
+        let rect1 = Rect.init()
+        //第一个Rect构造器init()，在功能上跟没有自定义构造器时自动获得的默认构造器是一样的。这个构造器是一个空函数，使用一对大括号{}来表示，它没有执行任何构造过程。调用这个构造器将返回一个Rect实例，它的origin和size属性都使用定义时的默认值Point(x: 0.0, y: 0.0)和Size(width: 0.0, height: 0.0)：
+        
+        let rect2 = Rect.init(origin: Point.init(x: 2.0, y: 2.0), size: Size2.init(width: 5.0, height: 5.0))
+        //第二个Rect构造器init(origin:size:)，在功能上跟结构体在没有自定义构造器时获得的逐一成员构造器是一样的。这个构造器只是简单地将origin和size的参数值赋给对应的存储型属性
+        
+        let rect3 = Rect.init(center: Point.init(x: 6.0, y: 6.0), size: Size2.init(width: 5.0, height: 5.0))
+        print("----\n\(rect1) -----\n\(rect2) --------\n\(rect3)")
+        //第三个Rect构造器init(center:size:)稍微复杂一点。它先通过center和size的值计算出origin的坐标，然后再调用（或者说代理给）init(origin:size:)构造器来将新的origin和size值赋值到对应的属性中：
+        
+        
+    
+        
+        
+        
+        //类的继承和构造过程
         
         
         
