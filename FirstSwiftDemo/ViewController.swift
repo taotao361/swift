@@ -39,9 +39,91 @@ class ViewController: UIViewController {
         
         
         
+    }
+    
+    //下标
+    func test6() {
+        //下标
+        //下标可以定义在类、结构体和枚举中，是访问集合，列表或序列中元素的快捷方式。可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法。举例来说，用下标访问一个Array实例中的元素可以写作someArray[index]，访问Dictionary实例中的元素可以写作someDictionary[key]。
+        
+        //一个类型可以定义多个下标，通过不同索引类型进行重载。下标不限于一维，你可以定义具有多个入参的下标满足自定义类型的需求。
+        
+        //下表语法
+        //        subscript (index : Int) -> Int {
+        //            get {
+        //                    return 4
+        //            }
+        //            set(newValue) {
+        //                //执行赋值操作
+        //            }
+        //        }
+        
+        //如同只读计算型属性，可以省略只读下标的get关键字：
+        //        subscript(index : Int) -> Int {
+        //            return 5
+        //        }
         
         
+        struct TimeTable {
+            let multipier : Int
+            subscript(index : Int) -> Int {
+                return multipier * index
+            }
+        }
+        let threeTimeTable = TimeTable(multipier : 3)
+        print(threeTimeTable[6])
+        //在上例中，创建了一个TimesTable实例，用来表示整数3的乘法表。数值3被传递给结构体的构造函数，作为实例成员multiplier的值。
+        //你可以通过下标访问threeTimesTable实例，例如上面演示的threeTimesTable[6]。这条语句查询了3的乘法表中的第六个元素，返回3的6倍即18。
         
+        
+        //下表用法
+        //        例如，Swift 的Dictionary类型实现下标用于对其实例中储存的值进行存取操作。为字典设值时，在下标中使用和字典的键类型相同的键，并把一个和字典的值类型相同的值赋给这个下标：
+        //
+        //        var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
+        //        numberOfLegs["bird"] = 2
+        //        上例定义一个名为numberOfLegs的变量，并用一个包含三对键值的字典字面量初始化它。numberOfLegs字典的类型被推断为[String: Int]。字典创建完成后，该例子通过下标将String类型的键bird和Int类型的值2添加到字典中。
+        //
+        
+        
+        //下标选项
+        //标可以接受任意数量的入参，并且这些入参可以是任意类型。下标的返回值也可以是任意类型。下标可以使用变量参数和可变参数，但不能使用输入输出参数，也不能给参数设置默认值。
+        //一个类或结构体可以根据自身需要提供多个下标实现，使用下标时将通过入参的数量和类型进行区分，自动匹配合适的下标，这就是下标的重载。
+        
+        
+        struct Matrix {
+            let rows : Int,columns : Int
+            var grid : [Double]
+            init(rows : Int,columns : Int) {
+                self.rows = rows
+                self.columns = columns
+                grid = Array(repeatElement(0.0, count: 3))
+            }
+            
+            func indexIsValidForRow(row : Int,column : Int) -> Bool {
+                return row >= 0 && row < rows && column < columns && column >= 0
+            }
+            
+            subscript(row : Int,column : Int) -> Double {
+                get {
+                    assert(indexIsValidForRow(row: row, column: column), "index out of range")
+                    return grid[(row * column) + column]
+                }
+                set {
+                    assert(indexIsValidForRow(row: row, column: column),"index out of range")
+                    grid[(row * column) + column] = newValue
+                }
+            }
+        }
+        //Matrix提供了一个接受两个入参的构造方法，入参分别是rows和columns，创建了一个足够容纳rows * columns个Double类型的值的数组。通过传入数组长度和初始值0.0到数组的构造器，将矩阵中每个位置的值初始化为0.0。关于数组的这种构造方法请参考创建一个空数组。
+        //你可以通过传入合适的row和column的数量来构造一个新的Matrix实例：
+        var matrix = Matrix(rows : 2,columns : 2)
+        //将row 和 column 的值传入下标来为矩阵设置值，下标的入参使用逗号分隔
+        matrix[0,1] = 1.5
+        matrix[1,0] = 3.2
+        //上面两条语句分别调用下标的 setter 将矩阵右上角位置（即row为0、column为1的位置）的值设置为1.5，将矩阵左下角位置（即row为1、column为0的位置）的值设置为3.2：
+        //Matrix下标的 getter 和 setter 中都含有断言，用来检查下标入参row和column的值是否有效。为了方便进行断言，Matrix包含了一个名为indexIsValidForRow(_:column:)的便利方法，用来检查入参row和column的值是否在矩阵范围内
+        
+
     }
     
     //实例方法 和 类方法
