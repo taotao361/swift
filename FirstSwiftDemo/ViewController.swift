@@ -32,8 +32,109 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
 
+        //构造器 init关键字
+        //Swift 的构造器无需返回值
+        //类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值 存储型属性的值不能处于一个未知的状态。
+        //可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值
+        //当你为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者。
+        
+//        init () {
+//            //处理构造过程
+//        }
+        struct Fahrenheit {
+            var temperature : Double
+            init() {
+                temperature = 32.0
+            }
+        }
+        let f = Fahrenheit()
+        print(f.temperature)
+        
+        //默认属性值
+        //如前所述，你可以在构造器中为存储型属性设置初始值。同样，你也可以在属性声明时为其设置默认值。
+        //如果一个属性总是使用相同的初始值，那么为其设置一个默认值比每次都在构造器中赋值要好。两种方法的效果是一样的，只不过使用默认值让属性的初始化和声明结合得更紧密。使用默认值能让你的构造器更简洁、更清晰，且能通过默认值自动推导出属性的类型；同时，它也能让你充分利用默认构造器、构造器继承等特性，后续章节将讲到。
+
+        //自定义构造过程
         
         
+        //构造参数
+        struct Celsius {
+            var temperatureInCelsius : Double
+            init(fromFahrenheit fahrenheit : Double) {
+                temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+            }
+            init(fromKelvin kelvin : Double) {
+                temperatureInCelsius = kelvin - 273.15
+            }
+        }
+        
+        let celsius = Celsius.init(fromFahrenheit: 32.0)
+        print(celsius.temperatureInCelsius)
+//        let celsius1 = Celsius()
+//        print(celsius.temperatureInCelsius)
+        
+        struct People {
+            var age : Int
+            var name : String
+            init(name : String,age : Int) {
+                self.name = name
+                self.age = age
+            }
+        }
+        let people = People(name: "haha",age : 19)
+        print(people.name,people.age)
+        
+        //参数的内部名称 和 外部名称
+        //跟函数和方法参数相同，构造参数也拥有一个在构造器内部使用的参数名字和一个在调用构造器时使用的外部参数名字。
+        //然而，构造器并不像函数和方法那样在括号前有一个可辨别的名字。因此在调用构造器时，主要通过构造器中的参数名和类型来确定应该被调用的构造器。正因为参数如此重要，如果你在定义构造器时没有提供参数的外部名字，Swift 会为构造器的每个参数自动生成一个跟内部名字相同的外部名。
+        
+        struct Color {
+            let green,red,white : Double
+            init(green : Double,red : Double,white : Double) {
+                self.red = red
+                self.white = white
+                self.green = green
+            }
+//            init(all : Double) {
+//                self.red = all
+//                self.white = all
+//                self.green = all
+//            }
+            init(_ all : Double) {
+                red = all
+                green = all
+                white = all
+            }
+        }
+        //注意，如果不通过外部参数名字传值，你是没法调用这个构造器的。只要构造器定义了某个外部参数名，你就必须使用它，忽略它将导致编译错误：
+        
+        
+        //不带外部名的构造器参数
+        //如果你不希望为构造器的某个参数提供外部名字，你可以使用下划线(_)来显式描述它的外部名，以此重写上面所说的默认行为
+//        let color = Color(23.0)
+        
+        //可选属性类型
+        class ServeyQuestion {
+            var text : String
+            var response : String?
+            init(text : String) {
+                self.text = text
+            }
+            func ask() -> Void {
+                print(text)
+            }
+        }
+        
+        let question = ServeyQuestion.init(text: "have a question")
+//        let q = ServeyQuestion(text: "ll")
+        question.ask()
+        print(question.response ?? "可选默认值")
+      
+        
+        //构造过程中常量的修改
+        //你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。
+        //注意
+        //对于类的实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。
         
         
         
