@@ -33,6 +33,17 @@ class ViewController: UIViewController {
         
         
 
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    //属性
+    func test4() {
         //属性
         
         //存储属性
@@ -47,9 +58,9 @@ class ViewController: UIViewController {
         
         //常量结构体的存储属性
         //如果创建了一个结构体的实例并将其赋值给一个常量，则无法修改该实例的任何属性，即使有属性被声明为变量也不行：
-//        let constRange = FixedLengthRange(firstValue : 10,length : 5)
-//        constRange.firstValue = 20
-//        print(constRange.firstValue)
+        //        let constRange = FixedLengthRange(firstValue : 10,length : 5)
+        //        constRange.firstValue = 20
+        //        print(constRange.firstValue)
         //因为 rangeOfFourItems 被声明成了常量（用 let 关键字），即使 firstValue 是一个变量属性，也无法再修改它了。
         //这种行为是由于结构体（struct）属于值类型。当值类型的实例被声明为常量的时候，它的所有属性也就成了常量。但是引用类型 class就不一样，把一个引用类型的实例赋值给一个常量后，还是可以改变该常量的变量属性
         
@@ -58,7 +69,7 @@ class ViewController: UIViewController {
         //延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用 lazy 来标示一个延迟存储属性。
         //注意
         //必须将延迟存储属性声明成变量（使用 var 关键字），因为属性的初始值可能在实例构造完成之后才会得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。
-
+        
         //注意
         //如果一个被标记为 lazy 的属性在没有初始化时就同时被多个线程访问，则无法保证该属性只会被初始化一次。
         
@@ -95,10 +106,10 @@ class ViewController: UIViewController {
         square.center = Point(x:15.0,y:15.0)
         print(square.origin.x,square.origin.y)
         //简化set声明 如果计算属性的 setter 没有定义表示新值的参数名，则可以使用默认名称 newValue。下面是使用了简化 setter 声明的
-//        set {
-//            origin.x = newValue.x - (size.width/2)
-//            origin.y = newValue.y - (size.height/2)
-//        }
+        //        set {
+        //            origin.x = newValue.x - (size.width/2)
+        //            origin.y = newValue.y - (size.height/2)
+        //        }
         
         
         //只读计算属性
@@ -125,7 +136,7 @@ class ViewController: UIViewController {
                 }
                 didSet {
                     if totalStep > oldValue {
-                         print("Added \(totalStep - oldValue) steps")
+                        print("Added \(totalStep - oldValue) steps")
                     }
                 }
             }
@@ -137,19 +148,124 @@ class ViewController: UIViewController {
         stepConter.totalStep = 500
         
         
+        //集合 set, Swift 中的Set类型被写为Set<Element>，这里的Element表示Set中允许存储的类型，和数组不同的是，集合没有等价的简化形式。
+        var letters = Set<Character>()
+        letters.insert("C")
+        letters = [] //赋值空集合
         
+        var favourite : Set<String> = ["play soccer","play basketball","swimming"]
+        //一个Set类型不能从数组字面量中被单独推断出来，因此Set类型必须显式声明。然而，由于 Swift 的类型推断功能，如果你想使用一个数组字面量构造一个Set并且该数组字面量中的所有元素类型相同，那么你无须写出Set的具体类型。favoriteGenres的构造形式可以采用简化的方式代替
+        var fav : Set = ["haha","hehe"]
+        print(fav,favourite)
+        fav.insert("lala")
+        favourite.insert("play pingpang")
+        if fav.isEmpty {
+            print("empty")
+        } else {
+            print("not empty")
+        }
+        fav.insert("gogo")
+        let haha = fav.remove("haha")
+        print(haha ?? "optional xxx") //返回可选类型
         
+        if fav.contains("hehe") {
+            print("contain")
+        } else {
+            print("not contain")
+        }
         
+        //Swift 的Set类型没有确定的顺序，为了按照特定顺序来遍历一个Set中的值可以使用sorted()方法，它将返回一个有序数组，这个数组的元素排列顺序由操作符'<'对元素进行比较的结果来确定.
+        for item in fav.sorted() {
+            print(item)
+        }
         
+        //集合操作
+        //你可以高效地完成Set的一些基本操作，比如把两个集合组合到一起，判断两个集合共有元素，或者判断两个集合是否全包含，部分包含或者不相交。
         
+        let a : Set = [1,2,3,4,5]
+        let b : Set = [2,4,6,8,10]
+        let c = a.intersection(b)
+        let d = a.symmetricDifference(b)
+        let f = a.union(b)
+        let g = a.subtracting(b)
+        print("\(c)\n\(d)\n\(f)\n\(g)\n")
+        //使用intersection(_:)方法根据两个集合中都包含的值创建的一个新的集合。
+        //使用symmetricDifference(_:)方法根据在一个集合中但不在两个集合中的值创建一个新的集合。
+        //使用union(_:)方法根据两个集合的值创建一个新的集合。
+        //使用subtracting(_:)方法根据不在该集合中的值创建一个新的集合。
         
+        /*集合成员关系和相等
+         1、使用是否相等运算符 == 来判断两个及合是否包含全部相同的值
+         2、使用isSubset(of:)方法来判断一个集合的值是否也被包含在另外一个集合中
+         3、使用isSuperset(of:)方法来判断一个集合中包含另一个集合中所有的值。
+         4、使用isStrictSubset(of:)或者isStrictSuperset(of:)方法来判断一个集合是否是另外一个集合的子集合或者父集合并且两个集合并不相等。
+         5、使用isDisjoint(with:)方法来判断两个集合是否不含有相同的值(是否没有交集)。
+         */
         
+        let set1 : Set = [1,2,3,4,5,6]
+        let set2 : Set = [2,3,4]
+        let set3 : Set = [4,90]
+        let isSub = set1.isSubset(of: set2)
+        let isSuper = set1.isSubset(of: set2)
+        let isJoint = set1.isDisjoint(with: set3)
+        print(isSub,isSuper,isJoint)
         
+        //字典
+        var numberOfInterger = [Int : String]() //创建一个 [Int : String] 类型空字典
+        numberOfInterger[16] = "sixteen"
+        numberOfInterger[3] = "three"
+        numberOfInterger = [:]//如果上下文已经提供了类型信息，我们可以使用空字典字面量来创建一个空字典，记作[:]（中括号中放一个冒号）：
         
+        //使用字典字面量创建字典
+        var numberOfString : [String : String] = ["hh":"haha","ll":"lala"]
+        numberOfString["pp"] = "papa"
+        print(numberOfInterger,numberOfString)
+        //和数组一样，我们在用字典字面量构造字典时，如果它的键和值都有各自一致的类型，那么就不必写出字典的类型。
+        var airports = ["hh":"haha","pp":"papa"]
+        print(airports)
+        print(airports.count)
+        if airports.isEmpty {
+            print("empty")
+        }
+        airports["hh"] = "hehe"
+        print(airports)
+        airports.updateValue("kaka", forKey: "hh")
+        if let oldValue = airports["pp"] {
+            print(oldValue)
+        }
+        //我们还可以使用下标语法来通过给某个键的对应值赋值为nil来从字典里移除一个键值对：
+        airports["beijing"] = "peking airport"
+        airports["beiijing"] = nil
+        //使用remove移除
+        airports["beijing"] = "peking airport"
+        let value = airports.removeValue(forKey: "beijing")
+        print(value ?? "可选没有值")
+        //字典遍历
+        for (a,b) in airports {
+            print(a,b)
+        }
+        //通过访问keys或者values属性，我们也可以遍历字典的键或者值：
+        for key in airports.keys {
+            print(key)
+        }
+        for value in airports.values {
+            print(value)
+        }
+        
+        //如果我们只是需要使用某个字典的键集合或者值集合来作为某个接受Array实例的 API 的参数，可以直接使用keys或者values属性构造一个新数组：
+        let newArray = [String](airports.keys)
+        let newArray1 = [String](airports.values)
+        print(newArray,newArray1)
+        
+        //创建空数组
+        let voidArray = [String]()
+        let voidArray1 = [Int]()
+        var array1 = [Int]()
+        var array2 : [String] = ["aa"]//
+        array2.append("bb")
+        array1.append(90)
+        print(voidArray,voidArray1,array1)
 
-        
-        
-        
     }
     
     //类 结构体
