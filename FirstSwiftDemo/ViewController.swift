@@ -21,11 +21,50 @@ extension ViewController : ViewControllerDelegate {
 }
 
 
+extension String {
+    
+}
+
+extension Double {
+    var km : Double { return self * 1000.0 }
+    var m : Double { return self }
+    var cm : Double { return self / 100.0 }
+    var mm : Double  {return self / 1000.0 }
+    var ft : Double { return self / 3.28084 }
+    
+}
+
+extension Int {
+    func repeatCount(task : ()->Void) -> Void {
+        for _ in 1..<self {
+            task()
+        }
+    }
+}
+
+extension Int {
+    mutating func square () {
+        self = self * self
+    }
+}
+
+extension Int {
+    subscript(digitIndex: Int) -> Int {
+        var decimalBase = 1
+        for _ in 0..<digitIndex {
+            decimalBase *= 10
+        }
+        return (self / decimalBase) % 10
+    }
+}
+
+
+
 /*
  疑问：
  1、带原始值的枚举类型的可失败构造器
  2、闭包使用
- 3、
+ 3、自动引用计数
  4、
  5、
  
@@ -42,12 +81,131 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-
+        //扩展
+        
+        
+        
         
         
         
         
     }
+    
+    //扩展
+    func test11 () {
+        
+        
+        /*
+         使用关键字 extension 来声明扩展：
+         
+         extension SomeType {
+         // 为 SomeType 添加的新功能写到这里
+         }
+         
+         
+         可以通过扩展来扩展一个已有类型，使其采纳一个或多个协议。在这种情况下，无论是类还是结构体，协议名字的书写方式完全一样：
+         
+         extension SomeType: SomeProtocol, AnotherProctocol {
+         // 协议实现写到这里
+         }
+         
+         */
+        
+        //计算型属性
+        //扩展可以为已有的类型添加计算型实例属性 和 计算型类型属性
+        
+        let oneInch = 25.4.mm
+        print("one inch is \(oneInch) meters")
+        
+        //扩展可以添加新的计算型属性，但是不可以添加存储型属性，也不可以为已有属性添加属性观察器。
+        
+        //添加构造器
+        
+        //添加实例方法 类型方法
+        
+        3.repeatCount {
+            print("hello world !")
+        }
+        
+        //可变实例方法
+        //通过扩展添加的实例方法也可以修改该实例本身。结构体和枚举类型中修改 self 或其属性的方法必须将该实例方法标注为 mutating，正如来自原始实现的可变方法一样。
+        var count = 3
+        print(count.square())
+        
+        //下标
+        //扩展可以为已有类型添加新下标
+        
+        
+        //嵌套类型
+        
+
+    }
+    
+    
+    //自动引用计数
+    func test10 () {
+        
+        class Person {
+            let name : String
+            init(name : String) {
+                self.name = name
+                print("\(name) is initial")
+            }
+            deinit {
+                print("\(name) is being deinitialized")
+            }
+        }
+        
+        var person = Person.init(name: "xiao")
+        var reference1 : Person?
+        var reference2 : Person?
+        var reference3 : Person?
+        reference1 = person
+        reference2 = reference1
+        reference3 = reference1
+        
+        
+        reference2 = nil
+        reference3 = nil
+        reference1 = nil
+        
+        
+        //        class Person {
+        //            let name: String
+        //            init(name: String) { self.name = name }
+        //            var apartment: Apartment?
+        //            deinit { print("\(name) is being deinitialized") }
+        //        }
+        //
+        //        class Apartment {
+        //            let unit: String
+        //            init(unit: String) { self.unit = unit }
+        //            weak var tenant: Person?   weak弱引用
+        //            deinit { print("Apartment \(unit) is being deinitialized") }
+        //        }
+        
+        //弱引用
+        // 弱引用不会对其引用的实例保持强引用，因而不会阻止 ARC 销毁被引用的实例。这个特性阻止了引用变为循环强引用。声明属性或者变量时，在前面加上weak关键字表明这是一个弱引用。
+        
+        //因为弱引用不会保持所引用的实例，即使引用存在，实例也有可能被销毁。因此，ARC 会在引用的实例被销毁后自动将其赋值为nil。并且因为弱引用可以允许它们的值在运行时被赋值为nil，所以它们会被定义为可选类型变量，而不是常量。
+        
+        //你可以像其他可选值一样，检查弱引用的值是否存在，你将永远不会访问已销毁的实例的引用。
+        
+        
+        
+        
+        
+        //无主引用
+        
+        //Person和Apartment的例子展示了两个属性的值都允许为nil，并会潜在的产生循环强引用。这种场景最适合用弱引用来解决。
+        //Customer和CreditCard的例子展示了一个属性的值允许为nil，而另一个属性的值不允许为nil，这也可能会产生循环强引用。这种场景最适合通过无主引用来解决。
+        
+        
+        //无主引用以及隐式解析可选属性
+        
+
+    }
+    
     
     //析构过程
     func test9() {
