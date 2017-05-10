@@ -207,6 +207,7 @@ class ViewController: UIViewController {
         
         
         //类的继承和构造过程
+        //类里面的所有存储行属性，包括所有继承自父类的属性，都必须在构造过程中设置初始值
         
         /*
          
@@ -224,28 +225,172 @@ class ViewController: UIViewController {
          }
          
          
-         类的构造器代理规则
+        类的构造器代理规则
+         规则1：指定构造器必须调用其直接父类的指定构造器
+         规则2：便利构造器必须调用同类中定义的其他构造器
+         规则3：便利构造器必须最终导致一个指定构造器被调用
          
-         为了简化指定构造器和便利构造器之间的调用关系，Swift 采用以下三条规则来限制构造器之间的代理调用：
-         
-         规则 1
-         
-         指定构造器必须调用其直接父类的的指定构造器。
-         
-         规则 2
-         
-         便利构造器必须调用同类中定义的其它构造器。
-         
-         规则 3
-         
-         便利构造器必须最终导致一个指定构造器被调用。
-         
-         一个更方便记忆的方法是：
-         
-         指定构造器必须总是向上代理
-         便利构造器必须总是横向代理
+         记忆方法：
+            1、指定构造器必须总是向上代理
+            2、便利构造器必须总是横向代理
          
          */
+        
+        
+        class Tree {
+            var height : Double
+            var age : Int
+            init(_ height : Double,_ age : Int) { //指定构造器
+                self.height = height
+                self.age = age
+            }
+            
+            convenience init(_ h : Double) { //便利构造器
+                self.init(h, 3)
+            }
+            convenience init(_ a : Int) { //便利构造器
+//                self.init(10.0, 2)
+                self.init(20.0)
+                self.absorbSun()
+                self.absorbWater()
+            }
+            
+           final func absorbSun() -> Void { //子类不能重写
+                print("吸收阳光")
+            }
+            func absorbWater() {
+                print("吸收水分")
+            }
+        }
+        //每一个类必须拥有至少一个指定构造器，在某种情况下，许多类通过继承父类的指定构造器而满足了这一条件，遍历构造器在类中是比较次要的辅助性构造器，便利构造器必须调用一个类中的指定构造器，并未参数提供默认值
+        
+        let tree = Tree.init(3.0, 3)
+        print(tree.height,tree.age)
+
+        class SmallTree : Tree {
+            var weight = 10.0 //第一阶段
+//            override init(_ height: Double, _ age: Int) {
+//                super.init(height, age)
+//            }
+            init(weight : Double) { //第二阶段
+                super.init(20.0, 4)
+                self.weight = weight
+            }
+            
+            override func absorbWater() { //重写父类方法
+                print("smallTree 吸收水分")
+            }
+            
+        }
+        
+        let smallTree = SmallTree.init(weight: 30.8)
+        smallTree.age = 40
+        smallTree.height = 90.0
+        smallTree.weight = 80.0
+        smallTree.absorbWater()
+        print("smallTree weight\(smallTree.weight)   height\(smallTree.height)   age\(smallTree.age)")
+        //这些规则则不会影响类的实例如何创建，任何上图中展示的构造器都可以用来创建完全初始化的实例，这些规则只影响类定义如何实现；
+        
+        //两段式构造过程
+        //Swift 中类的构造过程包含两个阶段。第一个阶段，每个存储型属性被引入它们的类指定一个初始值。当每个存储型属性的初始值被确定后，第二阶段开始，它给每个类一次机会，在新实例准备使用之前进一步定制它们的存储型属性。
+        //两段式构造过程的使用让构造过程更安全，同时在整个类层级结构中给予了每个类完全的灵活性。两段式构造过程可以防止属性值在初始化之前被访问，也可以防止属性被另外一个构造器意外地赋予不同的值。
+        //Swift 的两段式构造过程跟 Objective-C 中的构造过程类似。最主要的区别在于阶段 1，Objective-C 给每一个属性赋值0或空值（比如说0或nil）。Swift 的构造流程则更加灵活，它允许你设置定制的初始值，并自如应对某些属性不能以0或nil作为合法默认值的情况。
+        /*
+         swift编译器执行4种安全检查，以确保两段式构造过程正确的完成
+         1、指定构造器必须保证它所在类引入的所有属性都必须先初始化完成，之后才能将其它构造任务向上代理给父类中的构造器。
+         如上所述，一个对象的内存只有在其所有存储型属性确定之后才能完全初始化。为了满足这一规则，指定构造器必须保证它所在类引入的属性在它往上代理之前先完成初始化。
+         2、指定构造器必须先向上代理调用父类构造器，然后再为继承的属性设置新值。如果没这么做，指定构造器赋予的新值将被父类中的构造器所覆盖。
+         3、便利构造器必须先代理调用同一类中的其它构造器，然后再为任意属性赋新值。如果没这么做，便利构造器赋予的新值将被同一类中其它指定构造器所覆盖。
+         
+         4、构造器在第一阶段构造完成之前，不能调用任何实例方法，不能读取任何实例属性的值，不能引用self作为一个值。
+         类实例在第一阶段结束以前并不是完全有效的。只有第一阶段完成后，该实例才会成为有效实例，才能访问属性和调用方法。
+         
+         阶段1：
+         某个指定构造器或便利构造器被调用。
+         完成新实例内存的分配，但此时内存还没有被初始化。
+         指定构造器确保其所在类引入的所有存储型属性都已赋初值。存储型属性所属的内存完成初始化。
+         指定构造器将调用父类的构造器，完成父类属性的初始化。
+         这个调用父类构造器的过程沿着构造器链一直往上执行，直到到达构造器链的最顶部。
+         当到达了构造器链最顶部，且已确保所有实例包含的存储型属性都已经赋值，这个实例的内存被认为已经完全初始化。此时阶段 1 完成
+         
+         阶段2：
+         从顶部构造器链一直往下，每个构造器链中类的指定构造器都有机会进一步定制实例。构造器此时可以访问self、修改它的属性并调用实例方法等等。
+         最终，任意构造器链中的便利构造器可以有机会定制实例和使用self。
+         
+        */
+        
+        //构造器的继承和重写
+        //跟 Objective-C 中的子类不同，Swift 中的子类默认情况下不会继承父类的构造器。Swift 的这种机制可以防止一个父类的简单构造器被一个更精细的子类继承，并被错误地用来创建子类的实例。
+        //重写 父类的指定构造器 关键字 overide；重写便利构造器不需要加上关键字 override
+        class HighTree : Tree {
+             convenience init(_ h : Double) { //no have override
+                self.init(3.0, 3)
+            }
+            override init(_ height: Double, _ age: Int) { //have override
+                super.init(height, age)
+                self.height = height + 10.0
+                self.age = age + 1
+            }
+        }
+        
+        let highTree = HighTree.init(30.0)
+        print(highTree.height,highTree.age)
+        
+        
+        //构造器的自动继承
+        //假如你为新引入的属性都提供了默认值；
+        //规则1、如果子类没有定义任何指定构造器，那么它将自动继承所有父类的指定构造器
+        //规则2、如果子类提供了所有父类指定构造器的实现——无论是通过规则 1 继承过来的，还是提供了自定义实现——它将自动继承所有父类的便利构造器。
+        
+        class MediumTree : Tree {
+            var branch = 10
+        }
+        let mediumTree = MediumTree.init(20.0, 3)
+        print(mediumTree.age)
+        
+        //子类的便利构造器 可以 复写父类的指定构造器
+        class Food {
+            var name: String
+            init(name: String) {
+                self.name = name
+            }
+            convenience init() {
+                self.init(name: "[Unnamed]")
+            }
+        }
+        
+        class RecipeIngredient: Food {
+            var quantity: Int
+            init(name: String, quantity: Int) {
+                self.quantity = quantity
+                super.init(name: name)
+            }
+            override convenience init(name: String) {
+                self.init(name: name, quantity: 1)
+            }
+        }
+        //RecipeIngredient的便利构造器init(name: String)使用了跟Food中指定构造器init(name: String)相同的参数。由于这个便利构造器重写了父类的指定构造器init(name: String)，因此必须在前面使用override修饰符
+        
+        
+        
+        //可失败构造器
+        //如果一个类、结构体或枚举类型的对象，在构造过程中有可能失败，则为其定义一个可失败构造器。这里所指的“失败”是指，如给构造器传入无效的参数值，或缺少某种所需的外部资源，又或是不满足某种必要的条件等。
+        
+        //为了妥善处理这种构造过程中可能会失败的情况。你可以在一个类，结构体或是枚举类型的定义中，添加一个或多个可失败构造器。其语法为在init关键字后面添加问号(init?)。
+        //<#可失败构造器的参数名和参数类型，不能与其它非可失败构造器的参数名，及其参数类型相同。#>
+
+        //可失败构造器会创建一个类型为自身类型的可选类型的对象。你通过return nil语句来表明可失败构造器在何种情况下应该“失败”。
+        
+        //注意
+        //严格来说，构造器都不支持返回值。因为构造器本身的作用，只是为了确保对象能被正确构造。因此你只是用return nil表明可失败构造器构造失败，而不要用关键字return来表明构造成功。
+        struct Animal {
+            let species : String
+            init? (species : String) {
+                if species.isEmpty {return nil }
+                self.species = species
+            }
+        }
+        
         
         
         
