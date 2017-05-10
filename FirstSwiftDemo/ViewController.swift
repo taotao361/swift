@@ -21,6 +21,16 @@ extension ViewController : ViewControllerDelegate {
 }
 
 
+/*
+ 疑问：
+ 1、带原始值的枚举类型的可失败构造器
+ 2、闭包使用
+ 3、
+ 4、
+ 5、
+ 
+ 
+ */
 
 
 
@@ -32,15 +42,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
 
+
+        
+        
+        
+        
+        
+    }
+    
+    
+    //构造器
+    func test8() {
         //构造器 init关键字
         //Swift 的构造器无需返回值
         //类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值 存储型属性的值不能处于一个未知的状态。
         //可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值
         //当你为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者。
         
-//        init () {
-//            //处理构造过程
-//        }
+        //        init () {
+        //            //处理构造过程
+        //        }
         struct Fahrenheit {
             var temperature : Double
             init() {
@@ -53,7 +74,7 @@ class ViewController: UIViewController {
         //默认属性值
         //如前所述，你可以在构造器中为存储型属性设置初始值。同样，你也可以在属性声明时为其设置默认值。
         //如果一个属性总是使用相同的初始值，那么为其设置一个默认值比每次都在构造器中赋值要好。两种方法的效果是一样的，只不过使用默认值让属性的初始化和声明结合得更紧密。使用默认值能让你的构造器更简洁、更清晰，且能通过默认值自动推导出属性的类型；同时，它也能让你充分利用默认构造器、构造器继承等特性，后续章节将讲到。
-
+        
         //自定义构造过程
         
         
@@ -70,8 +91,8 @@ class ViewController: UIViewController {
         
         let celsius = Celsius.init(fromFahrenheit: 32.0)
         print(celsius.temperatureInCelsius)
-//        let celsius1 = Celsius()
-//        print(celsius.temperatureInCelsius)
+        //        let celsius1 = Celsius()
+        //        print(celsius.temperatureInCelsius)
         
         struct People {
             var age : Int
@@ -95,11 +116,11 @@ class ViewController: UIViewController {
                 self.white = white
                 self.green = green
             }
-//            init(all : Double) {
-//                self.red = all
-//                self.white = all
-//                self.green = all
-//            }
+            //            init(all : Double) {
+            //                self.red = all
+            //                self.white = all
+            //                self.green = all
+            //            }
             init(_ all : Double) {
                 red = all
                 green = all
@@ -111,7 +132,7 @@ class ViewController: UIViewController {
         
         //不带外部名的构造器参数
         //如果你不希望为构造器的某个参数提供外部名字，你可以使用下划线(_)来显式描述它的外部名，以此重写上面所说的默认行为
-//        let color = Color(23.0)
+        //        let color = Color(23.0)
         
         //可选属性类型
         class ServeyQuestion {
@@ -126,10 +147,10 @@ class ViewController: UIViewController {
         }
         
         let question = ServeyQuestion.init(text: "have a question")
-//        let q = ServeyQuestion(text: "ll")
+        //        let q = ServeyQuestion(text: "ll")
         question.ask()
         print(question.response ?? "可选默认值")
-      
+        
         
         //构造过程中常量的修改
         //你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。
@@ -202,7 +223,7 @@ class ViewController: UIViewController {
         //第三个Rect构造器init(center:size:)稍微复杂一点。它先通过center和size的值计算出origin的坐标，然后再调用（或者说代理给）init(origin:size:)构造器来将新的origin和size值赋值到对应的属性中：
         
         
-    
+        
         
         
         
@@ -225,14 +246,14 @@ class ViewController: UIViewController {
          }
          
          
-        类的构造器代理规则
+         类的构造器代理规则
          规则1：指定构造器必须调用其直接父类的指定构造器
          规则2：便利构造器必须调用同类中定义的其他构造器
          规则3：便利构造器必须最终导致一个指定构造器被调用
          
          记忆方法：
-            1、指定构造器必须总是向上代理
-            2、便利构造器必须总是横向代理
+         1、指定构造器必须总是向上代理
+         2、便利构造器必须总是横向代理
          
          */
         
@@ -249,13 +270,13 @@ class ViewController: UIViewController {
                 self.init(h, 3)
             }
             convenience init(_ a : Int) { //便利构造器
-//                self.init(10.0, 2)
+                //                self.init(10.0, 2)
                 self.init(20.0)
                 self.absorbSun()
                 self.absorbWater()
             }
             
-           final func absorbSun() -> Void { //子类不能重写
+            final func absorbSun() -> Void { //子类不能重写
                 print("吸收阳光")
             }
             func absorbWater() {
@@ -266,12 +287,12 @@ class ViewController: UIViewController {
         
         let tree = Tree.init(3.0, 3)
         print(tree.height,tree.age)
-
+        
         class SmallTree : Tree {
             var weight = 10.0 //第一阶段
-//            override init(_ height: Double, _ age: Int) {
-//                super.init(height, age)
-//            }
+            //            override init(_ height: Double, _ age: Int) {
+            //                super.init(height, age)
+            //            }
             init(weight : Double) { //第二阶段
                 super.init(20.0, 4)
                 self.weight = weight
@@ -317,13 +338,13 @@ class ViewController: UIViewController {
          从顶部构造器链一直往下，每个构造器链中类的指定构造器都有机会进一步定制实例。构造器此时可以访问self、修改它的属性并调用实例方法等等。
          最终，任意构造器链中的便利构造器可以有机会定制实例和使用self。
          
-        */
+         */
         
         //构造器的继承和重写
         //跟 Objective-C 中的子类不同，Swift 中的子类默认情况下不会继承父类的构造器。Swift 的这种机制可以防止一个父类的简单构造器被一个更精细的子类继承，并被错误地用来创建子类的实例。
         //重写 父类的指定构造器 关键字 overide；重写便利构造器不需要加上关键字 override
         class HighTree : Tree {
-             convenience init(_ h : Double) { //no have override
+            convenience init(_ h : Double) { //no have override
                 self.init(3.0, 3)
             }
             override init(_ height: Double, _ age: Int) { //have override
@@ -378,7 +399,7 @@ class ViewController: UIViewController {
         
         //为了妥善处理这种构造过程中可能会失败的情况。你可以在一个类，结构体或是枚举类型的定义中，添加一个或多个可失败构造器。其语法为在init关键字后面添加问号(init?)。
         //<#可失败构造器的参数名和参数类型，不能与其它非可失败构造器的参数名，及其参数类型相同。#>
-
+        
         //可失败构造器会创建一个类型为自身类型的可选类型的对象。你通过return nil语句来表明可失败构造器在何种情况下应该“失败”。
         
         //注意
@@ -389,18 +410,191 @@ class ViewController: UIViewController {
                 if species.isEmpty {return nil }
                 self.species = species
             }
+            init(sp : String) {
+                self.species = sp
+            }
+        }
+        
+        let animal = Animal.init(species: "monkey") //animal的类型是Animal?
+        if let someAnimal = animal {
+            print("An animal was initialized with a species of \(someAnimal.species)")
+        }
+        
+        let anyAnimal = Animal.init(species: "")
+        if anyAnimal == nil {
+            print("animal = nil")
         }
         
         
+        //枚举类型的可失败构造器
+        enum TemperatureUnit {
+            case Kelvin,Celsius,Fahrenheit
+            init ? (symbal : Character) {
+                switch symbal {
+                case "K":
+                    self = .Kelvin
+                case "C":
+                    self = .Celsius
+                case "F":
+                    self = .Fahrenheit
+                default:
+                    return nil
+                }
+            }
+        }
+        
+        let temp = TemperatureUnit.init(symbal: "F")
+        if temp != nil {
+            print("initial success")
+        }
+        let temp1 = TemperatureUnit.init(symbal: "C")
+        if temp1 == nil {
+            print("initial false")
+        }
         
         
+        //带原始值的枚举类型的可失败构造器
+        //带原始值的枚举类型会自带一个可失败构造器init?(rawValue:)，该可失败构造器有一个名为rawValue的参数，其类型和枚举类型的原始值类型一致，如果该参数的值能够和某个枚举成员的原始值匹配，则该构造器会构造相应的枚举成员，否则构造失败。
+        enum Temperature : Character {
+            case Kelvin = "K",Celsius = "C",Fahrenheit = "F"
+        }
+        let t = Temperature.init(rawValue: "D")
+        let t1 = Temperature.init(rawValue: "C")
+        if t == nil {
+            print("false")
+        }
+        if t1 != nil {
+            print("success")
+        }
         
         
+        //构造失败的传递
+        //类，结构体，枚举的可失败构造器可以横向代理到类型中的其他可失败构造器。类似的，子类的可失败构造器也能向上代理到父类的可失败构造器。
+        //无论是向上代理还是横向代理，如果你代理到的其他可失败构造器触发构造失败，整个构造过程将立即终止，接下来的任何构造代码不会再被执行。
+        
+        //注意
+        //可失败构造器也可以代理到其它的非可失败构造器。通过这种方式，你可以增加一个可能的失败状态到现有的构造过程中。
+        class Product {
+            let name : String
+            init ? (name : String) {
+                if name.isEmpty {return nil}
+                self.name = name
+            }
+        }
+        
+        class CartItem : Product {
+            let quantity : Int
+            init ? (quantity : Int,name : String) {
+                if quantity < 1 {return nil}
+                self.quantity = quantity
+                super.init(name: name)
+            }
+        }
+        
+        //重写可失败构造器
+        class Document {
+            var name : String?
+            init() { }
+            init ? (name : String) {
+                self.name = name
+            }
+        }
+        
+        class Adocument : Document {
+            override init() {
+                super.init()
+                self.name = "[Untitled]"
+            }
+            override init(name: String) {
+                super.init()
+                if name.isEmpty {
+                    self.name =  "[Untitled]"
+                } else {
+                    self.name = name
+                }
+            }
+        }
+        
+        //你可以在子类的非可失败构造器中使用强制解包来调用父类的可失败构造器。比如，下面的UntitledDocument子类的name属性的值总是"[Untitled]"，它在构造过程中使用了父类的可失败构造器init?(name:)：
+        
+        class UntitledDocument : Document {
+            override init() {
+                super.init(name: "[Untitled]")! //抢劫报
+            }
+        }
         
         
+        //可失败构造器 init！
+        //通常来说我们通过在init关键字后添加问号的方式（init?）来定义一个可失败构造器，但你也可以通过在init后面添加惊叹号的方式来定义一个可失败构造器（init!），该可失败构造器将会构建一个对应类型的隐式解包可选类型的对象。
+        //你可以在init?中代理到init!，反之亦然。你也可以用init?重写init!，反之亦然。你还可以用init代理到init!，不过，一旦init!构造失败，则会触发一个断言。
+        
+        //必要构造器
+        //在类的构造器前添加 required 修饰符表明所有该类的子类都必须实现该构造器：
+        //在子类重写父类的必要构造器时，必须在子类的构造器前也添加required修饰符，表明该构造器要求也应用于继承链后面的子类。在重写父类中必要的指定构造器时，不需要添加override修饰符：
+        
+        class Class {
+            var name : String
+            required init(name : String){
+                self.name = name
+                print("构造器实现----\(name)")
+            }
+        }
+        class SubClass : Class {
+            required init(name: String) {
+                super.init(name: name)
+            }
+        }
+        
+        let c = Class.init(name: "yang")
+        let c1 = SubClass.init(name: "tao")
+        print(c.name,c1.name)
         
         
+        //通过闭包或者函数来设置属性的默认值
+        /*
+         如果某个存储型属性的默认值需要一些定制或设置，你可以使用闭包或全局函数为其提供定制的默认值。每当某个属性所在类型的新实例被创建时，对应的闭包或函数会被调用，而它们的返回值会当做默认值赋值给这个属性。
+         
+         这种类型的闭包或函数通常会创建一个跟属性类型相同的临时变量，然后修改它的值以满足预期的初始状态，最后返回这个临时变量，作为属性的默认值。
+         
+         下面介绍了如何用闭包为属性提供默认值：
+         */
+        
+        //        class SomeClass {
+        //            let someProperty: SomeType = {
+        //                // 在这个闭包中给 someProperty 创建一个默认值
+        //                // someValue 必须和 SomeType 类型相同
+        //                return someValue
+        //            }()
+        //        }
+        //注意闭包结尾的大括号后面接了一对空的小括号。这用来告诉 Swift 立即执行此闭包。如果你忽略了这对括号，相当于将闭包本身作为值赋值给了属性，而不是将闭包的返回值赋值给属性。
+        
+        //注意
+        //如果你使用闭包来初始化属性，请记住在闭包执行时，实例的其它部分都还没有初始化。这意味着你不能在闭包里访问其它属性，即使这些属性有默认值。同样，你也不能使用隐式的self属性，或者调用任何实例方法。
+        
+        
+        struct Checkerboard {
+            let boardColors: [Bool] = {
+                var temporaryBoard = [Bool]()
+                var isBlack = false
+                for i in 1...8 {
+                    for j in 1...8 {
+                        temporaryBoard.append(isBlack)
+                        isBlack = !isBlack
+                    }
+                    isBlack = !isBlack
+                }
+                return temporaryBoard
+            }()
+            func squareIsBlackAtRow(row: Int, column: Int) -> Bool {
+                return boardColors[(row * 8) + column]
+            }
+        }
+        
+        let board = Checkerboard()
+        print(board.boardColors)
+
     }
+    
     
     //继承
     func test7 () {
