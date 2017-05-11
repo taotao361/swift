@@ -58,6 +58,62 @@ extension Int {
     }
 }
 
+//枚举名大写开头，成员小写开头
+enum MoveMent {
+    case Right
+    case Left
+    case Up
+    case Down
+}
+
+enum Direct : String {
+    case north,east,west,sorth
+}
+
+
+//原始值 原始类型为Int
+// 映射到整型
+enum Movement: Int {
+    case Left = 0
+    case Right = 1
+    case Top = 2
+    case Bottom = 3
+
+}
+
+// 同样你可以与字符串一一对应
+enum House: String {
+    case Baratheon = "Ours is the Fury"
+    case Greyjoy = "We Do Not Sow"
+    case Martell = "Unbowed, Unbent, Unbroken"
+    case Stark = "Winter is Coming"
+    case Tully = "Family, Duty, Honor"
+    case Tyrell = "Growing Strong"
+}
+
+// 或者float double都可以(同时注意枚举中的花式unicode)
+enum Constants: Double {
+    case π = 3.14159
+    case e = 2.71828
+    case φ = 1.61803398874
+    case λ = 1.30357
+}
+
+//关联值
+//“定义一个名为Barcode的枚举类型，它的一个成员值是具有(Int，Int，Int，Int)类型关联值的upc，另一个成员值是具有String类型关联值的qrCode。”
+enum Barcode {
+    case upc(Int,Int,Int,Int)
+    case qr(String)
+    
+}
+
+//递归枚举
+enum Expression {
+    case number(Int)
+    indirect case add(Expression,Expression)
+    indirect case multiply(Expression,Expression)
+}
+
 
 
 /*
@@ -81,7 +137,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        //扩展
+        
+        
+        
+        
+        
         
         
         
@@ -90,6 +150,76 @@ class ViewController: UIViewController {
         
         
     }
+    
+    //enumerate
+    func testEnum() {
+        //枚举
+        var move = MoveMent.Left
+        //switch 使用
+        switch move {
+        case .Left:
+            print("left")
+            //        default:
+            //            print("none")
+        }
+        //判断使用
+        move = .Down
+        if move == .Left {
+            print("left")
+        }
+        
+        //明确case 使用
+        if case .Left = move {
+            print("left")
+        }
+        
+        //使用默认构造方法来初始化
+        let moveMent = Movement.init(rawValue: 3)
+        print(moveMent!)
+        
+        
+        let code = Barcode.qr("haha")
+        var code1 = Barcode.qr("ll")
+        code1 = .qr("kk")
+        print(code,code1)
+        
+        
+        //枚举类型的 原始值的隐式赋值
+        //，Plant.mercury的显式原始值为1，Planet.venus的隐式原始值为2，依次类推。
+        //当原始类型为字符串时，每个枚举成员的隐式原始值为该枚举成员的名称
+        //使用 rawValue 可以访问成员的原始值
+        var direct = Direct.east
+        direct = .west
+        print(direct)
+        print(direct.rawValue)
+        print(Direct.east.rawValue)
+        //        let dd = Direct.init(rawValue: "weat")
+        //        print(dd ?? "")
+        //        print(dd!.rawValue)
+        
+        //递归枚举
+        //递归枚举是一种枚举类型，它有一个或多个枚举成员使用该枚举类型的实例作为关联值
+        
+        
+        func evaluate (_ expression : Expression) -> Int {
+            switch expression {
+            case let .number(value):
+                return value
+            case let .add(left,right) :
+                return evaluate(left) + evaluate(right)
+            case let .multiply(left,right) :
+                return evaluate(left) * evaluate(right)
+            }
+        }
+        let number1 = Expression.number(4)
+        let number2 = Expression.number(5)
+        let add = Expression.add(number1, number2)
+        let multiply = Expression.multiply(number2, number1)
+        print(evaluate(multiply))
+        print(evaluate(add))
+
+    }
+    
     
     //扩展
     func test11 () {
