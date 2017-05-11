@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC14CB611EC43F23005799B9 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14CB601EC43F23005799B9 /* Test.swift */; };
 		BCD6E83E1EBAE19900A4BE84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD6E83D1EBAE19900A4BE84 /* AppDelegate.swift */; };
 		BCD6E8401EBAE19900A4BE84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD6E83F1EBAE19900A4BE84 /* ViewController.swift */; };
 		BCD6E8431EBAE19900A4BE84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8411EBAE19900A4BE84 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC14CB601EC43F23005799B9 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD6E83D1EBAE19900A4BE84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD6E83F1EBAE19900A4BE84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				BCD6E83D1EBAE19900A4BE84 /* AppDelegate.swift */,
 				BCD6E83F1EBAE19900A4BE84 /* ViewController.swift */,
+				BC14CB601EC43F23005799B9 /* Test.swift */,
 				BCD6E8411EBAE19900A4BE84 /* Main.storyboard */,
 				BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */,
 				BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 			files = (
 				BCD6E8401EBAE19900A4BE84 /* ViewController.swift in Sources */,
 				BCD6E83E1EBAE19900A4BE84 /* AppDelegate.swift in Sources */,
+				BC14CB611EC43F23005799B9 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +514,7 @@
 				BCD6E8641EBAE19900A4BE84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCD6E8651EBAE19900A4BE84 /* Build configuration list for PBXNativeTarget "FirstSwiftDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +523,7 @@
 				BCD6E8671EBAE19900A4BE84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCD6E8681EBAE19900A4BE84 /* Build configuration list for PBXNativeTarget "FirstSwiftDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +532,7 @@
 				BCD6E86A1EBAE19900A4BE84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

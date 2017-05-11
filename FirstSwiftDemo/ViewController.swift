@@ -116,6 +116,10 @@ enum Expression {
 
 
 
+
+
+
+
 /*
  疑问：
  1、带原始值的枚举类型的可失败构造器
@@ -126,6 +130,112 @@ enum Expression {
  
  
  */
+
+
+
+extension  String {
+    func description () {
+        print(self)
+    }
+    
+    mutating func add (a : String) {
+        self = self + a
+    }
+}
+
+
+
+
+// MARK: -
+//该例子为 Int 添加了嵌套枚举。这个名为 Kind 的枚举表示特定整数的类型。具体来说，就是表示整数是正数、零或者负数。
+//这个例子还为 Int 添加了一个计算型实例属性，即 kind，用来根据整数返回适当的 Kind 枚举成员。
+
+// MARK: - 嵌套类型
+extension Int {
+    enum Kind { //嵌套枚举
+        case Negative,Zero,Positive
+    }
+    
+//    class Des { //嵌套类
+//        func descriptionClass() {
+//            print("\(self) 是嵌套在整型类型的 类 的方法")
+//        }
+//    }
+//    struct AnotherStruct { //嵌套结构体
+//        func discriptionStruct()  {
+//            print("\(self) 是嵌套在整形类型 的 结构体 的 方法")
+//        }
+//    }
+    
+    var kind : Kind {
+        switch self {
+        case 0:
+            return .Zero
+        case let x where x > 0 :
+            return .Positive
+        default:
+            return .Negative
+        }
+    }
+    
+}
+
+extension A {
+    func appenName (last : String) {
+        let name = firstName + last
+        print("名字为 \(name) ")
+    }
+    
+//    class B {
+//        func bName() {
+//            print("bName")
+//        }
+//    }
+}
+
+class A {
+    var firstName = ""
+    func getName () {
+        print("A 的 firstName 是 \(firstName)")
+    }
+}
+
+
+struct BlackjackCard {
+    //嵌套枚举
+    enum Suit : Character {
+        case Spades = "♠️",Hearts = "♥️",Diamonds = "♦️",Clubs = "♣️"
+    }
+    //
+    enum Rank : Int {
+        case Two = 2,Three,Four,FIve,Six,Seven,Eight,Nine,Ten
+        case Jack, Queen, King, Ace
+        struct Values {
+            let first : Int,second : Int?
+        }
+        var values : Values {
+            switch self {
+            case .Ace:
+                return Values.init(first: 1, second: 11)
+            case .Jack,.Queen,.King:
+                return Values.init(first: 10, second: nil)
+            default:
+                return Values.init(first: self.rawValue, second: nil)
+            }
+        }
+    }
+    
+    //BlackjackCard 属性 和 方法
+    let rank : Rank,suit : Suit
+    var description : String  {
+        var output = "suit is \(suit.rawValue)"
+        output += "value is \(rank.values.first)"
+        if let second = rank.values.second {
+            output += "or \(second)"
+        }
+        return output
+    }
+}
 
 
 
@@ -142,13 +252,24 @@ class ViewController: UIViewController {
         
         
         
+    }
+    
+    
+    ///  嵌套类型
+    
+    func test12() {
+ 
+        let li = A.init()
+        li.firstName = "li"
+        li.appenName(last: " ming")
         
-        
-        
-        
-        
-        
-        
+        let black = BlackjackCard.init(rank: .Jack, suit: .Hearts)
+        print(black.description)
+        //引用嵌套类型
+        print(black.suit.rawValue)
+        print(black.rank.values.first)
+        print(BlackjackCard.Suit.Diamonds.rawValue)
+
     }
     
     //enumerate
@@ -266,8 +387,46 @@ class ViewController: UIViewController {
         //扩展可以为已有类型添加新下标
         
         
-        //嵌套类型
+    
+        //扩展
+        /*
+         添加计算型属性和计算型类型属性
+         定义实例方法和类型方法
+         提供新的构造器
+         定义下标
+         定义和使用新的嵌套类型
+         使一个已有类型符合某个协议
+         
+         扩展可以为一个类型增加新的功能，但是不能重写已有功能
+         
+         扩展可以为已有类型添加新的实例方法和类型方法。
+         
+         通过扩展添加的实例方法也可以修改该实例本身。结构体和枚举类型中修改 self 或其属性的方法必须将该实例方法标注为 mutating，正如来自原始实现的可变方法一样。
+         
+         */
         
+        //计算型属性 扩展可以为已有类型添加计算型实例属性 和 计算型类型数形
+        
+        
+        let a = "haha"
+        a.description()
+        
+        //嵌套类型  扩展可以为已有的类 结构体 枚举 添加新的嵌套类型
+        
+        let arrayInt = [1,2,3,-4,0]
+        for a in arrayInt {
+            switch a.kind {
+            case .Negative:
+                print("-")
+            case .Positive:
+                print("+")
+            default:
+                print("0")
+            }
+        }
+        
+        //下标
+        //扩展可以为已有类型添加新下标
 
     }
     
@@ -1150,6 +1309,24 @@ class ViewController: UIViewController {
         //上面两条语句分别调用下标的 setter 将矩阵右上角位置（即row为0、column为1的位置）的值设置为1.5，将矩阵左下角位置（即row为1、column为0的位置）的值设置为3.2：
         //Matrix下标的 getter 和 setter 中都含有断言，用来检查下标入参row和column的值是否有效。为了方便进行断言，Matrix包含了一个名为indexIsValidForRow(_:column:)的便利方法，用来检查入参row和column的值是否在矩阵范围内
         
+        
+        
+        //        //下标
+        //        struct GetName {
+        //            var name : String
+        //            subscript(firstName : String) -> String {
+        //                get {
+        //                    return firstName + name
+        //                }
+        ////                set {
+        ////
+        ////                }
+        //            }
+        //        }
+        //
+        //        let getName = GetName.init(name: "ming")
+        //        print(getName["xiao"])
+
 
     }
     
