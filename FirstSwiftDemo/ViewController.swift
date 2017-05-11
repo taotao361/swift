@@ -244,7 +244,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         
         
         
@@ -255,8 +255,191 @@ class ViewController: UIViewController {
     }
     
     
-    ///  嵌套类型
+    //可选链
+    func test13 () {
+        /*
+         1、使用可选链式调用代替强制展开
+         2、为可选链式调用定义模型类
+         3、通过可选链式调用访问属性
+         4、通过链式调用调用方法
+         5、通过链式调用 访问下标
+         6、连接多层可选链式调用
+         7、在方法的可选返回值上进行可选链式调用
+         */
+        
+        //可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。
+        
+        //1、使用可选链是调用代替强制展开
+        //可用链式调用？和强制展开！的区别是：？调用只会失败并不会发生运行时错误，但是！如果可选没有值，就会发生运行时错误；
+        //可选链式调用 返回值 为可选值；
+        //        class Person {
+        //            var residence : Residence?
+        //        }
+        //        class Residence {
+        //            var numberOfRooms = 1
+        //        }
+        //
+        //        let john = Person.init()
+        //        let residence = Residence.init()
+        //        john.residence = residence
+        ////        let roomCount = john.residence!.numberOfRooms //如果residence没有值，会发生运行时错误
+        //
+        //        //下边写法  可选链式调用提供了另一种访问numberOfRooms的方式，使用问号（?）来替代原来的叹号（!）
+        //        if let number = john.residence?.numberOfRooms {
+        //            print("roomCount = \(number)")
+        //        } else {
+        //            print("nil")
+        //        }
+        
+        
+        //为可选链式调用定义模型类
+        //通过使用可选链式调用可以调用多层属性、方法和下标。这样可以在复杂的模型中向下访问各种子属性，并且判断能否访问子属性的属性、方法或下标。
+        
+        class Room {
+            let name : String
+            init(name : String) {
+                self.name = name
+            }
+        }
+        
+        class Address {
+            var buildName : String?
+            var buildNumber : String?
+            var street : String?
+            func buildIdentifier () -> String? {
+                if buildName != nil {
+                    return buildName
+                } else if buildNumber != nil && street != nil {
+                    return "\(buildNumber!)   \(street!)"
+                } else {
+                    return nil
+                }
+            }
+        }
+        
+        class Person {
+            var residence : Residence?
+        }
+        
+        class Residence {
+            var rooms = [Room].init()
+            var numberOfRooms : Int {
+                return rooms.count
+            }
+            subscript(i : Int) -> Room {
+                get {
+                    return rooms[i]
+                }
+                set {
+                    rooms[i] = newValue
+                }
+            }
+            
+            func printNumberOfRooms () {
+                print("number of rooms is \(numberOfRooms)")
+            }
+            var address : Address?
+        }
+        
+        let john = Person.init()
+        if let roomCount = john.residence?.numberOfRooms {
+            print("rooms have \(roomCount)")
+        } else {
+            print("no have ")
+        }
+        
+        let residence = Residence.init()
+        john.residence = residence
+        let address = Address.init()
+        address.buildNumber = "90"
+        address.buildName = "ppp"
+        address.street = "45 street"
+        john.residence?.address = address
+        if let name = john.residence?.address?.buildName {
+            print("build name = \(name)")
+        } else {
+            print("build name = nil")
+        }
+        
+        //通过判断函数的返回值是否为 nil 来判断 调用是否成功
+        if john.residence?.printNumberOfRooms() != nil {
+            print("create success")
+        } else {
+            print("create false")
+        }
+        
+        //这个方法没有返回值。然而，没有返回值的方法具有隐式的返回类型Void，如无返回值函数中所述。这意味着没有返回值的方法也会返回()，或者说空的元组。
+        //如果在可选值上通过可选链式调用来调用这个方法，该方法的返回类型会是Void?，而不是Void，因为通过可选链式调用得到的返回值都是可选的。这样我们就可以使用if语句来判断能否成功调用printNumberOfRooms()方法，即使方法本身没有定义返回值。通过判断返回值是否为nil可以判断调用是否成功：
+        
+        //访问下标
+        //通过可选链式调用访问可选值的下标时，应该将问号放在下标方括号的前面而不是后面。可选链式调用的问号一般直接跟在可选表达式的后面。
+        //问号直接放在john.residence的后面，并且在方括号的前面，因为john.residence是可选值。
+        //类似的，可以通过下标，用可选链式调用来赋值：
+        
+        //        john.residence?[0] = Room.init(name: "FIRST")
+        //        let johnHouse = Residence.init()
+        residence.rooms.append(Room.init(name: "111"))
+        residence.rooms.append(Room.init(name: "222"))
+        residence.rooms.append(Room.init(name: "333"))
+        residence.rooms.append(Room.init(name: "444"))
+        
+        if let firstRoomName = john.residence?[0].name {
+            print("the first room name is \(firstRoomName)")
+        } else {
+            print("the first room name is nil")
+        }
+        
+        if let roomName = john.residence?[0].name {
+            print("name = \(roomName)")
+        } else {
+            print("name = nil")
+        }
+        
+        
+        //访问可选类型的下标
+        //如果下标返回可选类型值，比如 Swift 中Dictionary类型的键的下标，可以在下标的结尾括号后面放一个问号来在其可选返回值上进行可选链式调用：
+        //        var testDic : Dictionary = ["first":[2,3,4,56],"sec":[65,78,6]]
+        //        testDic["sec"]?[1] = 888
+        //        print(testDic["sec"]?[1])
+        
+        
+        //连接多层可选链式调用
+        //如果你访问的值不是可选的，可选链式调用将会返回可选值。
+        //如果你访问的值就是可选的，可选链式调用不会让可选返回值变得“更可选”。
+        //通过可选链式调用访问一个Int值，将会返回Int?，无论使用了多少层可选链式调用。
+        //类似的，通过可选链式调用访问Int?值，依旧会返回Int?值，并不会返回Int??。
+        
+        if let streetName = john.residence?.address?.street {
+            print("street name = \(streetName)")
+        } else {
+            print("street name = nil")
+        }
+        
+        
+        //在方法的可选返回值上进行可选链式调用
+        
+        if let identifier = john.residence?.address?.buildIdentifier() {
+            print("identifier = \(identifier)")
+        } else {
+            print("identifier = nil")
+        }
+        
+        
+        if let beginWith = john.residence?.address?.buildIdentifier()?.hasPrefix("p") {
+            if beginWith {
+                print("YES")
+            } else {
+                print("NO")
+            }
+        }
+        //在上面的例子中，在方法的圆括号后面加上问号是因为你要在buildingIdentifier()方法的可选返回值上进行可选链式调用，而不是方法本身。
+        
+        
+
+    }
     
+    
+    ///  嵌套类型
     func test12() {
  
         let li = A.init()
