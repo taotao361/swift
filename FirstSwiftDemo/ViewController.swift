@@ -306,7 +306,7 @@ class ViewController: UIViewController {
         
         
         for item in group {
-            if let movie = item as? Movie {
+            if let movie = item as? Movie { //返回的是可选值，可能是？Movie，？Song 所以使用可选绑定
                 print("movie name = \(movie.name)   director = \(movie.director)")
             } else if let song = item as? Song {
                 print("song name = \(song.name) artist = \(song.artist)")
@@ -314,9 +314,70 @@ class ViewController: UIViewController {
         }
         
         
+        //Any AnyObject 的类型转换
+        //Swift 为不确定类型提供了两种特殊的类型别名
+        //Any 可以表示任何类型，包括函数类型。
+        //AnyObject 可以表示任何类类型的实例。
 
+        var things = [Any].init()
+        things.append(0)
+        things.append(0.0)
+        things.append(42)
+        things.append(3.13)
+        things.append("hello world")
+        things.append((3,5))
+        things.append(Movie.init(name: "pp", director: "kk"))
+        things.append({(name : String) -> String in "hello \(name)" })
+        things.append((404,"badnet"))
         
+        for thing in things {
+            switch things {
+            case 0 as Int:
+                print("zero int")
+            case 0 as Double:
+                print("zero double")
+            case let someInt as Int:
+                print(someInt)
+            case is Double:
+                print("double    \(thing)")
+            case let someString as String:
+                print(someString)
+            case let (x,y) as (Int,String):
+                print("tuple is \(x)   \(y)")
+            case let movie as Movie:
+                print(movie.name,movie.director)
+            case let stringConverter as (String) -> String:
+                print(stringConverter("haha"))
+            default:
+                print("other")
+            }
+        }
         
+        for thing in things {
+            switch thing {
+            case 0 as Int:
+                print("zero as an Int")
+            case 0 as Double:
+                print("zero as a Double")
+            case let someInt as Int:
+                print("an integer value of \(someInt)")
+            case let someDouble as Double where someDouble > 0:
+                print("a positive double value of \(someDouble)")
+            case is Double:
+                print("some other double value that I don't want to print")
+            case let someString as String:
+                print("a string value of \"\(someString)\"")
+            case let (x, y) as (Double, Double):
+                print("an (x, y) point at \(x), \(y)")
+            case let movie as Movie:
+                print("a movie called '\(movie.name)', dir. \(movie.director)")
+            case let stringConverter as (String) -> String:
+                print(stringConverter("Michael"))
+            default:
+                print("something else")
+            }
+        }
+
         
         
         
