@@ -246,12 +246,151 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-
+        
+        
+        
+        
+        
         
         
         
     }
     
+    
+    
+    ///  错误处理
+    func test15() {
+        //错误处理
+        enum VendingMachineError : Error {
+            case invalidSelection
+            case insufficientFunds(coinsNeed : Int)
+            case outOfStock
+        }
+        //抛出一个错误可以让你表明有意外情况发生，导致正常的执行流程无法继续执行。抛出错误使用throw关键字。例如，下面的代码抛出一个错误，提示贩卖机还需要5个硬币：
+        
+        //        throw VendingMachineError.insufficientFunds(coinsNeed: 5)
+        
+        //用 throwing 函数传递错误
+        //为了表示一个函数、方法或构造器可以抛出错误，在函数声明的参数列表之后加上throws关键字。一个标有throws关键字的函数被称作throwing 函数。如果这个函数指明了返回值类型，throws关键词需要写在箭头（->）的前面。
+        
+        
+        //用 throws 函数传递错误
+        //为了表示一个函数、方法或构造器可以抛出错误，在函数声明的参数列表之后加上throws关键字。一个标有throws关键字的函数被称作throwing 函数。如果这个函数指明了返回值类型，throws关键词需要写在箭头（->）的前面。
+        //        func canThrowError () throws -> String {}
+        //        func canThrows () throws {}
+        
+        struct Item {
+            var price : Int
+            var count : Int
+        }
+        class VendingMachine {
+            var inventory = [
+                "a" : Item(price : 12,count : 4),
+                "b": Item(price : 13,count : 5),
+                "c" : Item(price : 15,count : 6)
+            ]
+            var coinsDeposited = 0
+            func dispenseSnack(snack : String) {
+                print("dispence \(snack)")
+            }
+            
+            func vend(itemNamed name : String) throws {
+                guard let item = inventory[name] else { //没有这个item项
+                    throw VendingMachineError.invalidSelection
+                }
+                guard item.count > 0 else { //存货不够
+                    throw VendingMachineError.outOfStock
+                }
+                guard item.price <= coinsDeposited else { //钱不够
+                    throw VendingMachineError.insufficientFunds(coinsNeed: item.price - coinsDeposited)
+                }
+                
+                coinsDeposited -= item.price
+                
+                var newItem = item
+                newItem.count -= 1
+                inventory[name] = newItem
+                print("dispensing \(name)")
+            }
+        }
+        
+        //在vend(itemNamed:)方法的实现中使用了guard语句来提前退出方法，确保在购买某个物品所需的条件中，有任一条件不满足时，能提前退出方法并抛出相应的错误。由于throw语句会立即退出方法，所以物品只有在所有条件都满足时才会被售出。
+        
+        //因为vend(itemNamed:)方法会传递出它抛出的任何错误，在你的代码中调用此方法的地方，必须要么直接处理这些错误——使用do-catch语句，try?或try!；要么继续将这些错误传递下去。例如下面例子中，buyFavoriteSnack(_:vendingMachine:)同样是一个 throwing 函数，任何由vend(itemNamed:)方法抛出的错误会一直被传递到buyFavoriteSnack(person:vendingMachine:)函数被调用的地方。
+        
+        let favouriteItem = [
+            "xiaohong":"a",
+            "xiaoming":"b",
+            "xiaogang":"c"
+        ]
+        
+        func buyFavouriteSnack(person : String,vendingMachine : VendingMachine) throws {
+            let snackName = favouriteItem[person] ?? "xiaoyun"
+            try vendingMachine.vend(itemNamed: snackName)
+        }
+        
+        //用 Do-Catch 处理错误
+        //可以使用一个do-catch语句运行一段闭包代码来处理错误。如果在do子句中的代码抛出了一个错误，这个错误会与catch子句做匹配，从而决定哪条子句能处理它。
+        //        do {
+        //            try expression
+        //            statements
+        //        } catch pattern 1 {
+        //            statements
+        //        } catch pattern 2 where condition {
+        //            statements
+        //        } catch {
+        //            statements
+        //        }
+        
+        //在catch后面写一个匹配模式来表明这个子句能处理什么样的错误。如果一条catch子句没有指定匹配模式，那么这条子句可以匹配任何错误，并且把错误绑定到一个名字为error的局部常量。关于模式匹配的更多信息请参考 模式。
+        
+        //catch子句不必将do子句中的代码所抛出的每一个可能的错误都作处理。如果所有catch子句都未处理错误，错误就会传递到周围的作用域。然而，错误还是必须要被某个周围的作用域处理的——要么是一个外围的do-catch错误处理语句，要么是一个 throwing 函数的内部。举例来说，下面的代码处理了VendingMachineError枚举类型的全部枚举值，但是所有其它的错误就必须由它周围的作用域处理：
+        
+        let vendingMachine = VendingMachine.init()
+        vendingMachine.coinsDeposited = 20
+        do {
+            try buyFavouriteSnack(person: "xiaoming", vendingMachine: vendingMachine)
+            print("买到啦")
+        } catch VendingMachineError.invalidSelection {
+            print("invalid selection")
+        } catch VendingMachineError.insufficientFunds(coinsNeed: let coinsNeed) {
+            print("need coins \(coinsNeed)")
+        } catch VendingMachineError.outOfStock {
+            print("no have stock")
+        } catch { //加个空的catch ，不然会报错 Errors thrown from here are not handled because the enclosing catch is not exhaustive
+            
+        }
+        
+        //将错误转换成可选值
+        //可以使用try?通过将错误转换成一个可选值来处理错误。如果在评估try?表达式时一个错误被抛出，那么表达式的值就是nil。例如,在下面的代码中,x和y有着相同的数值和等价的含义：
+        
+        //如果你想对所有的错误都采用同样的方式来处理，用try?就可以让你写出简洁的错误处理代码。例如，下面的代码用几种方式来获取数据，如果所有方式都失败了则返回nil：
+        
+        
+        
+        //禁用错误传递
+        
+        
+        //指定清理工作
+        //可以使用defer语句在即将离开当前代码块时执行一系列语句。该语句让你能执行一些必要的清理工作，不管是以何种方式离开当前代码块的——无论是由于抛出错误而离开，还是由于诸如return或者break的语句。例如，你可以用defer语句来确保文件描述符得以关闭，以及手动分配的内存得以释放。
+        
+        //defer语句将代码的执行延迟到当前的作用域退出之前。该语句由defer关键字和要被延迟执行的语句组成。延迟执行的语句不能包含任何控制转移语句，例如break或是return语句，或是抛出一个错误。延迟执行的操作会按照它们被指定时的顺序的相反顺序执行——也就是说，第一条defer语句中的代码会在第二条defer语句中的代码被执行之后才执行，以此类推。
+        
+        //        func processFile(filename: String) throws {
+        //            if exists(filename) {
+        //                let file = open(filename)
+        //                defer {
+        //                    close(file)
+        //                }
+        //                while let line = try file.readline() {
+        //                    // 处理文件。
+        //                }
+        //                // close(file) 会在这里被调用，即作用域的最后。
+        //            }
+        //        }
+        
+
+    }
     
     /// 类型转换
     func test14() {
@@ -340,7 +479,7 @@ class ViewController: UIViewController {
         things.append((404,"badnet"))
         
         for thing in things {
-            switch things {
+            switch thing {
             case 0 as Int:
                 print("zero int")
             case 0 as Double:
@@ -361,32 +500,6 @@ class ViewController: UIViewController {
                 print("other")
             }
         }
-        
-        for thing in things {
-            switch thing {
-            case 0 as Int:
-                print("zero as an Int")
-            case 0 as Double:
-                print("zero as a Double")
-            case let someInt as Int:
-                print("an integer value of \(someInt)")
-            case let someDouble as Double where someDouble > 0:
-                print("a positive double value of \(someDouble)")
-            case is Double:
-                print("some other double value that I don't want to print")
-            case let someString as String:
-                print("a string value of \"\(someString)\"")
-            case let (x, y) as (Double, Double):
-                print("an (x, y) point at \(x), \(y)")
-            case let movie as Movie:
-                print("a movie called '\(movie.name)', dir. \(movie.director)")
-            case let stringConverter as (String) -> String:
-                print(stringConverter("Michael"))
-            default:
-                print("something else")
-            }
-        }
-
     }
     
     //可选链
