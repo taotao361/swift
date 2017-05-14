@@ -361,6 +361,32 @@ protocol PrivateProtocol : class {
     
 }
 
+//类类型的协议不能被结构体 枚举遵循
+//struct PPPPPP : PrivateProtocol {
+//    var name : String
+//}
+
+
+protocol GroupProtocol {
+    func test()
+}
+
+class BBB: GroupProtocol {
+    func test() {
+        print("BBB test")
+    }
+}
+class CCC: GroupProtocol {
+    func test() {
+        print("CCC test")
+    }
+}
+
+class DDD: GroupProtocol {
+    func test() {
+        print("DDD test")
+    }
+}
 
 
 
@@ -368,6 +394,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //协议
         
         
         
@@ -515,6 +543,21 @@ class ViewController: UIViewController {
         let game = SnakesAndLadders.init()
         game.delegate = tracker
         game.play()
+        
+        
+        //类类型专属协议   通过添加 class 关键字来限制协议只能被类类型遵循，而结构体或枚举不能遵循该协议。class 关键字必须第一个出现在协议的继承列表中，在其他继承的协议之前：
+        
+        //协议类型集合
+        //协议类型可以在数组或者字典这样的集合中使用，在协议类型提到了这样的用法。下面的例子创建了一个元素类型为 TextRepresentable 的数组：
+        
+        let bbb = BBB.init()
+        let ccc = CCC.init()
+        let ddd = DDD.init()
+        let groups : [GroupProtocol] = [bbb,ccc,ddd]
+        for thing in groups {
+            thing.test()
+        }
+
 
     }
     
