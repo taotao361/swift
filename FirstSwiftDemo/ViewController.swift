@@ -356,45 +356,64 @@ class DiceGameTracker: DiceGameDelegate {
 
 
 
+//类类型专属协议
+protocol PrivateProtocol : class {
+    
+}
+
+
+
+
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    ///协议
+    func testProtocol () {
         //协议
         //类、结构体或枚举都可以遵循协议
         //可以对协议进行扩展
         
         //协议语法
         //协议的定义方式与类、结构体和枚举的定义非常相似：
-//        protocol SomeProtocol {
-//            // 这里是协议的定义部分
-//        }
+        //        protocol SomeProtocol {
+        //            // 这里是协议的定义部分
+        //        }
         
-//        struct SomeStructure: FirstProtocol, AnotherProtocol {
-//            // 这里是结构体的定义部分
-//        }
+        //        struct SomeStructure: FirstProtocol, AnotherProtocol {
+        //            // 这里是结构体的定义部分
+        //        }
         
-//        拥有父类的类在遵循协议时，应该将父类名放在协议名之前，以逗号分隔
-//        class SomeClass: SomeSuperClass, FirstProtocol, AnotherProtocol {
-//            // 这里是类的定义部分
-//        }
+        //        拥有父类的类在遵循协议时，应该将父类名放在协议名之前，以逗号分隔
+        //        class SomeClass: SomeSuperClass, FirstProtocol, AnotherProtocol {
+        //            // 这里是类的定义部分
+        //        }
         
-
+        
         //属性要求
-//        协议不指定属性是存储型属性还是计算型属性，它只指定属性的名称和类型。此外，协议还指定属性是可读的还是可读可写的
-//        协议总是用 var 关键字来声明变量属性，在类型声明后加上 { set get } 来表示属性是可读可写的，可读属性则用 { get } 来表示：
-//        protocol SomeProtocol {
-//            var mustBeSettable: Int { get set }
-//            var doesNotNeedToBeSettable: Int { get }
-//        }
-
-//        在协议中定义类型属性时，总是使用 static 关键字作为前缀。当类类型遵循协议时，除了 static 关键字，还可以使用 class 关键字来声明类型属性：
-//        protocol AnotherProtocol {
-//            static var someTypeProperty: Int { get set }
-//        }
+        //        协议不指定属性是存储型属性还是计算型属性，它只指定属性的名称和类型。此外，协议还指定属性是可读的还是可读可写的
+        //        协议总是用 var 关键字来声明变量属性，在类型声明后加上 { set get } 来表示属性是可读可写的，可读属性则用 { get } 来表示：
+        //        protocol SomeProtocol {
+        //            var mustBeSettable: Int { get set }
+        //            var doesNotNeedToBeSettable: Int { get }
+        //        }
         
-
+        //        在协议中定义类型属性时，总是使用 static 关键字作为前缀。当类类型遵循协议时，除了 static 关键字，还可以使用 class 关键字来声明类型属性：
+        //        protocol AnotherProtocol {
+        //            static var someTypeProperty: Int { get set }
+        //        }
+        
+        
         struct Person : FullyNamed {
             var fullName: String
         }
@@ -417,7 +436,7 @@ class ViewController: UIViewController {
         //正如属性要求中所述，在协议中定义类方法的时候，总是使用 static 关键字作为前缀。当类类型遵循协议时，除了 static 关键字，还可以使用 class 关键字作为前缀：
         
         
-
+        
         //Mutating 方法要求
         //有时需要在方法中改变方法所属的实例。例如，在值类型（即结构体和枚举）的实例方法中，将 mutating 关键字作为方法的前缀，写在 func 关键字之前，表示可以在该方法中修改它所属的实例以及实例的任意属性的值。这一过程在在实例方法中修改值类型章节中有详细描述。
         
@@ -479,34 +498,25 @@ class ViewController: UIViewController {
         //尽管协议本身并未实现任何功能，但是协议可以被当做一个成熟的类型类使用
         /*
          协议可以像其他普通类型一样使用，使用场景如下：
-        作为函数、方法或构造器中的参数类型或返回值类型
-        作为常量、变量或属性的类型
-        作为数组、字典或其他容器中的元素类型
+         作为函数、方法或构造器中的参数类型或返回值类型
+         作为常量、变量或属性的类型
+         作为数组、字典或其他容器中的元素类型
          
          协议是一种类型，因此协议类型的名称应与其他类型（例如 Int，Double，String）的写法相同，使用大写字母开头的驼峰式写法，例如（FullyNamed 和 RandomNumberGenerator）。
          
-        */
+         */
         
         
         //委托模式
         //委托是一种设计模式，它允许类或结构体将一些需要它们负责的功能委托给其他类型的实例。委托模式的实现很简单：定义协议来封装那些需要被委托的功能，这样就能确保遵循协议的类型能提供这些功能。委托模式可以用来响应特定的动作，或者接收外部数据源提供的数据，而无需关心外部数据源的类型。
         
-
+        
         let tracker = DiceGameTracker.init()
         let game = SnakesAndLadders.init()
         game.delegate = tracker
         game.play()
-        
-        
-        //
-        
-        
-        
-        
-        
-        
+
     }
-    
     
     
     ///  错误处理
