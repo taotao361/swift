@@ -395,9 +395,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        //协议
+        //泛型
+        func swapTwoValue(_ a: inout Int,_ b: inout Int) {
+            let temp = a
+            a = b
+            b = temp
+        }
         
+        func swapValue<T>(_ a: inout T,_ b: inout T) {
+            let temp = a
+            a = b
+            b = temp
+        }
         
+        var firstName = "lll"
+        var lastName = "ppp"
+        swapValue(&firstName, &lastName)
+        print(firstName,lastName)
         
         
         
