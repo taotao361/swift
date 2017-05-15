@@ -389,13 +389,101 @@ class DDD: GroupProtocol {
 }
 
 
+//泛型
+
+struct Type<Element> {
+    var items = [Element]()
+    mutating func push(_ a : Element) {
+        items.append(a)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+
+extension Type {
+    var topItem : Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+}
+
+
+//关联类型
+protocol Container {
+    associatedtype itemType
+    var count : Int { get }
+    mutating func appending(_ item : itemType)
+    subscript(i : Int) -> itemType { get }
+}
+
+
+struct Stack<Element> : Container {
+    var items = [Element].init()
+    mutating func push (_ item : Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+    
+    //协议实现
+    typealias itemType = Element
+    var count: Int {
+        return items.count
+    }
+    mutating func appending(_ item: Element) {
+        self.push(item)
+    }
+    subscript (i : Int) -> Element {
+        return items[i]
+    }
+}
+
+//具有where字句的扩展
+extension Stack where Element : Equatable {
+    func isTop(_ item : Element) -> Bool {
+        guard let topItem = items.last else {
+            return false
+        }
+        return topItem == item
+    }
+}
+
+//你可以使用泛型 where 子句去扩展一个协议
+//itemType 为 关联类型
+extension Container where itemType : Equatable {
+    func startWith(_ item : itemType) -> Bool {
+        return count >= 1 && self[0] == item
+    }
+}
+
+//一个泛型 where 子句去要求 Item 为特定类型
+extension Container where itemType == Double {
+    
+}
+
+
+
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        //泛型
+        
+        
+        
+        
+
+        
+        
+        
+    }
+    
+    //泛型
+    func generics() {
+        
         func swapTwoValue(_ a: inout Int,_ b: inout Int) {
             let temp = a
             a = b
@@ -414,11 +502,145 @@ class ViewController: UIViewController {
         print(firstName,lastName)
         
         
+        //类型参数   <T>
+        
+        
+        //命名类型参数
+        //请始终使用大写字母开头的驼峰命名法（例如 T 和 MyTypeParameter）来为类型参数命名，以表明它们是占位类型，而不是一个值。
+        //在大多数情况下，类型参数具有一个描述性名字，例如 Dictionary<Key, Value> 中的 Key 和 Value，以及 Array<Element> 中的 Element，这可以告诉阅读代码的人这些类型参数和泛型函数之间的关系。然而，当它们之间没有有意义的关系时，通常使用单个字母来命名，例如 T、U、V，正如上面演示的 swapTwoValues(_:_:) 函数中的 T 一样。
+        
+        //泛型类型
+        struct intType {
+            var items = [Int].init()
+            mutating func push(_ a : Int) {
+                items.append(a)
+            }
+            mutating func pop () -> Int {
+                return items.removeLast()
+            }
+        }
+        
+        //泛型版本
+        //Element为待提供的类型提供了一个占位符，只是用站位类型 Element 代替了真实类型Int，
+        //Element 在如下三个地方被用作占位符：
+        //创建 items 属性，使用 Element 类型的空数组对其进行初始化。
+        //指定 push(_:) 方法的唯一参数 item 的类型必须是 Element 类型。
+        //指定 pop() 方法的返回值类型必须是 Element 类型。
+        
+        var stringType = Type<String>.init()
+        stringType.push("33")
+        stringType.push("44")
+        stringType.pop()
+        print(stringType.items)
+        
+        
+        //扩展一个泛型类型
+        //扩展泛型的时候，泛型原始类型中的属性列表可以直接使用
+        
+        
+        //类型约束
+        //类型约束可以指定一个类型参数必须继承自指定类，或者符合一个特定的协议或协议组合。
+        //Swift 的 Dictionary 类型对字典的键的类型做了些限制。在字典的描述中，字典的键的类型必须是可哈希（hashable）的。也就是说，必须有一种方法能够唯一地表示它。Dictionary 的键之所以要是可哈希的，是为了便于检查字典是否已经包含某个特定键的值。若没有这个要求，Dictionary 将无法判断是否可以插入或者替换某个指定键的值，也不能查找到已经存储在字典中的指定键的值。
+        
+        //        func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+        //            // 这里是泛型函数的函数体部分
+        //        }
+        
+        //这里有个名为 findIndex(ofString:in:) 的非泛型函数，该函数的功能是在一个 String 数组中查找给定 String 值的索引。若查找到匹配的字符串，findIndex(ofString:in:) 函数返回该字符串在数组中的索引值，否则返回 nil：
+        func findIndex(aString : String,in array: [String]) -> Int? {
+            for (index,value) in array.enumerated() {
+                if value == aString {
+                    return index
+                }
+            }
+            return nil
+        }
+        
+        
+        let index = findIndex(aString: "hh", in: ["hh","pp","ll"])
+        if let ind = index {
+            print(ind)
+        }
+        // 如果只能查找字符串在数组中的索引，用处不是很大。不过，你可以用占位类型 T 替换 String 类型来写出具有相同功能的泛型函数 findIndex(_:_:)。
+        
+        func findValue<T : Equatable>(valueToFind : T, in array : [T]) -> Int? {
+            for (index,value) in array.enumerated() {
+                if value == valueToFind {
+                    return index
+                }
+            }
+            return nil
+        }
+        
+        let aa = findValue(valueToFind: 9, in: [1,2,3,8,9,89])
+        if let b = aa {
+            print(b)
+        }
+        
+        
+        //关联类型
+        //定义一个协议时，有的时候声明一个或多个关联类型作为协议定义的一部分将会非常有用。关联类型为协议中的某个类型提供了一个占位名（或者说别名），其代表的实际类型在协议被采纳时才会被指定。你可以通过 associatedtype 关键字来指定关联类型。
+        struct IntStack : Container {
+            var items = [Int].init()
+            mutating func push (_ item : Int) {
+                items.append(item)
+            }
+            mutating func pop() -> Int {
+                return items.removeLast()
+            }
+            
+            //Container 实现部分
+            typealias itemType = Int //这行代码可以省略
+            mutating func appending(_ item: Int) {
+                self.push(item)
+            }
+            subscript(i : Int) -> Int {
+                return items[i]
+            }
+            var count: Int {
+                return items.count
+            }
+        }
+        
+        //结构体泛型
+        struct Stack<Element> : Container {
+            var items = [Element].init()
+            mutating func push (_ item : Element) {
+                items.append(item)
+            }
+            mutating func pop() -> Element {
+                return items.removeLast()
+            }
+            
+            //协议实现
+            typealias itemType = Element
+            var count: Int {
+                return items.count
+            }
+            mutating func appending(_ item: Element) {
+                self.push(item)
+            }
+            subscript (i : Int) -> Element {
+                return items[i]
+            }
+        }
+        
+        
+        //通过扩展一个存在的类型来制定关联类型
         
         
         
+        //泛型where语句
+        
+        
+        var stack = Stack<String>.init()
+        stack.push("aa")
+        stack.push("bb")
+        stack.push("cc")
+        
+        //具有泛型 where 字句的扩展
+
     }
-    
     
     ///协议
     func testProtocol () {
