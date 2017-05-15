@@ -466,12 +466,25 @@ extension Container where itemType == Double {
 
 
 
+//访问等级
+struct TrackedString {
+    private(set) var numberOfEdits = 0
+    var value : String = "" {
+        didSet {
+            numberOfEdits += 1
+        }
+    }
+}
+
+
+
+
+
+
+
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         
         
         
@@ -479,6 +492,73 @@ class ViewController: UIViewController {
         
         
         
+        
+        
+        
+    }
+    
+    //访问控制 access control
+    func accessControl () {
+        //        fileprivate
+        //        open
+        //        public
+        //        private
+        //        internal 默认
+        
+        
+        let car = Car.init()
+        let name = car.name
+        print(name,car.price)
+        
+        /*元组类型
+         
+         元组的访问级别将由元组中访问级别最严格的类型来决定。例如，如果你构建了一个包含两种不同类型的元组，其中一个类型为内部访问级别，另一个类型为私有访问级别，那么这个元组的访问级别为私有访问级别。
+         
+         注意
+         元组不同于类、结构体、枚举、函数那样有单独的定义。元组的访问级别是在它被使用时自动推断出的，而无法明确指定。
+         */
+        
+        //枚举类型
+        //枚举成员的访问级别和该枚举类型相同，你不能为枚举成员单独指定不同的访问级别。
+        
+        //原始值和关联值
+        //枚举定义中的任何原始值或关联值的类型的访问级别至少不能低于枚举类型的访问级别。例如，你不能在一个 internal 访问级别的枚举中定义 private 级别的原始值类型。
+        
+        //嵌套类型
+        //如果在 private 级别的类型中定义嵌套类型，那么该嵌套类型就自动拥有 private 访问级别。如果在 public 或者 internal 级别的类型中定义嵌套类型，那么该嵌套类型自动拥有 internal 访问级别。如果想让嵌套类型拥有 public 访问级别，那么需要明确指定该嵌套类型的访问级别。
+        
+        //子类
+        //子类的访问级别不能高于父类，例如，父类的访问级别是 internal，子类的访问级别就不能是 public。
+        //此外，你可以在符合当前访问级别的条件下重写任意类成员（方法、属性、构造器、下标等）。
+        //可以通过重写为继承来的类成员提供更高的访问级别。下面的例子中，类 A 的访问级别是 public，它包含一个方法 someMethod()，访问级别为 private。类 B 继承自类 A，访问级别为 internal，但是在类 B 中重写了类 A 中访问级别为 private 的方法 someMethod()，并重新指定为 internal 级别。通过这种方式，我们就可以将某类中 private 级别的类成员重新指定为更高的访问级别，以便其他人使用
+        
+        
+        //常量、变量、属性、下标
+        //常量、变量、属性不能拥有比它们的类型更高的访问级别。例如，你不能定义一个 public 级别的属性，但是它的类型却是 private 级别的。同样，下标也不能拥有比索引类型或返回类型更高的访问级别。
+        //如果常量、变量、属性、下标的类型是 private 级别的，那么它们必须明确指定访问级别为 private：
+        
+        
+        //Getter 和 Setter
+        //常量、变量、属性、下标的 Getters 和 Setters 的访问级别和它们所属类型的访问级别相同。
+        //Setter 的访问级别可以低于对应的 Getter 的访问级别，这样就可以控制变量、属性或下标的读写权限。在 var 或 subscript 关键字之前，你可以通过 fileprivate(set)，private(set) 或 internal(set) 为它们的写入权限指定更低的访问级别。
+        //这个规则同时适用于存储型属性和计算型属性。即使你不明确指定存储型属性的 Getter 和 Setter，Swift 也会隐式地为其创建 Getter 和 Setter，用于访问该属性的后备存储。使用 fileprivate(set)，private(set) 和 internal(set) 可以改变 Setter 的访问级别，这对计算型属性也同样适用。
+        
+        
+        
+        //构造器
+        //自定义构造器的访问级别可以低于或等于其所属类型的访问级别。唯一的例外是必要构造器，它的访问级别必须和所属类型的访问级别相同。
+        //如同函数或方法的参数，构造器参数的访问级别也不能低于构造器本身的访问级别。
+        
+        
+        
+        //结构体默认的成员逐一构造器
+        //如果结构体中任意存储型属性的访问级别为 private，那么该结构体默认的成员逐一构造器的访问级别就是 private。否则，这种构造器的访问级别依然是 internal。
+        
+        //协议继承
+        //如果定义了一个继承自其他协议的新协议，那么新协议拥有的访问级别最高也只能和被继承协议的访问级别相同。例如，你不能将继承自 internal 协议的新协议定义为 public 协议。
+        
+        //扩展
+        //你可以在访问级别允许的情况下对类、结构体、枚举进行扩展。扩展成员具有和原始类型成员一致的访问级别。例如，你扩展了一个 public 或者 internal 类型，扩展中的成员具有默认的 internal 访问级别，和原始类型中的成员一致 。如果你扩展了一个 private 类型，扩展成员则拥有默认的 private 访问级别。
     }
     
     //泛型

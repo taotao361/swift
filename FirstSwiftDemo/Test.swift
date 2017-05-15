@@ -9,6 +9,27 @@
 import UIKit
 
 
+public class Car {
+    var name = "ppp"
+    var price = "4232432"
+    private func printName () {
+        print(name)
+    }
+    fileprivate func printPrice () {
+        print(price)
+    }
+    
+}
+
+fileprivate class SmallCar : Car {
+    var brand = "benci"
+}
+
+private class BigCar : Car {
+    
+}
+
+
 protocol SomeProtocol {
     var mustBeSettable: Int { get set }
     var doesNotNeedToBeSettable: Int { get }
@@ -22,6 +43,15 @@ protocol AnotherProtocol {
 protocol Bprotocol {
     static var name : String {get set}
 }
+
+//枚举 CompassPoint 被明确指定为 public 级别，那么它的成员 North、South、East、West 的访问级别同样也是 public
+public enum CompassPoint {
+    case east
+    case west
+    case north
+    case sorth
+}
+
 
 extension Test {
     class HAHA {
@@ -43,6 +73,23 @@ extension Test {
     
 }
 
+
+//public class QQQ {
+//    private func someMethod() {}
+//}
+//
+//class WWW : QQQ {
+//    override  func someMethod() {
+//        super.somemethod()
+//    }
+//}
+
+
+
+
+
+
+
 class Test: NSObject {
     
     var count = 0
@@ -61,5 +108,6 @@ class Test: NSObject {
     func play(givenMoney : Double) {
         print("============= \(givenMoney)")
     }
+    
     
 }
