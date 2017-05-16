@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC14497C1ECA922100766E2D /* YTFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14497B1ECA922100766E2D /* YTFirstCell.swift */; };
+		BC14497E1ECA986300766E2D /* YTTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14497D1ECA986300766E2D /* YTTestView.swift */; };
+		BC1449801ECA995200766E2D /* YTTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14497F1ECA995200766E2D /* YTTestModel.swift */; };
 		BC14CB611EC43F23005799B9 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14CB601EC43F23005799B9 /* Test.swift */; };
 		BCD6E83E1EBAE19900A4BE84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD6E83D1EBAE19900A4BE84 /* AppDelegate.swift */; };
 		BCD6E8401EBAE19900A4BE84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD6E83F1EBAE19900A4BE84 /* ViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC14497B1ECA922100766E2D /* YTFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTFirstCell.swift; sourceTree = "<group>"; };
+		BC14497D1ECA986300766E2D /* YTTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTestView.swift; sourceTree = "<group>"; };
+		BC14497F1ECA995200766E2D /* YTTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTestModel.swift; sourceTree = "<group>"; };
 		BC14CB601EC43F23005799B9 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD6E83D1EBAE19900A4BE84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +108,9 @@
 				BCD6E83D1EBAE19900A4BE84 /* AppDelegate.swift */,
 				BCD6E83F1EBAE19900A4BE84 /* ViewController.swift */,
 				BC14CB601EC43F23005799B9 /* Test.swift */,
+				BC14497B1ECA922100766E2D /* YTFirstCell.swift */,
+				BC14497D1ECA986300766E2D /* YTTestView.swift */,
+				BC14497F1ECA995200766E2D /* YTTestModel.swift */,
 				BCD6E8411EBAE19900A4BE84 /* Main.storyboard */,
 				BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */,
 				BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */,
@@ -190,6 +199,7 @@
 		BCD6E8321EBAE19900A4BE84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YT;
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = yangxutao;
@@ -264,7 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD6E8401EBAE19900A4BE84 /* ViewController.swift in Sources */,
+				BC14497C1ECA922100766E2D /* YTFirstCell.swift in Sources */,
+				BC1449801ECA995200766E2D /* YTTestModel.swift in Sources */,
 				BCD6E83E1EBAE19900A4BE84 /* AppDelegate.swift in Sources */,
+				BC14497E1ECA986300766E2D /* YTTestView.swift in Sources */,
 				BC14CB611EC43F23005799B9 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

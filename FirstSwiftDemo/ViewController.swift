@@ -481,21 +481,24 @@ struct TrackedString {
 
 
 
-
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-
-        
-        
-        
-        
+        let vv : YTTestView = YTTestView.init(frame: CGRect.init(x: 0, y: 20, width: 320, height: 568-20))
+        view.addSubview(vv)
         
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //访问控制 access control
     func accessControl () {
@@ -559,6 +562,40 @@ class ViewController: UIViewController {
         
         //扩展
         //你可以在访问级别允许的情况下对类、结构体、枚举进行扩展。扩展成员具有和原始类型成员一致的访问级别。例如，你扩展了一个 public 或者 internal 类型，扩展中的成员具有默认的 internal 访问级别，和原始类型中的成员一致 。如果你扩展了一个 private 类型，扩展成员则拥有默认的 private 访问级别。
+        
+        
+        func add(_ a : Int...) -> Int {
+            var temp : Int = 0
+            for item in a {
+                temp += item
+            }
+            return temp
+        }
+        
+        let a = add(2,3,4,5,6)
+        print(a)
+        print(#function) //打印方法名
+        
+        
+        
+        let digitNames = [
+            0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
+            5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+        ]
+        let numbers = [16, 58, 510]
+        
+        let strings = numbers.map {
+            (number) -> String in
+            var number = number
+            var output = ""
+            repeat {
+                output = digitNames[number % 10]! + output
+                number /= 10
+            } while number > 0
+            return output
+        }
+        print(strings)
+
     }
     
     //泛型
