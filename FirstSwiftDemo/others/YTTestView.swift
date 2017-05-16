@@ -26,7 +26,7 @@ class YTTestView: UIView,UITableViewDelegate,UITableViewDataSource {
     
     
     override init(frame: CGRect) {
-        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 20, width: 320, height: 568-20), style: UITableViewStyle.plain)
+        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: 320, height: 568-20), style: UITableViewStyle.plain)
         super.init(frame: frame)
         self.initUI()
     }

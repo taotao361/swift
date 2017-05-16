@@ -485,8 +485,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vv : YTTestView = YTTestView.init(frame: CGRect.init(x: 0, y: 20, width: 320, height: 568-20))
-        view.addSubview(vv)
+//        let vv : YTTestView = YTTestView.init(frame: CGRect.init(x: 0, y: 20, width: 320, height: 568-20))
+//        view.addSubview(vv)
+        
+        
+        
         
         
     }

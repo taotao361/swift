@@ -74,17 +74,6 @@ extension Test {
 }
 
 
-//public class QQQ {
-//    private func someMethod() {}
-//}
-//
-//class WWW : QQQ {
-//    override  func someMethod() {
-//        super.somemethod()
-//    }
-//}
-
-
 
 
 
@@ -108,6 +97,13 @@ class Test: NSObject {
     func play(givenMoney : Double) {
         print("============= \(givenMoney)")
     }
+    
+    
+
+    
+    
+    
+    
     
     
 }
