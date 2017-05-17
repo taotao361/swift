@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="187" y="330"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root Tab Bar Controller-->
         <scene sceneID="jd7-Qe-2Ow">
             <objects>
-                <tabBarController id="NZJ-TU-I36" sceneMemberID="viewController">
+                <tabBarController id="NZJ-TU-I36" customClass="YTRootTabBarController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="YaN-ZU-i0I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

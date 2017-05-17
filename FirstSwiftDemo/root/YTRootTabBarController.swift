@@ -8,12 +8,36 @@
 
 import UIKit
 
+
+//访问控制
+class UUU {
+    private var name : String
+    fileprivate var age  : Int?
+    public var money : Double = 100.9
+    init(name : String) {
+        self.name = name
+    }
+}
+
+//fileprivate 文件内私有，脱离了这个文件就访问不了
+//private 类内私有，出了类的作用域就不能访问
+
+
 class YTRootTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        print("==============")
+        
+        
+        let u = UUU.init(name : "ppp")
+        u.age = 9
+
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +46,9 @@ class YTRootTabBarController: UITabBarController {
     }
     
 
+    
+    
+    
     /*
     // MARK: - Navigation
 
