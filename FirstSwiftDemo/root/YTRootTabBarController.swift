@@ -9,54 +9,73 @@
 import UIKit
 
 
-//访问控制
-class UUU {
-    private var name : String
-    fileprivate var age  : Int?
-    public var money : Double = 100.9
-    init(name : String) {
-        self.name = name
-    }
-}
-
-//fileprivate 文件内私有，脱离了这个文件就访问不了
-//private 类内私有，出了类的作用域就不能访问
-
-
 class YTRootTabBarController: UITabBarController {
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = UIColor.white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        addChildViewController()
         print("==============")
         
-        
-        let u = UUU.init(name : "ppp")
-        u.age = 9
-
-        
-        
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    fileprivate func addChildViewController () {
+        addViewController(childVC: YTHomeController(), title: "首页", imageName: "tabbar_home")
+        addViewController(childVC: YTMessageController(), title: "消息", imageName: "tabbar_message_center")
+        self.addChildViewController(UIViewController.init()) //占位
+        addViewController(childVC: YTDiscoverController.init(), title: "发现", imageName: "tabbar_discover")
+        addViewController(childVC: YTProfileController.init(), title: "我的", imageName: "tabbar_profile")
+    }
+    
+    
+    fileprivate func addViewController(childVC : UIViewController,title : String,imageName : String) {
+        childVC.tabBarItem.image = UIImage.init(named: imageName)
+        childVC.tabBarItem.selectedImage = UIImage.init(named: imageName + "_highlighted")
+        childVC.title = title
+        self.addChildViewController(childVC)
+    }
+    
+    //MARK:--- 加载中间按钮
+    //计算中间按钮的frame
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let width = UIScreen.main.bounds.width/CGFloat(self.viewControllers!.count)
+        let rect = CGRect.init(x: 0, y: 0, width: width, height: 49)
+        publishBtn.frame = rect.offsetBy(dx: width*2, dy: 0)
+    }
+    
+    //MARK:---懒加载中间按钮
+    fileprivate var publishBtn : UIButton  {
+        let btn : UIButton = UIButton.init()
+        btn.setImage(UIImage.init(named: "tabbar_compose_icon_add"), for: UIControlState.normal)
+        btn.setImage(UIImage.init(named: "tabbar_compose_icon_add_highlighted"), for: UIControlState.highlighted)
+        btn.setBackgroundImage(UIImage.init(named: "tabbar_compose_button"), for: UIControlState.normal)
+        btn.setBackgroundImage(UIImage.init(named: "tabbar_compose_button_highlighted"), for: UIControlState.highlighted)
+        btn.addTarget(self, action: #selector(self.btnClick), for: UIControlEvents.touchUpInside)
+        self.tabBar.addSubview(btn)
+        return btn
+    }
+    
+    
+    //发表按钮点击
+    @objc fileprivate func btnClick () {
+        let publishVC = YTPublishController.init()
+        self.present(publishVC, animated: true) { 
+            
+        }
     }
     
 
     
     
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

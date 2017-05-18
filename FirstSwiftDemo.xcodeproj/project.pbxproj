@@ -15,9 +15,15 @@
 		BC1449901ECB0C2A00766E2D /* YTFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14498A1ECB0C2A00766E2D /* YTFirstCell.swift */; };
 		BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14498B1ECB0C2A00766E2D /* YTTestModel.swift */; };
 		BC1449921ECB0C2A00766E2D /* YTTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14498C1ECB0C2A00766E2D /* YTTestView.swift */; };
+		BC1449991ECD599800766E2D /* YTHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449981ECD599800766E2D /* YTHomeController.swift */; };
+		BC14499B1ECD7D3B00766E2D /* YTRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14499A1ECD7D3B00766E2D /* YTRootViewController.swift */; };
+		BC14499D1ECD7DA000766E2D /* YTDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14499C1ECD7DA000766E2D /* YTDiscoverController.swift */; };
+		BC14499F1ECD7DC500766E2D /* YTMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14499E1ECD7DC500766E2D /* YTMessageController.swift */; };
+		BC1449A11ECD7E0800766E2D /* YTProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449A01ECD7E0800766E2D /* YTProfileController.swift */; };
+		BC1449A31ECD7FCE00766E2D /* YTCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449A21ECD7FCE00766E2D /* YTCustomView.swift */; };
+		BC1449A51ECD97B100766E2D /* YTPublishController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449A41ECD97B100766E2D /* YTPublishController.swift */; };
 		BCD6E8431EBAE19900A4BE84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8411EBAE19900A4BE84 /* Main.storyboard */; };
 		BCD6E8451EBAE19900A4BE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */; };
-		BCD6E8481EBAE19900A4BE84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +52,16 @@
 		BC14498A1ECB0C2A00766E2D /* YTFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTFirstCell.swift; sourceTree = "<group>"; };
 		BC14498B1ECB0C2A00766E2D /* YTTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTestModel.swift; sourceTree = "<group>"; };
 		BC14498C1ECB0C2A00766E2D /* YTTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTestView.swift; sourceTree = "<group>"; };
+		BC1449981ECD599800766E2D /* YTHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTHomeController.swift; sourceTree = "<group>"; };
+		BC14499A1ECD7D3B00766E2D /* YTRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTRootViewController.swift; sourceTree = "<group>"; };
+		BC14499C1ECD7DA000766E2D /* YTDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTDiscoverController.swift; sourceTree = "<group>"; };
+		BC14499E1ECD7DC500766E2D /* YTMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTMessageController.swift; sourceTree = "<group>"; };
+		BC1449A01ECD7E0800766E2D /* YTProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTProfileController.swift; sourceTree = "<group>"; };
+		BC1449A21ECD7FCE00766E2D /* YTCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTCustomView.swift; sourceTree = "<group>"; };
+		BC1449A41ECD97B100766E2D /* YTPublishController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTPublishController.swift; sourceTree = "<group>"; };
 		BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD6E8421EBAE19900A4BE84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
-		BCD6E8471EBAE19900A4BE84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCD6E8491EBAE19900A4BE84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		BCD6E84E1EBAE19900A4BE84 /* FirstSwiftDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstSwiftDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD6E8591EBAE19900A4BE84 /* FirstSwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstSwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +97,7 @@
 			children = (
 				BC1449821ECB0BAC00766E2D /* YTRootTabBarController.swift */,
 				BC1449841ECB0BC700766E2D /* YTRootNavController.swift */,
+				BC14499A1ECD7D3B00766E2D /* YTRootViewController.swift */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -106,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				BCD6E8491EBAE19900A4BE84 /* Info.plist */,
-				BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */,
 				BCD6E8411EBAE19900A4BE84 /* Main.storyboard */,
 				BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */,
 			);
@@ -116,8 +128,38 @@
 		BC1449941ECB0CC100766E2D /* class */ = {
 			isa = PBXGroup;
 			children = (
+				BC1449951ECD597A00766E2D /* controller */,
+				BC1449961ECD597A00766E2D /* model */,
+				BC1449971ECD597A00766E2D /* view */,
 			);
 			path = class;
+			sourceTree = "<group>";
+		};
+		BC1449951ECD597A00766E2D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC1449981ECD599800766E2D /* YTHomeController.swift */,
+				BC14499C1ECD7DA000766E2D /* YTDiscoverController.swift */,
+				BC14499E1ECD7DC500766E2D /* YTMessageController.swift */,
+				BC1449A01ECD7E0800766E2D /* YTProfileController.swift */,
+				BC1449A41ECD97B100766E2D /* YTPublishController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BC1449961ECD597A00766E2D /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BC1449971ECD597A00766E2D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BC1449A21ECD7FCE00766E2D /* YTCustomView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		BCD6E8311EBAE19900A4BE84 = {
@@ -258,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD6E8481EBAE19900A4BE84 /* LaunchScreen.storyboard in Resources */,
 				BCD6E8451EBAE19900A4BE84 /* Assets.xcassets in Resources */,
 				BCD6E8431EBAE19900A4BE84 /* Main.storyboard in Resources */,
 			);
@@ -287,11 +328,18 @@
 			files = (
 				BC14498F1ECB0C2A00766E2D /* ViewController.swift in Sources */,
 				BC14498D1ECB0C2A00766E2D /* AppDelegate.swift in Sources */,
+				BC1449A51ECD97B100766E2D /* YTPublishController.swift in Sources */,
 				BC14498E1ECB0C2A00766E2D /* Test.swift in Sources */,
+				BC14499D1ECD7DA000766E2D /* YTDiscoverController.swift in Sources */,
+				BC1449A31ECD7FCE00766E2D /* YTCustomView.swift in Sources */,
+				BC14499B1ECD7D3B00766E2D /* YTRootViewController.swift in Sources */,
+				BC1449991ECD599800766E2D /* YTHomeController.swift in Sources */,
+				BC14499F1ECD7DC500766E2D /* YTMessageController.swift in Sources */,
 				BC1449921ECB0C2A00766E2D /* YTTestView.swift in Sources */,
 				BC1449831ECB0BAC00766E2D /* YTRootTabBarController.swift in Sources */,
 				BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */,
 				BC1449851ECB0BC700766E2D /* YTRootNavController.swift in Sources */,
+				BC1449A11ECD7E0800766E2D /* YTProfileController.swift in Sources */,
 				BC1449901ECB0C2A00766E2D /* YTFirstCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,15 +380,6 @@
 				BCD6E8421EBAE19900A4BE84 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCD6E8471EBAE19900A4BE84 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -444,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 9FA65VMFDP;
 				INFOPLIST_FILE = FirstSwiftDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -458,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 9FA65VMFDP;
 				INFOPLIST_FILE = FirstSwiftDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

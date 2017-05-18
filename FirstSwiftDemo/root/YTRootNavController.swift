@@ -12,8 +12,9 @@ class YTRootNavController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationBar.isHidden = true
+        
+        print("root nav")
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +22,7 @@ class YTRootNavController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
