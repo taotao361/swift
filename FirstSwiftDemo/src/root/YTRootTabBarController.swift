@@ -20,7 +20,7 @@ class YTRootTabBarController: UITabBarController {
         super.viewDidLoad()
 
         addChildViewController()
-        print("==============")
+        print("YTRootTabBarController")
         
     }
 
