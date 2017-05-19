@@ -18,6 +18,7 @@ class YTHomeController: YTRootViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
 //        let customView = YTCustomView.init(frame: CGRect.init(x: 0, y: 40, width: 100, height: 100))
 //        customView.backgroundColor = UIColor.green
 //        view.addSubview(customView)
@@ -29,7 +30,6 @@ class YTHomeController: YTRootViewController {
         
         let topBar = YTTopBarView.init(frame: CGRect.init(x: 0, y: 20, width: UIScreen.main.bounds.width, height: 44))
         view.addSubview(topBar)
-        
         
         
         

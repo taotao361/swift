@@ -126,10 +126,10 @@
 			children = (
 				BC1449D01ECE97E400766E2D /* YTDiscoverController.swift */,
 				BC1449D11ECE97E400766E2D /* YTHomeController.swift */,
-				BC1449D21ECE97E400766E2D /* YTLoginController.swift */,
 				BC1449D31ECE97E400766E2D /* YTMessageController.swift */,
 				BC1449D41ECE97E400766E2D /* YTProfileController.swift */,
 				BC1449D51ECE97E400766E2D /* YTPublishController.swift */,
+				BC1449D21ECE97E400766E2D /* YTLoginController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";

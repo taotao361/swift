@@ -15,18 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        let rootTabController = YTRootTabBarController()
+        let rootNav = YTRootNavController.init(rootViewController: rootTabController)
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.rootViewController = rootNav
+        window?.backgroundColor = UIColor.white
+        window?.makeKeyAndVisible()
         
         return true
     }

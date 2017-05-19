@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NZJ-TU-I36">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0If-Nm-oMG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
         <!--发现-->
         <scene sceneID="icn-z1-Shj">
             <objects>
-                <viewController id="2L0-Oq-agf" userLabel="发现" sceneMemberID="viewController">
+                <viewController id="2L0-Oq-agf" userLabel="发现" customClass="YTDiscoverController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gyB-C7-1NN"/>
                         <viewControllerLayoutGuide type="bottom" id="kNI-xr-OXz"/>
@@ -49,7 +49,7 @@
         <!--我的-->
         <scene sceneID="98z-bL-ZEJ">
             <objects>
-                <viewController id="jsR-eZ-ECC" userLabel="我的" sceneMemberID="viewController">
+                <viewController id="jsR-eZ-ECC" userLabel="我的" customClass="YTProfileController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uW5-Xt-aaF"/>
                         <viewControllerLayoutGuide type="bottom" id="Pvd-hL-QLc"/>
@@ -68,7 +68,7 @@
         <!--朋友圈-->
         <scene sceneID="BIt-e7-ik4">
             <objects>
-                <viewController title="朋友圈" id="tjI-5x-kpC" sceneMemberID="viewController">
+                <viewController title="朋友圈" id="tjI-5x-kpC" customClass="YTMessageController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c3F-Na-CUD"/>
                         <viewControllerLayoutGuide type="bottom" id="OoO-Mx-XrT"/>
@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="370" y="1923"/>
         </scene>
-        <!--微信-->
+        <!--首页-->
         <scene sceneID="fLh-6y-XUe">
             <objects>
-                <viewController title="微信" id="iFW-Aw-VDx" sceneMemberID="viewController">
+                <viewController title="首页" id="iFW-Aw-VDx" customClass="YTHomeController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ygm-RO-77e"/>
                         <viewControllerLayoutGuide type="bottom" id="vmQ-TN-C9h"/>
@@ -97,16 +97,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="微信" image="tabbar_compose_icon_add" selectedImage="tabbar_compose_icon_add_highlighted" id="EJk-ts-Ifb"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="tabbar_compose_icon_add" selectedImage="tabbar_compose_icon_add_highlighted" id="EJk-ts-Ifb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knD-Rx-xbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="187" y="330"/>
         </scene>
+        <!--Root Nav Controller-->
+        <scene sceneID="Ky8-qm-vR2">
+            <objects>
+                <navigationController id="0If-Nm-oMG" customClass="YTRootNavController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bgq-Cw-azd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NZJ-TU-I36" kind="relationship" relationship="rootViewController" id="ZxJ-ua-7ao"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Euu-8Q-xSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1535" y="346"/>
+        </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="jd7-Qe-2Ow">
             <objects>
                 <tabBarController id="NZJ-TU-I36" customClass="YTRootTabBarController" customModule="FirstSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3c6-AK-nWq"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="YaN-ZU-i0I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
