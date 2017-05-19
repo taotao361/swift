@@ -7,52 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC1449831ECB0BAC00766E2D /* YTRootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449821ECB0BAC00766E2D /* YTRootTabBarController.swift */; };
-		BC1449851ECB0BC700766E2D /* YTRootNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449841ECB0BC700766E2D /* YTRootNavController.swift */; };
 		BC14498D1ECB0C2A00766E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449871ECB0C2A00766E2D /* AppDelegate.swift */; };
 		BC14498E1ECB0C2A00766E2D /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449881ECB0C2A00766E2D /* Test.swift */; };
 		BC14498F1ECB0C2A00766E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449891ECB0C2A00766E2D /* ViewController.swift */; };
 		BC1449901ECB0C2A00766E2D /* YTFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14498A1ECB0C2A00766E2D /* YTFirstCell.swift */; };
 		BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14498B1ECB0C2A00766E2D /* YTTestModel.swift */; };
 		BC1449921ECB0C2A00766E2D /* YTTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14498C1ECB0C2A00766E2D /* YTTestView.swift */; };
+		BC1449DF1ECE97E400766E2D /* YTDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D01ECE97E400766E2D /* YTDiscoverController.swift */; };
+		BC1449E01ECE97E400766E2D /* YTHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D11ECE97E400766E2D /* YTHomeController.swift */; };
+		BC1449E11ECE97E400766E2D /* YTLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D21ECE97E400766E2D /* YTLoginController.swift */; };
+		BC1449E21ECE97E400766E2D /* YTMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D31ECE97E400766E2D /* YTMessageController.swift */; };
+		BC1449E31ECE97E400766E2D /* YTProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D41ECE97E400766E2D /* YTProfileController.swift */; };
+		BC1449E41ECE97E400766E2D /* YTPublishController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D51ECE97E400766E2D /* YTPublishController.swift */; };
+		BC1449E51ECE97E400766E2D /* YTRootNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D81ECE97E400766E2D /* YTRootNavController.swift */; };
+		BC1449E61ECE97E400766E2D /* YTRootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449D91ECE97E400766E2D /* YTRootTabBarController.swift */; };
+		BC1449E71ECE97E400766E2D /* YTRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449DA1ECE97E400766E2D /* YTRootViewController.swift */; };
+		BC1449E81ECE97E400766E2D /* YTCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449DC1ECE97E400766E2D /* YTCustomView.swift */; };
+		BC1449E91ECE97E400766E2D /* YTTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449DD1ECE97E400766E2D /* YTTopBarView.swift */; };
+		BC1449ED1ECE999500766E2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1449EA1ECE999500766E2D /* Default-568h@2x.png */; };
+		BC1449EE1ECE999500766E2D /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1449EB1ECE999500766E2D /* Default-667h@2x.png */; };
+		BC1449EF1ECE999500766E2D /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1449EC1ECE999500766E2D /* Default-736h@3x.png */; };
 		BCD6E8431EBAE19900A4BE84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8411EBAE19900A4BE84 /* Main.storyboard */; };
 		BCD6E8451EBAE19900A4BE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */; };
-		BCD6E8481EBAE19900A4BE84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BCD6E84F1EBAE19900A4BE84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCD6E8321EBAE19900A4BE84 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCD6E8391EBAE19900A4BE84;
-			remoteInfo = FirstSwiftDemo;
-		};
-		BCD6E85A1EBAE19900A4BE84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCD6E8321EBAE19900A4BE84 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCD6E8391EBAE19900A4BE84;
-			remoteInfo = FirstSwiftDemo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		BC1449821ECB0BAC00766E2D /* YTRootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTRootTabBarController.swift; sourceTree = "<group>"; };
-		BC1449841ECB0BC700766E2D /* YTRootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTRootNavController.swift; sourceTree = "<group>"; };
 		BC1449871ECB0C2A00766E2D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC1449881ECB0C2A00766E2D /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		BC1449891ECB0C2A00766E2D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC14498A1ECB0C2A00766E2D /* YTFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTFirstCell.swift; sourceTree = "<group>"; };
 		BC14498B1ECB0C2A00766E2D /* YTTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTestModel.swift; sourceTree = "<group>"; };
 		BC14498C1ECB0C2A00766E2D /* YTTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTestView.swift; sourceTree = "<group>"; };
+		BC1449D01ECE97E400766E2D /* YTDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTDiscoverController.swift; sourceTree = "<group>"; };
+		BC1449D11ECE97E400766E2D /* YTHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTHomeController.swift; sourceTree = "<group>"; };
+		BC1449D21ECE97E400766E2D /* YTLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTLoginController.swift; sourceTree = "<group>"; };
+		BC1449D31ECE97E400766E2D /* YTMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTMessageController.swift; sourceTree = "<group>"; };
+		BC1449D41ECE97E400766E2D /* YTProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTProfileController.swift; sourceTree = "<group>"; };
+		BC1449D51ECE97E400766E2D /* YTPublishController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTPublishController.swift; sourceTree = "<group>"; };
+		BC1449D81ECE97E400766E2D /* YTRootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTRootNavController.swift; sourceTree = "<group>"; };
+		BC1449D91ECE97E400766E2D /* YTRootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTRootTabBarController.swift; sourceTree = "<group>"; };
+		BC1449DA1ECE97E400766E2D /* YTRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTRootViewController.swift; sourceTree = "<group>"; };
+		BC1449DC1ECE97E400766E2D /* YTCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTCustomView.swift; sourceTree = "<group>"; };
+		BC1449DD1ECE97E400766E2D /* YTTopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTTopBarView.swift; sourceTree = "<group>"; };
+		BC1449EA1ECE999500766E2D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BC1449EB1ECE999500766E2D /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
+		BC1449EC1ECE999500766E2D /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD6E8421EBAE19900A4BE84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
-		BCD6E8471EBAE19900A4BE84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCD6E8491EBAE19900A4BE84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		BCD6E84E1EBAE19900A4BE84 /* FirstSwiftDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstSwiftDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCD6E8591EBAE19900A4BE84 /* FirstSwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstSwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,32 +66,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BCD6E84B1EBAE19900A4BE84 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD6E8561EBAE19900A4BE84 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC1449811ECB0B7D00766E2D /* root */ = {
-			isa = PBXGroup;
-			children = (
-				BC1449821ECB0BAC00766E2D /* YTRootTabBarController.swift */,
-				BC1449841ECB0BC700766E2D /* YTRootNavController.swift */,
-			);
-			path = root;
-			sourceTree = "<group>";
-		};
 		BC1449861ECB0BF500766E2D /* others */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,19 +85,86 @@
 		BC1449931ECB0C5900766E2D /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				BC1449EA1ECE999500766E2D /* Default-568h@2x.png */,
+				BC1449EB1ECE999500766E2D /* Default-667h@2x.png */,
+				BC1449EC1ECE999500766E2D /* Default-736h@3x.png */,
 				BCD6E8491EBAE19900A4BE84 /* Info.plist */,
-				BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */,
 				BCD6E8411EBAE19900A4BE84 /* Main.storyboard */,
 				BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */,
 			);
 			path = resource;
 			sourceTree = "<group>";
 		};
-		BC1449941ECB0CC100766E2D /* class */ = {
+		BC1449CC1ECE97E400766E2D /* config */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = class;
+			path = config;
+			sourceTree = "<group>";
+		};
+		BC1449CD1ECE97E400766E2D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BC1449CE1ECE97E400766E2D /* catagory */,
+				BC1449CF1ECE97E400766E2D /* controller */,
+				BC1449D61ECE97E400766E2D /* data */,
+				BC1449D71ECE97E400766E2D /* root */,
+				BC1449DB1ECE97E400766E2D /* view */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		BC1449CE1ECE97E400766E2D /* catagory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = catagory;
+			sourceTree = "<group>";
+		};
+		BC1449CF1ECE97E400766E2D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC1449D01ECE97E400766E2D /* YTDiscoverController.swift */,
+				BC1449D11ECE97E400766E2D /* YTHomeController.swift */,
+				BC1449D21ECE97E400766E2D /* YTLoginController.swift */,
+				BC1449D31ECE97E400766E2D /* YTMessageController.swift */,
+				BC1449D41ECE97E400766E2D /* YTProfileController.swift */,
+				BC1449D51ECE97E400766E2D /* YTPublishController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BC1449D61ECE97E400766E2D /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		BC1449D71ECE97E400766E2D /* root */ = {
+			isa = PBXGroup;
+			children = (
+				BC1449D81ECE97E400766E2D /* YTRootNavController.swift */,
+				BC1449D91ECE97E400766E2D /* YTRootTabBarController.swift */,
+				BC1449DA1ECE97E400766E2D /* YTRootViewController.swift */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
+		BC1449DB1ECE97E400766E2D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BC1449DC1ECE97E400766E2D /* YTCustomView.swift */,
+				BC1449DD1ECE97E400766E2D /* YTTopBarView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BC1449DE1ECE97E400766E2D /* thirdPart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = thirdPart;
 			sourceTree = "<group>";
 		};
 		BCD6E8311EBAE19900A4BE84 = {
@@ -132,8 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */,
-				BCD6E84E1EBAE19900A4BE84 /* FirstSwiftDemoTests.xctest */,
-				BCD6E8591EBAE19900A4BE84 /* FirstSwiftDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,10 +186,11 @@
 		BCD6E83C1EBAE19900A4BE84 /* FirstSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
-				BC1449941ECB0CC100766E2D /* class */,
+				BC1449CD1ECE97E400766E2D /* src */,
+				BC1449CC1ECE97E400766E2D /* config */,
+				BC1449DE1ECE97E400766E2D /* thirdPart */,
 				BC1449931ECB0C5900766E2D /* resource */,
 				BC1449861ECB0BF500766E2D /* others */,
-				BC1449811ECB0B7D00766E2D /* root */,
 			);
 			path = FirstSwiftDemo;
 			sourceTree = "<group>";
@@ -169,42 +215,6 @@
 			productReference = BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BCD6E84D1EBAE19900A4BE84 /* FirstSwiftDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCD6E8651EBAE19900A4BE84 /* Build configuration list for PBXNativeTarget "FirstSwiftDemoTests" */;
-			buildPhases = (
-				BCD6E84A1EBAE19900A4BE84 /* Sources */,
-				BCD6E84B1EBAE19900A4BE84 /* Frameworks */,
-				BCD6E84C1EBAE19900A4BE84 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BCD6E8501EBAE19900A4BE84 /* PBXTargetDependency */,
-			);
-			name = FirstSwiftDemoTests;
-			productName = FirstSwiftDemoTests;
-			productReference = BCD6E84E1EBAE19900A4BE84 /* FirstSwiftDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BCD6E8581EBAE19900A4BE84 /* FirstSwiftDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCD6E8681EBAE19900A4BE84 /* Build configuration list for PBXNativeTarget "FirstSwiftDemoUITests" */;
-			buildPhases = (
-				BCD6E8551EBAE19900A4BE84 /* Sources */,
-				BCD6E8561EBAE19900A4BE84 /* Frameworks */,
-				BCD6E8571EBAE19900A4BE84 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BCD6E85B1EBAE19900A4BE84 /* PBXTargetDependency */,
-			);
-			name = FirstSwiftDemoUITests;
-			productName = FirstSwiftDemoUITests;
-			productReference = BCD6E8591EBAE19900A4BE84 /* FirstSwiftDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,16 +230,6 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9FA65VMFDP;
 						ProvisioningStyle = Automatic;
-					};
-					BCD6E84D1EBAE19900A4BE84 = {
-						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = BCD6E8391EBAE19900A4BE84;
-					};
-					BCD6E8581EBAE19900A4BE84 = {
-						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = BCD6E8391EBAE19900A4BE84;
 					};
 				};
 			};
@@ -247,8 +247,6 @@
 			projectRoot = "";
 			targets = (
 				BCD6E8391EBAE19900A4BE84 /* FirstSwiftDemo */,
-				BCD6E84D1EBAE19900A4BE84 /* FirstSwiftDemoTests */,
-				BCD6E8581EBAE19900A4BE84 /* FirstSwiftDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,23 +256,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD6E8481EBAE19900A4BE84 /* LaunchScreen.storyboard in Resources */,
+				BC1449ED1ECE999500766E2D /* Default-568h@2x.png in Resources */,
 				BCD6E8451EBAE19900A4BE84 /* Assets.xcassets in Resources */,
 				BCD6E8431EBAE19900A4BE84 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD6E84C1EBAE19900A4BE84 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD6E8571EBAE19900A4BE84 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BC1449EE1ECE999500766E2D /* Default-667h@2x.png in Resources */,
+				BC1449EF1ECE999500766E2D /* Default-736h@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,45 +271,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1449E11ECE97E400766E2D /* YTLoginController.swift in Sources */,
 				BC14498F1ECB0C2A00766E2D /* ViewController.swift in Sources */,
 				BC14498D1ECB0C2A00766E2D /* AppDelegate.swift in Sources */,
 				BC14498E1ECB0C2A00766E2D /* Test.swift in Sources */,
+				BC1449E01ECE97E400766E2D /* YTHomeController.swift in Sources */,
 				BC1449921ECB0C2A00766E2D /* YTTestView.swift in Sources */,
-				BC1449831ECB0BAC00766E2D /* YTRootTabBarController.swift in Sources */,
+				BC1449E21ECE97E400766E2D /* YTMessageController.swift in Sources */,
+				BC1449E81ECE97E400766E2D /* YTCustomView.swift in Sources */,
+				BC1449E61ECE97E400766E2D /* YTRootTabBarController.swift in Sources */,
 				BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */,
-				BC1449851ECB0BC700766E2D /* YTRootNavController.swift in Sources */,
+				BC1449DF1ECE97E400766E2D /* YTDiscoverController.swift in Sources */,
+				BC1449E41ECE97E400766E2D /* YTPublishController.swift in Sources */,
+				BC1449E71ECE97E400766E2D /* YTRootViewController.swift in Sources */,
+				BC1449E31ECE97E400766E2D /* YTProfileController.swift in Sources */,
+				BC1449E51ECE97E400766E2D /* YTRootNavController.swift in Sources */,
 				BC1449901ECB0C2A00766E2D /* YTFirstCell.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD6E84A1EBAE19900A4BE84 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD6E8551EBAE19900A4BE84 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BC1449E91ECE97E400766E2D /* YTTopBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BCD6E8501EBAE19900A4BE84 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BCD6E8391EBAE19900A4BE84 /* FirstSwiftDemo */;
-			targetProxy = BCD6E84F1EBAE19900A4BE84 /* PBXContainerItemProxy */;
-		};
-		BCD6E85B1EBAE19900A4BE84 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BCD6E8391EBAE19900A4BE84 /* FirstSwiftDemo */;
-			targetProxy = BCD6E85A1EBAE19900A4BE84 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCD6E8411EBAE19900A4BE84 /* Main.storyboard */ = {
@@ -332,15 +300,6 @@
 				BCD6E8421EBAE19900A4BE84 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		BCD6E8461EBAE19900A4BE84 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCD6E8471EBAE19900A4BE84 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -468,60 +427,6 @@
 			};
 			name = Release;
 		};
-		BCD6E8661EBAE19900A4BE84 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FirstSwiftDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiaoyun.FirstSwiftDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FirstSwiftDemo.app/FirstSwiftDemo";
-			};
-			name = Debug;
-		};
-		BCD6E8671EBAE19900A4BE84 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FirstSwiftDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiaoyun.FirstSwiftDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FirstSwiftDemo.app/FirstSwiftDemo";
-			};
-			name = Release;
-		};
-		BCD6E8691EBAE19900A4BE84 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = FirstSwiftDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiaoyun.FirstSwiftDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = FirstSwiftDemo;
-			};
-			name = Debug;
-		};
-		BCD6E86A1EBAE19900A4BE84 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = FirstSwiftDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiaoyun.FirstSwiftDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = FirstSwiftDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -539,24 +444,6 @@
 			buildConfigurations = (
 				BCD6E8631EBAE19900A4BE84 /* Debug */,
 				BCD6E8641EBAE19900A4BE84 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCD6E8651EBAE19900A4BE84 /* Build configuration list for PBXNativeTarget "FirstSwiftDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCD6E8661EBAE19900A4BE84 /* Debug */,
-				BCD6E8671EBAE19900A4BE84 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCD6E8681EBAE19900A4BE84 /* Build configuration list for PBXNativeTarget "FirstSwiftDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCD6E8691EBAE19900A4BE84 /* Debug */,
-				BCD6E86A1EBAE19900A4BE84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
