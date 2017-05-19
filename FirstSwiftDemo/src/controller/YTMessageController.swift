@@ -10,11 +10,17 @@ import UIKit
 
 class YTMessageController: YTRootViewController {
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = UIColor.green
+        topBarType = TopBarType.message
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        view.backgroundColor = UIColor.green
+        
         
     }
 

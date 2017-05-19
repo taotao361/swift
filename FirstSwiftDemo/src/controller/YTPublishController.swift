@@ -10,12 +10,13 @@ import UIKit
 
 class YTPublishController: YTRootViewController {
 
+    override func loadView() {
+        super.loadView()
+        topBarType = TopBarType.publish
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.title = "发表"
-        print("发表")
-        
         
         let btn = UIButton.init()
         btn.frame = CGRect.init(x: 40, y: 50, width: 40, height: 40)
@@ -36,6 +37,7 @@ class YTPublishController: YTRootViewController {
     
 
   
+    
     @objc fileprivate func goBack () {
         self.dismiss(animated: true) { 
             

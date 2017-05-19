@@ -10,10 +10,16 @@ import UIKit
 
 class YTProfileController: YTRootViewController {
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = UIColor.gray
+        topBarType = TopBarType.profile
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.gray
+        
         
         
     }

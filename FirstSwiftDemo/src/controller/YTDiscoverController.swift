@@ -10,11 +10,16 @@ import UIKit
 
 class YTDiscoverController: YTRootViewController {
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = UIColor.yellow
+        topBarType = TopBarType.discover
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        view.backgroundColor = UIColor.yellow
         
         
     }

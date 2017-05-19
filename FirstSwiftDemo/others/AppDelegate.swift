@@ -8,21 +8,26 @@
 
 import UIKit
 
+//登录切换通知
+let SwitchRootViewControllerKey = "SwitchRootViewControllerKey"
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var globalNav : YTRootNavController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let rootTabController = YTRootTabBarController()
-        let rootNav = YTRootNavController.init(rootViewController: rootTabController)
+        NotificationCenter.default.addObserver(self, selector: #selector(switchRootViewController), name: Notification.Name.init(SwitchRootViewControllerKey), object: nil)
+        
+        let rootViewController = self.rootController()
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = rootNav
+        window?.rootViewController = rootViewController
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
-        
         return true
     }
 
@@ -48,6 +53,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+
+    
+    @objc func switchRootViewController() {
+        let root = self.rootController()
+        if YTUserAccount.getAccount() != nil {
+            window?.rootViewController = root
+        } else {
+            window?.rootViewController = YTLoginController()
+        }
+    }
+    
+    func rootController () -> UIViewController {
+        let rootViewController : UIViewController
+        if YTUserAccount.getAccount() != nil {
+            let rootTabController = YTRootTabBarController()
+            let rootNav = YTRootNavController.init(rootViewController: rootTabController)
+            globalNav = rootNav
+            rootViewController = rootNav
+        } else {
+            rootViewController = YTLoginController()
+        }
+        return rootViewController
+    }
+    
+    
+    deinit { //移除监听
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 
 }
 
