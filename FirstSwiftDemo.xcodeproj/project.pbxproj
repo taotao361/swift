@@ -31,13 +31,13 @@
 		BC1449F21ECEDE6500766E2D /* YTUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1449F11ECEDE6500766E2D /* YTUserAccount.swift */; };
 		BC1677261ED28F3800F324BA /* YTStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1677251ED28F3800F324BA /* YTStatus.swift */; };
 		BC1677281ED28F6200F324BA /* YTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1677271ED28F6200F324BA /* YTUser.swift */; };
-		BC16772C1ED2993700F324BA /* NSDate + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16772B1ED2993700F324BA /* NSDate + Extension.swift */; };
 		BCD6E8431EBAE19900A4BE84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8411EBAE19900A4BE84 /* Main.storyboard */; };
 		BCD6E8451EBAE19900A4BE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */; };
 		BCF3B11F1ED2DD82003B6776 /* YTStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B11E1ED2DD82003B6776 /* YTStatusTopView.swift */; };
 		BCF3B1211ED2E39B003B6776 /* YTStatusBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1201ED2E39B003B6776 /* YTStatusBottomView.swift */; };
 		BCF3B1231ED2E69B003B6776 /* YTStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */; };
 		BCF3B1251ED2F034003B6776 /* YTStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */; };
+		BCF3B1281ED31DD0003B6776 /* NSDate + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1271ED31DD0003B6776 /* NSDate + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +67,6 @@
 		BC1449F11ECEDE6500766E2D /* YTUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTUserAccount.swift; sourceTree = "<group>"; };
 		BC1677251ED28F3800F324BA /* YTStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatus.swift; sourceTree = "<group>"; };
 		BC1677271ED28F6200F324BA /* YTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTUser.swift; sourceTree = "<group>"; };
-		BC16772B1ED2993700F324BA /* NSDate + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate + Extension.swift"; sourceTree = "<group>"; };
 		BCD6E83A1EBAE19900A4BE84 /* FirstSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD6E8421EBAE19900A4BE84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCD6E8441EBAE19900A4BE84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		BCF3B1201ED2E39B003B6776 /* YTStatusBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusBottomView.swift; sourceTree = "<group>"; };
 		BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusPictureView.swift; sourceTree = "<group>"; };
 		BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusCell.swift; sourceTree = "<group>"; };
+		BCF3B1271ED31DD0003B6776 /* NSDate + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,23 +143,14 @@
 		BC1449CD1ECE97E400766E2D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BCF3B1261ED31DD0003B6776 /* extension */,
 				BC1449DB1ECE97E400766E2D /* view */,
 				BC1449CF1ECE97E400766E2D /* controller */,
 				BC1449F01ECEAA4D00766E2D /* public */,
-				BC1449CE1ECE97E400766E2D /* extension */,
 				BC1449D61ECE97E400766E2D /* data */,
 				BC1449D71ECE97E400766E2D /* root */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		BC1449CE1ECE97E400766E2D /* extension */ = {
-			isa = PBXGroup;
-			children = (
-				BC16772B1ED2993700F324BA /* NSDate + Extension.swift */,
-			);
-			name = extension;
-			path = catagory;
 			sourceTree = "<group>";
 		};
 		BC1449CF1ECE97E400766E2D /* controller */ = {
@@ -250,6 +241,14 @@
 				BC1449861ECB0BF500766E2D /* others */,
 			);
 			path = FirstSwiftDemo;
+			sourceTree = "<group>";
+		};
+		BCF3B1261ED31DD0003B6776 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				BCF3B1271ED31DD0003B6776 /* NSDate + Extension.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +394,7 @@
 				BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */,
 				BC1449DF1ECE97E400766E2D /* YTDiscoverController.swift in Sources */,
 				BC1449E41ECE97E400766E2D /* YTPublishController.swift in Sources */,
+				BCF3B1281ED31DD0003B6776 /* NSDate + Extension.swift in Sources */,
 				BC1449E71ECE97E400766E2D /* YTRootViewController.swift in Sources */,
 				BCF3B11F1ED2DD82003B6776 /* YTStatusTopView.swift in Sources */,
 				BC1449E31ECE97E400766E2D /* YTProfileController.swift in Sources */,
@@ -402,7 +402,6 @@
 				BC1449901ECB0C2A00766E2D /* YTFirstCell.swift in Sources */,
 				BCF3B1231ED2E69B003B6776 /* YTStatusPictureView.swift in Sources */,
 				BC1449E91ECE97E400766E2D /* YTTopBarView.swift in Sources */,
-				BC16772C1ED2993700F324BA /* NSDate + Extension.swift in Sources */,
 				BC1677281ED28F6200F324BA /* YTUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
