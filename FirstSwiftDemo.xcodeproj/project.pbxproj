@@ -146,19 +146,18 @@
 				BC1449DB1ECE97E400766E2D /* view */,
 				BC1449CF1ECE97E400766E2D /* controller */,
 				BC1449F01ECEAA4D00766E2D /* public */,
-				BC1449CE1ECE97E400766E2D /* extension */,
+				BC1449CE1ECE97E400766E2D /* catagory */,
 				BC1449D61ECE97E400766E2D /* data */,
 				BC1449D71ECE97E400766E2D /* root */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		BC1449CE1ECE97E400766E2D /* extension */ = {
+		BC1449CE1ECE97E400766E2D /* catagory */ = {
 			isa = PBXGroup;
 			children = (
 				BC16772B1ED2993700F324BA /* NSDate + Extension.swift */,
 			);
-			name = extension;
 			path = catagory;
 			sourceTree = "<group>";
 		};
