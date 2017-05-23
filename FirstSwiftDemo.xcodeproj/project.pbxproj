@@ -37,7 +37,7 @@
 		BCF3B1211ED2E39B003B6776 /* YTStatusBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1201ED2E39B003B6776 /* YTStatusBottomView.swift */; };
 		BCF3B1231ED2E69B003B6776 /* YTStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */; };
 		BCF3B1251ED2F034003B6776 /* YTStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */; };
-		BCF3B1281ED31DD0003B6776 /* NSDate + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1271ED31DD0003B6776 /* NSDate + Extension.swift */; };
+		BCF3B12A1ED3DD98003B6776 /* NSDate_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1291ED3DD98003B6776 /* NSDate_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +75,7 @@
 		BCF3B1201ED2E39B003B6776 /* YTStatusBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusBottomView.swift; sourceTree = "<group>"; };
 		BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusPictureView.swift; sourceTree = "<group>"; };
 		BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusCell.swift; sourceTree = "<group>"; };
-		BCF3B1271ED31DD0003B6776 /* NSDate + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate + Extension.swift"; sourceTree = "<group>"; };
+		BCF3B1291ED3DD98003B6776 /* NSDate_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +246,7 @@
 		BCF3B1261ED31DD0003B6776 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				BCF3B1271ED31DD0003B6776 /* NSDate + Extension.swift */,
+				BCF3B1291ED3DD98003B6776 /* NSDate_Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -394,11 +394,11 @@
 				BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */,
 				BC1449DF1ECE97E400766E2D /* YTDiscoverController.swift in Sources */,
 				BC1449E41ECE97E400766E2D /* YTPublishController.swift in Sources */,
-				BCF3B1281ED31DD0003B6776 /* NSDate + Extension.swift in Sources */,
 				BC1449E71ECE97E400766E2D /* YTRootViewController.swift in Sources */,
 				BCF3B11F1ED2DD82003B6776 /* YTStatusTopView.swift in Sources */,
 				BC1449E31ECE97E400766E2D /* YTProfileController.swift in Sources */,
 				BC1449E51ECE97E400766E2D /* YTRootNavController.swift in Sources */,
+				BCF3B12A1ED3DD98003B6776 /* NSDate_Extension.swift in Sources */,
 				BC1449901ECB0C2A00766E2D /* YTFirstCell.swift in Sources */,
 				BCF3B1231ED2E69B003B6776 /* YTStatusPictureView.swift in Sources */,
 				BC1449E91ECE97E400766E2D /* YTTopBarView.swift in Sources */,
