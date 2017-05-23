@@ -19,6 +19,7 @@ class YTStatusCell: UITableViewCell {
             pictureView.status = status?.retweeted_status != nil ? status?.retweeted_status : status
             pictureSize = pictureView.calculateImageSize()
             pictureView.snp.makeConstraints { (make) in
+                make.top.equalTo(contentLabel.snp.bottom).offset(10)
                 make.height.equalTo(pictureSize.height)
                 make.width.equalTo(pictureSize.width)
             }
@@ -42,9 +43,9 @@ class YTStatusCell: UITableViewCell {
         
         let width = UIScreen.main.bounds.width
         topView.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView)
-            make.left.equalTo(contentView)
-            make.width.equalTo(width)
+            make.top.equalTo(self)
+            make.left.equalTo(self)
+            make.width.equalTo(self.snp.width)
             make.height.equalTo(60)
         }
         
@@ -53,11 +54,17 @@ class YTStatusCell: UITableViewCell {
             make.left.equalTo(topView.snp.left).offset(10)
         }
         
+//        pictureView.snp.makeConstraints { (make) in
+//            make.top.equalTo(contentLabel.snp.bottom).offset(10)
+//            make.height.equalTo(pictureSize.height)
+//            make.width.equalTo(pictureSize.width)
+//        }
+        
         bottomView.snp.makeConstraints { (make) in
             make.width.equalTo(width)
             make.top.equalTo(pictureView.snp.bottom).offset(10)
             make.height.equalTo(44)
-            make.left.equalTo(self.contentView.snp.left)
+            make.left.equalTo(self.snp.left)
         }
     }
     

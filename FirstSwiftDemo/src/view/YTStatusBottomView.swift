@@ -17,21 +17,24 @@ class YTStatusBottomView: UIView {
         self.addSubview(supportBtn)
         self.addSubview(commanBtn)
         
+        let width = UIScreen.main.bounds.width / 3
+        
         retweetBtn.snp.makeConstraints { (make) in
             make.top.equalTo(self)
             make.height.equalTo(self).offset(-3)
-            make.width.equalTo(self.supportBtn.snp.width)
+            make.width.equalTo(width)
         }
         
         supportBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(retweetBtn.snp.top)
             make.height.width.equalTo(retweetBtn)
             make.left.equalTo(retweetBtn.snp.right)
         }
         
         commanBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(retweetBtn.snp.top)
             make.height.width.equalTo(retweetBtn)
             make.left.equalTo(supportBtn.snp.right)
-            make.right.equalTo(self)
         }
         
         

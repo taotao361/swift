@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     @objc func switchRootViewController() {
+        window?.rootViewController?.removeFromParentViewController()
         let root = self.rootController()
         if YTUserAccount.getAccount() != nil {
             window?.rootViewController = root

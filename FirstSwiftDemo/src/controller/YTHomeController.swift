@@ -28,7 +28,7 @@ class YTHomeController: YTRootViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadUI()
+
         loadData()
 
     }
@@ -56,7 +56,7 @@ extension YTHomeController : UITableViewDelegate,UITableViewDataSource {
         tableView.separatorStyle = .singleLine
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: resusebleIdentifier)
+        tableView.register(YTStatusCell.self, forCellReuseIdentifier: resusebleIdentifier)
         self.view.addSubview(tableView)
         return tableView
     }
@@ -66,23 +66,22 @@ extension YTHomeController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let status = statuses?[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: resusebleIdentifier, for: indexPath) as? YTStatusCell
-        cell?.status = status
-        return cell!
+        let status = self.statuses?[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: resusebleIdentifier, for: indexPath) as! YTStatusCell
+        cell.status = status
+        return cell
     }
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let status = self.statuses![indexPath.row]
+        let status = self.statuses?[indexPath.row]
         if let height = rowCache[indexPath.row] {
             return height
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: resusebleIdentifier) as! YTStatusCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: resusebleIdentifier, for: indexPath) as? YTStatusCell
-        
-        let rowHeight = cell?.rowHeight(status: status)
-        rowCache[status.id] = rowHeight
-        return rowHeight!
+        let rowHeight = cell.rowHeight(status: status!)
+        rowCache[status!.id] = rowHeight
+        return rowHeight
     }
     
     

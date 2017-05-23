@@ -40,12 +40,13 @@ class YTStatusTopView: UIView {
         self.addSubview(iconView)
         self.addSubview(verifiedView)
         self.addSubview(nameLabel)
+        self.addSubview(timeLabel)
         self.addSubview(vipView)
         self.addSubview(sourceLabel)
         
         iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(self).offset(10)
-            make.left.equalTo(self).offset(10)
+            make.top.equalTo(self.snp.top).offset(10)
+            make.left.equalTo(self.snp.left).offset(10)
             make.height.width.equalTo(50)
         }
         
@@ -54,25 +55,29 @@ class YTStatusTopView: UIView {
             make.bottom.equalTo(iconView).offset(5)
             make.height.width.equalTo(14)
         }
-        nameLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(iconView)
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(iconView.snp.top)
             make.left.equalTo(iconView.snp.right).offset(10)
         }
-        
-        vipView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(nameLabel)
+
+        vipView.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.top)
             make.left.equalTo(nameLabel.snp.right).offset(10)
             make.height.width.equalTo(14)
         }
-        
-        timeLabel.snp.makeConstraints { (make) -> Void in
-            make.bottom.equalTo(iconView)
-            make.left.equalTo(iconView.snp.right).offset(10)
+
+        timeLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.left.equalTo(nameLabel.snp.left)
+            make.width.equalTo(60)
+            make.height.equalTo(20)
         }
-        
-        sourceLabel.snp.makeConstraints { (make) -> Void in
-            make.bottom.equalTo(timeLabel)
-            make.left.equalTo(timeLabel.snp.right)
+
+        sourceLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(timeLabel.snp.top)
+            make.left.equalTo(timeLabel.snp.right).offset(5)
+            make.width.equalTo(150)
+            make.height.equalTo(20)
         }
         
     }
@@ -81,7 +86,12 @@ class YTStatusTopView: UIView {
     
     
     //头像
-    fileprivate lazy var iconView : UIImageView = UIImageView.init(image: UIImage.init(named: "avatar_default_big"))
+    fileprivate lazy var iconView : UIImageView = {
+        let imageView = UIImageView.init(image: UIImage.init(named: "avatar_default_big"))
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 25.0
+        return imageView
+    }()
     
     //认证图标
     fileprivate lazy var verifiedView : UIImageView = UIImageView.init(image: UIImage.init(named: "avatar_enterprise_vip"))

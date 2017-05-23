@@ -42,10 +42,11 @@ class YTStatusPictureView: UICollectionView {
             return CGSize.zero
         }
         if count == 1 {
-            let key = status?.storedPicUrls?.first?.absoluteString
-            let image = KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: key!)
-            pictureLayout.itemSize = image!.size
-            return image!.size
+//            let key = status?.storedPicUrls?.first?.absoluteString
+//            let image = KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: key!)
+//            pictureLayout.itemSize = image!.size
+//            return image!.size
+            return CGSize.init(width: 90, height: 90)
         }
          let margin : CGFloat = 5.0
         if count == 4 || count == 2 {
@@ -55,10 +56,10 @@ class YTStatusPictureView: UICollectionView {
             return CGSize.init(width: viewWidth, height: viewWidth*CGFloat.init(count! / 4))
         }
         
-        let rowNumber = (count! - 1) / 3 + 1
+        let rowNumber = count! / 3 //一行共3个，共几行
         let viewWidth = UIScreen.main.bounds.width - 2*margin
-        let viewHeight = viewWidth/3*CGFloat.init(rowNumber)
         let cellWidth = viewWidth/3 - margin
+        let viewHeight = cellWidth * CGFloat.init(rowNumber)
         pictureLayout.itemSize = CGSize.init(width: cellWidth, height: cellWidth)
         return CGSize.init(width: viewWidth, height: viewHeight)
     }
