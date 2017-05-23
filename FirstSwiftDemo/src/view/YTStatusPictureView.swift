@@ -28,6 +28,10 @@ class YTStatusPictureView: UICollectionView {
     
     init() {
         super.init(frame: CGRect.zero, collectionViewLayout: pictureLayout)
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
+        self.bounces = false
+        self.isScrollEnabled = false
         register(PictureCollectionCell.self, forCellWithReuseIdentifier: PictureViewCellReuseIdentifier)
         dataSource = self
         delegate = self
@@ -86,7 +90,8 @@ extension YTStatusPictureView : UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
+        let info : [String : Any] = [StatusPictureViewIndexKey : indexPath,StatusPictureViewURLsKey : status!.storedLargePicUrls!]
+        NotificationCenter.default.post(name: Notification.Name.init(rawValue: StatusPictureViewSelected), object: self,userInfo : info)
     }
     
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class YTRootViewController: UIViewController {
 
-    var topBarType : TopBarType? = nil
+    var topBarType : TopBarType?
+    var topBar : YTTopBarView?
     
     override func loadView() {
         super.loadView()
@@ -21,6 +22,7 @@ class YTRootViewController: UIViewController {
         super.viewDidLoad()
         let topBar = YTTopBarView.init(type: topBarType, frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64))
         topBar.backgroundColor = UIColor.gray
+        self.topBar = topBar
         view.addSubview(topBar)
     }
 

@@ -80,7 +80,7 @@ class YTStatus: NSObject {
     //配图数组
     var pictureUrls : [URL]?
     
-    class func getStatus(since_id : Int,max_id : Int,finish : @escaping (_ models : [YTStatus]?,_ error : NSError?) ->()) {
+    class func getStatus(since_id : Int,max_id : Int,finish : @escaping (_ models : [YTStatus]?,_ error : NSError?) ->Void) {
         var paras : [String : Any] = ["access_token" : YTUserAccount.getAccount()!.access_token!]
         if since_id > 0 {
             paras["since_id"] = "\(since_id)"

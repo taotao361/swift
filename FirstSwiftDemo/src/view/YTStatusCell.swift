@@ -54,12 +54,6 @@ class YTStatusCell: UITableViewCell {
             make.left.equalTo(topView.snp.left).offset(10)
         }
         
-//        pictureView.snp.makeConstraints { (make) in
-//            make.top.equalTo(contentLabel.snp.bottom).offset(10)
-//            make.height.equalTo(pictureSize.height)
-//            make.width.equalTo(pictureSize.width)
-//        }
-        
         bottomView.snp.makeConstraints { (make) in
             make.width.equalTo(width)
             make.top.equalTo(pictureView.snp.bottom).offset(10)

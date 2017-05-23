@@ -56,8 +56,6 @@ class YTTopBarView: UIView {
             label.text = "发表"
             print("发表")
         }
-
-        
     }
     
     fileprivate func addLoginBtn () {

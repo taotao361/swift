@@ -38,6 +38,8 @@
 		BCF3B1231ED2E69B003B6776 /* YTStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */; };
 		BCF3B1251ED2F034003B6776 /* YTStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */; };
 		BCF3B12A1ED3DD98003B6776 /* NSDate_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B1291ED3DD98003B6776 /* NSDate_Extension.swift */; };
+		BCF3B12C1ED42764003B6776 /* YTPresentPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B12B1ED42764003B6776 /* YTPresentPhotoController.swift */; };
+		BCF3B12E1ED42D94003B6776 /* YTPhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B12D1ED42D94003B6776 /* YTPhotoBrowserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusPictureView.swift; sourceTree = "<group>"; };
 		BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTStatusCell.swift; sourceTree = "<group>"; };
 		BCF3B1291ED3DD98003B6776 /* NSDate_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_Extension.swift; sourceTree = "<group>"; };
+		BCF3B12B1ED42764003B6776 /* YTPresentPhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTPresentPhotoController.swift; sourceTree = "<group>"; };
+		BCF3B12D1ED42D94003B6776 /* YTPhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YTPhotoBrowserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 				BC1449D41ECE97E400766E2D /* YTProfileController.swift */,
 				BC1449D51ECE97E400766E2D /* YTPublishController.swift */,
 				BC1449D21ECE97E400766E2D /* YTLoginController.swift */,
+				BCF3B12B1ED42764003B6776 /* YTPresentPhotoController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				BCF3B1201ED2E39B003B6776 /* YTStatusBottomView.swift */,
 				BCF3B1221ED2E69B003B6776 /* YTStatusPictureView.swift */,
 				BCF3B1241ED2F034003B6776 /* YTStatusCell.swift */,
+				BCF3B12D1ED42D94003B6776 /* YTPhotoBrowserCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -387,8 +393,10 @@
 				BC14498E1ECB0C2A00766E2D /* Test.swift in Sources */,
 				BC1449E01ECE97E400766E2D /* YTHomeController.swift in Sources */,
 				BC1449921ECB0C2A00766E2D /* YTTestView.swift in Sources */,
+				BCF3B12C1ED42764003B6776 /* YTPresentPhotoController.swift in Sources */,
 				BC1677261ED28F3800F324BA /* YTStatus.swift in Sources */,
 				BC1449E21ECE97E400766E2D /* YTMessageController.swift in Sources */,
+				BCF3B12E1ED42D94003B6776 /* YTPhotoBrowserCell.swift in Sources */,
 				BC1449E81ECE97E400766E2D /* YTCustomView.swift in Sources */,
 				BC1449E61ECE97E400766E2D /* YTRootTabBarController.swift in Sources */,
 				BC1449911ECB0C2A00766E2D /* YTTestModel.swift in Sources */,

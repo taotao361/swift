@@ -13,7 +13,7 @@ let resusebleIdentifier = "resusebleIdentifier"
 class YTHomeController: YTRootViewController {
     
     var statuses : [YTStatus]? {
-        didSet {
+        didSet { //监听数据
              self.tableView.reloadData()
         }
     }
@@ -30,20 +30,58 @@ class YTHomeController: YTRootViewController {
         super.viewDidLoad()
 
         loadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(presentPhotoBrowserView(_:)), name: NSNotification.Name(rawValue: StatusPictureViewSelected), object: nil)
 
     }
 
-    
-
+    //图片浏览
+    func presentPhotoBrowserView(_ notification : Notification) {
+        guard let indexPath = notification.userInfo![StatusPictureViewIndexKey] as? IndexPath else {
+            print("indexPath 为空")
+            return
+        }
+        guard let urls = notification.userInfo![StatusPictureViewURLsKey] as? [URL] else {
+            print("url 为空")
+            return
+        }
+        let photoBrowser = YTPresentPhotoController.init(index: indexPath.item, urls: urls)
+        self.present(photoBrowser, animated: true, completion: nil)
+    }
 
     
     fileprivate func loadData() {
         YTStatus.getStatus(since_id: 0, max_id: 0) { (models, error) in
             self.statuses = models
+            self.showCount(models!.count)
         }
     }
     
     
+    func showCount(_ count : Int) {
+        if count == 0 {return}
+        view.addSubview(showCountLable)
+        showCountLable.isHidden = false
+        showCountLable.text = "\(count)条新微博"
+        
+        UIView.animate(withDuration: 1.0, animations: { 
+            self.showCountLable.transform = CGAffineTransform.init(translationX: 0, y: self.showCountLable.frame.height)
+        }) { (_) in
+            UIView.animate(withDuration: 1.0, animations: { 
+                self.showCountLable.transform = CGAffineTransform.identity
+            }, completion: { (_) in
+                self.showCountLable.isHidden = true
+            })
+        }
+    }
+    
+    fileprivate lazy var showCountLable : UILabel = {
+        let label = UILabel.init()
+        let height : CGFloat = 44
+        label.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height)
+        label.backgroundColor = UIColor.orange
+        label.textAlignment = .center
+        return label
+    }()
     
     
     
@@ -81,6 +119,7 @@ extension YTHomeController : UITableViewDelegate,UITableViewDataSource {
         
         let rowHeight = cell.rowHeight(status: status!)
         rowCache[status!.id] = rowHeight
+        print("---------------------- heigt = \(rowCache)")
         return rowHeight
     }
     
